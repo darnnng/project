@@ -93,7 +93,7 @@ module.exports = {
   },
   resolve: {
     symlinks: false,
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.scss', '.json'],
     alias: {
       '@constants': path.resolve(__dirname, './src/constants/'),
       '@components': path.resolve(__dirname, './src/components/'),

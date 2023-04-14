@@ -27,6 +27,6 @@
       "@public/*": ["./public/*"]
     }
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./declaration.d.ts"],
   "exclude": ["public", "node_modules"]
 }
