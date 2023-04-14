@@ -98,6 +98,7 @@ module.exports = {
       '@constants': path.resolve(__dirname, './src/constants/'),
       '@components': path.resolve(__dirname, './src/components/'),
       '@src': path.resolve(__dirname, 'src/'),
+      '@public': path.resolve(__dirname, 'public'),
     },
   },
 
