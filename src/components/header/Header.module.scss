@@ -1,12 +1,90 @@
-header {
+@import './../../styles/variables.scss';
+
+.bigHeader {
   align-items: center;
-  background-color: black;
+  background-color: $light1;
   display: flex;
   flex-direction: row;
-  color: white;
+  justify-content: space-between;
+  color: $dark;
   height: 100px;
-  width: 100%;
+  padding: 0px 30px;
   @media (max-width: 767px) {
     flex-direction: column;
+  }
+}
+
+header {
+  font-family: $fontFamily;
+  a {
+    text-decoration: none;
+    color: $dark;
+    text-align: center;
+  }
+}
+
+.smallHeader {
+  min-height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0;
+  background-color: $light2;
+  color: $dark;
+}
+
+.spanContainer {
+  padding: 0px 20px;
+}
+.spanElement {
+  cursor: pointer;
+  &:hover {
+    color: $hoverColor;
+  }
+}
+
+.mainTitle {
+  font-size: $fontLarge;
+}
+
+.iconsRight {
+  display: flex;
+  column-gap: 10px;
+}
+
+.iconsLeft {
+  display: flex;
+  column-gap: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+  &:hover {
+    color: $hoverColor;
+  }
+}
+
+.mainPageLink {
+  margin-bottom: 5px;
+}
+
+.materialSymbolsOutlined {
+  font-family: 'Material Symbols Outlined';
+  color: $dark;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+  font-size: $fontLarge;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  cursor: pointer;
+  &:hover {
+    color: $hoverColor;
   }
 }

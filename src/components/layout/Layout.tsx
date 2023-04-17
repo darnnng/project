@@ -1,18 +1,19 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '@components/header';
+import { Footer } from '@components/footer';
+import { Spinner } from '@components/UI/Spinner';
 
 export const Layout = () => {
   return (
     <>
-      <Suspense>
+      <Suspense fallback={<Spinner />}>
         <Header />
         <Outlet />
+        <Footer />
       </Suspense>
     </>
   );
 };
 
-//TO-DO ADD SPINNER <Suspense fallback={<Spinner />}>
-//TO-DO ADD FOOTER
 //TO-DO ADD ERROR BOUNDARY && NOTIFIER
