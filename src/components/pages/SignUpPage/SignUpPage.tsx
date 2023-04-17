@@ -16,12 +16,12 @@ const SignUpPage = () => {
 
   return (
     <div className={styles.login}>
-      <h3 className={styles.loginTitle}>WELCOME! SIGN UP FOR MORE OPPORTUNITIES</h3>
-      <AuthForm onSubmit={onSignUpSubmit} buttonName={'Sign up'} />
+      <h3 className={styles.loginTitle}>{t('WELCOME! SIGN UP FOR MORE OPPORTUNITIES')}</h3>
+      <AuthForm onSubmit={onSignUpSubmit} buttonName={t('Sign up')} />
       <p className={styles.link}>
-        Already have an account?
+        {t('Already have an account?')}
         <Link to={`/${RoutePath.SIGNUP}`} className={styles.linkSignUp}>
-          Follow link
+          {t('Follow link')}
         </Link>
       </p>
     </div>

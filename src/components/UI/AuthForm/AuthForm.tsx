@@ -23,7 +23,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.inputContainer}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{t('Email')}</label>
         <input
           id="email"
           className={!!errors.email?.message ? styles.formErrorInput : styles.formInput}
@@ -36,7 +36,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
         </span>
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('Password')}</label>
         <input
           id="password"
           className={!!errors.password?.message ? styles.formErrorInput : styles.formInput}
@@ -49,7 +49,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
         </span>
       </div>
       <p className={styles.formLabel}>
-        By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use
+        {t('By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use')}
       </p>
       <button type="submit">{buttonName}</button>
     </form>

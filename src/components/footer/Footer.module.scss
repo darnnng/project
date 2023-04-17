@@ -1,9 +1,60 @@
 @import './../../styles/variables.scss';
 
 .footer {
-  height: 120px;
+  height: 160px;
   background-color: $dark;
+  color: $backgroundLight;
+  font-family: $fontFamily;
   width: 100%;
   position: absolute;
   bottom: 0;
+}
+
+.footerUp {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 80px;
+}
+
+.footerBigTitle {
+  font-size: $fontMid;
+}
+
+.footerLinkText {
+  text-decoration: none;
+  color: $hoverColor;
+  font-size: 18px;
+  &:hover {
+    color: $light1;
+  }
+}
+
+.footerLinksSocial {
+  display: flex;
+  column-gap: 15px;
+}
+
+.footerDown {
+  color: $backgroundLight;
+  padding: 20px 20px 0px;
+}
+
+.materialSymbolsOutlined {
+  font-family: 'Material Symbols Outlined';
+  color: $hoverColor;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+  font-size: $fontLarge;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  cursor: pointer;
+  &:hover {
+    color: $backgroundLight;
+  }
 }
