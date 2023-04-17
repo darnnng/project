@@ -1,0 +1,55 @@
+@import './../../../styles/variables.scss';
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  button {
+    padding: 0.5rem;
+    background-color: $dark;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: $fontFamily;
+    margin: 20px 0px;
+
+    &:hover {
+      background-color: $hoverColor;
+    }
+  }
+
+  .formLabel {
+    font-size: 12px;
+    color: $hoverColor;
+    font-family: $fontFamilyRoboto;
+  }
+
+  .formInput {
+    font-family: $fontFamily;
+  }
+  .formErrorInput {
+    font-family: $fontFamily;
+    border: 1px solid $error;
+  }
+}
+
+.errorMessage {
+  color: $error;
+  font-size: 14px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
