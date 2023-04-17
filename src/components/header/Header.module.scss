@@ -1,0 +1,12 @@
+header {
+  align-items: center;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  height: 100px;
+  width: 100%;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+}
