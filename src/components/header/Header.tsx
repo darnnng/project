@@ -2,10 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from '@constants/routes';
+import { useAppDispatch } from '@src/hooks/reduxHooks';
+import { setLanguage } from '@src/redux/slices/languageSlice';
+import { Languages } from '@constants/languages';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
+  const handleSetEng = () => {
+    dispatch(setLanguage(Languages.EN));
+  };
+
+  const handleSetRus = () => {
+    dispatch(setLanguage(Languages.RU));
+  };
+
   return (
     <header>
       <nav className={styles.smallHeader}>
@@ -23,16 +36,16 @@ export const Header = () => {
             <a>{t('Switch language')}</a>
             <ul>
               <li>
-                <a href="#">EN</a>
+                <a onClick={handleSetEng}>EN</a>
               </li>
               <li>
-                <a href="#">RU</a>
+                <a onClick={handleSetRus}>RU</a>
               </li>
             </ul>
           </li>
           <span> | </span>
           <li className={styles.spanElement}>
-            <a href="#">{t('Switch theme')}</a>
+            <a>{t('Switch theme')}</a>
             <ul>
               <li>
                 <span className={styles.materialSymbolsOutlined}>light_mode</span>
