@@ -61,8 +61,9 @@ export const AppRouter = () => {
               </PrivateRoute>
             }
           />
+          <Route path={RoutePath.ERROR} element={<ErrorPage />} />
         </Route>
-        <Route path={RoutePath.ERROR} element={<ErrorPage />} />
+
         {/* <Route path={RoutePath.ERROR} element={<ErrorPage pageNotFound />} /> */}
         <Route
           path={RoutePath.GENERAL}

@@ -1,19 +1,28 @@
 @import './../../styles/variables.scss';
 
 .footer {
-  height: 160px;
   background-color: $dark;
   color: $backgroundLight;
   font-family: $fontFamily;
   width: 100%;
+  flex: 0 0 auto;
+  // margin-top: 51px;
   position: absolute;
   bottom: 0;
+  left: 0;
+
+  @media (max-width: 767px) {
+    justify-content: center;
+  }
 }
 
 .footerUp {
   display: flex;
   justify-content: space-between;
   padding: 20px 80px;
+  @media (max-width: 767px) {
+    padding: 20px 20px;
+  }
 }
 
 .footerBigTitle {
@@ -26,6 +35,14 @@
   font-size: 18px;
   &:hover {
     color: $light1;
+  }
+}
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 767px) {
+    justify-content: center;
   }
 }
 

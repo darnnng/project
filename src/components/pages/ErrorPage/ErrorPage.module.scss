@@ -1,0 +1,15 @@
+@import './../../../styles/variables.scss';
+.errorText {
+  font-size: $fontLarge;
+  color: $error;
+}
+
+.errorText2 {
+  font-size: $fontMid;
+  color: $dark;
+}
+
+.errorDiv {
+  margin: 40px;
+  font-family: $fontFamily;
+}

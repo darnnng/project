@@ -8,17 +8,42 @@ export const Header = () => {
   const { t } = useTranslation();
   return (
     <header>
-      <div className={styles.smallHeader}>
-        <div className={styles.spanContainer}>
-          <span className={styles.spanElement}>{t('Our stores')}</span>
+      <nav className={styles.smallHeader}>
+        <ul className={styles.spanContainer}>
+          <li className={styles.spanElement}>
+            <Link to={`/${RoutePath.CATALOG}`}>{t('Our stores')}</Link>
+          </li>
           <span> | </span>
-          <span className={styles.spanElement}>{t('Join us')}</span>
+          <li className={styles.spanElement}>
+            <Link to={`/${RoutePath.SIGNUP}`}>{t('Join us')}</Link>
+          </li>
           <span> | </span>
-          <span className={styles.spanElement}>{t('Switch language')}</span>
+
+          <li className={styles.spanElement}>
+            <a>{t('Switch language')}</a>
+            <ul>
+              <li>
+                <a href="#">EN</a>
+              </li>
+              <li>
+                <a href="#">RU</a>
+              </li>
+            </ul>
+          </li>
           <span> | </span>
-          <span className={styles.spanElement}>{t('Switch theme')}</span>
-        </div>
-      </div>
+          <li className={styles.spanElement}>
+            <a href="#">{t('Switch theme')}</a>
+            <ul>
+              <li>
+                <span className={styles.materialSymbolsOutlined}>light_mode</span>
+              </li>
+              <li>
+                <span className={styles.materialSymbolsOutlined}>dark_mode</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
       <div className={styles.bigHeader}>
         <div className={styles.iconsLeft}>
           <Link to={`/${RoutePath.CATALOG}`} className={styles.linkSignUp}>
@@ -28,7 +53,11 @@ export const Header = () => {
         </div>
         <h3 className={styles.mainTitle}>Threads & Co.</h3>
         <div className={styles.iconsRight}>
-          <span className={styles.materialSymbolsOutlined}>shopping_cart</span>
+          <span className={styles.materialSymbolsOutlined}>
+            <Link to={`/${RoutePath.BASKET}`} className={styles.linkSignUp}>
+              shopping_cart
+            </Link>
+          </span>
           <span className={styles.materialSymbolsOutlined}>person</span>
         </div>
       </div>

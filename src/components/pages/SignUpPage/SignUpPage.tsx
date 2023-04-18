@@ -20,7 +20,7 @@ const SignUpPage = () => {
       <AuthForm onSubmit={onSignUpSubmit} buttonName={t('Sign up')} />
       <p className={styles.link}>
         {t('Already have an account?')}
-        <Link to={`/${RoutePath.SIGNUP}`} className={styles.linkSignUp}>
+        <Link to={`/${RoutePath.LOGIN}`} className={styles.linkSignUp}>
           {t('Follow link')}
         </Link>
       </p>
