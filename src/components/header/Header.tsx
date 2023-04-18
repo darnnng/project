@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from '@constants/routes';
-import { useAppDispatch } from '@src/hooks/reduxHooks';
-import { setLanguage } from '@src/redux/slices/languageSlice';
+import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
+import { selectedLanguage, setLanguage } from '@src/redux/slices/languageSlice';
 import { Languages } from '@constants/languages';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const { language } = useAppSelector(selectedLanguage);
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [i18n, language]);
 
   const handleSetEng = () => {
     dispatch(setLanguage(Languages.EN));

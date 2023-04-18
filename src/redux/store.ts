@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore } from 'redux-persist';
-import { themeChangeReducer } from './slices/themeSlice';
-import { persistedLangReducer } from './slices/languageSlice';
-import { persistConfig } from './slices/persistConfig';
+import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import { persistedReducer } from './rootReducer';
 
 export const store = configureStore({
-  reducer: {
-    theme: themeChangeReducer,
-    language: persistedLangReducer,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
