@@ -14,7 +14,7 @@ const ErrorPage = lazy(() => import('@components/pages/ErrorPage'));
 
 export const AppRouter = () => {
   //   const isAuth = useAuth(); TO-DO CHANGE
-  //TO-DO ADD ERROR PAGE
+
   const isAuth = false;
 
   return (

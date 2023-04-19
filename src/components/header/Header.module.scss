@@ -20,9 +20,13 @@ header {
   font-family: $fontFamily;
   a {
     text-decoration: none;
-    color: $dark;
+    color: $fontDark;
     text-align: center;
   }
+}
+
+.darkLink {
+  color: $fontLight;
 }
 
 .smallHeader {
@@ -32,8 +36,13 @@ header {
   justify-content: flex-end;
   align-items: center;
   margin-top: 0;
-  background-color: $light2;
   color: $dark;
+  background-color: $light2;
+}
+
+.darkHeader {
+  background-color: $backgroundDark;
+  color: $fontLight;
 }
 
 .spanContainer {
@@ -41,10 +50,15 @@ header {
 }
 .spanElement {
   cursor: pointer;
-
+  color: $fontDark;
+  padding: 0px 10px;
   &:hover {
     color: $hoverColor;
   }
+}
+
+.darkSpan {
+  color: $fontLight;
 }
 
 .mainTitle {
@@ -74,7 +88,7 @@ header {
 
 .materialSymbolsOutlined {
   font-family: 'Material Symbols Outlined';
-  color: $dark;
+  color: $fontDark;
   text-decoration: none;
   font-weight: normal;
   font-style: normal;
@@ -90,6 +104,10 @@ header {
   &:hover {
     color: $hoverColor;
   }
+}
+
+.darkIcons {
+  color: $fontLight;
 }
 
 nav {
@@ -114,12 +132,10 @@ nav {
   }
   a {
     display: block;
-    padding: 0 10px;
     line-height: 50px;
     text-decoration: none;
     &:hover {
-      color: gray;
-      background-color: white;
+      color: $hoverColor;
     }
   }
 }
@@ -128,4 +144,9 @@ nav ul li:hover > ul {
   display: inherit;
   background-color: $light2;
   width: 50px;
+}
+
+nav ul li:hover > ul .darkLang {
+  background-color: $backgroundDark;
+  color: $fontLight;
 }

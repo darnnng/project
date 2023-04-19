@@ -5,12 +5,14 @@ import { RoutePath } from '@constants/routes';
 import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
 import { selectedLanguage, setLanguage } from '@src/redux/slices/languageSlice';
 import { Languages } from '@constants/languages';
+import { selectedTheme, setTheme } from '@src/redux/slices/themeSlice';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { language } = useAppSelector(selectedLanguage);
+  const { themeLight } = useAppSelector(selectedTheme);
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -25,59 +27,78 @@ export const Header = () => {
     dispatch(setLanguage(Languages.RU));
   };
 
+  const handleChangeTheme = () => {
+    dispatch(setTheme());
+  };
+
   return (
     <header>
-      <nav className={styles.smallHeader}>
+      <nav className={`${styles.smallHeader}  ${themeLight ? '' : styles.darkHeader}`}>
         <ul className={styles.spanContainer}>
-          <li className={styles.spanElement}>
-            <Link to={`/${RoutePath.CATALOG}`}>{t('Our stores')}</Link>
+          <li className={`${styles.spanElement}  ${themeLight ? '' : styles.darkSpan}`}>
+            <Link to={`/${RoutePath.CATALOG}`} className={`${themeLight ? '' : styles.darkLink}`}>
+              {t('Our stores')}
+            </Link>
           </li>
           <span> | </span>
           <li className={styles.spanElement}>
-            <Link to={`/${RoutePath.SIGNUP}`}>{t('Join us')}</Link>
+            <Link to={`/${RoutePath.SIGNUP}`} className={`${themeLight ? '' : styles.darkLink}`}>
+              {t('Join us')}
+            </Link>
           </li>
           <span> | </span>
 
           <li className={styles.spanElement}>
-            <a>{t('Switch language')}</a>
+            <a className={`${themeLight ? '' : styles.darkLink}`}>{t('Switch language')}</a>
             <ul>
               <li>
-                <a onClick={handleSetEng}>EN</a>
+                <a className={`${themeLight ? '' : styles.darkLang}`} onClick={handleSetEng}>
+                  EN
+                </a>
               </li>
               <li>
-                <a onClick={handleSetRus}>RU</a>
+                <a className={`${themeLight ? '' : styles.darkLang}`} onClick={handleSetRus}>
+                  RU
+                </a>
               </li>
             </ul>
           </li>
           <span> | </span>
-          <li className={styles.spanElement}>
-            <a>{t('Switch theme')}</a>
-            <ul>
-              <li>
-                <span className={styles.materialSymbolsOutlined}>light_mode</span>
-              </li>
-              <li>
-                <span className={styles.materialSymbolsOutlined}>dark_mode</span>
-              </li>
-            </ul>
+          <li
+            className={` ${styles.spanElement} ${themeLight ? '' : styles.darkSpan}`}
+            onClick={handleChangeTheme}
+          >
+            {t('Switch theme')}
           </li>
         </ul>
       </nav>
-      <div className={styles.bigHeader}>
+      <div className={`${styles.bigHeader}  ${themeLight ? '' : styles.darkHeader}`}>
         <div className={styles.iconsLeft}>
           <Link to={`/${RoutePath.CATALOG}`} className={styles.linkSignUp}>
-            <span className={styles.materialSymbolsOutlined}>home</span>
-            <p className={styles.mainPageLink}>{t('Main page')}</p>
+            <span
+              className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
+            >
+              home
+            </span>
+            <p className={`${styles.mainPageLink}  ${themeLight ? '' : styles.darkIcons}`}>
+              {t('Main page')}
+            </p>
           </Link>
         </div>
         <h3 className={styles.mainTitle}>Threads & Co.</h3>
         <div className={styles.iconsRight}>
-          <span className={styles.materialSymbolsOutlined}>
-            <Link to={`/${RoutePath.BASKET}`} className={styles.linkSignUp}>
+          <Link to={`/${RoutePath.BASKET}`} className={styles.linkSignUp}>
+            <span
+              className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
+            >
               shopping_cart
-            </Link>
+            </span>
+          </Link>
+          <span
+            className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
+          >
+            person
           </span>
-          <span className={styles.materialSymbolsOutlined}>person</span>
         </div>
       </div>
     </header>

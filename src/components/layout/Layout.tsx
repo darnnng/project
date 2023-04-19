@@ -3,13 +3,17 @@ import { Outlet } from 'react-router-dom';
 import { Header } from '@components/header';
 import { Footer } from '@components/footer';
 import { Spinner } from '@components/UI/Spinner';
+import { useAppSelector } from '@src/hooks/reduxHooks';
+import { selectedTheme } from '@src/redux/slices/themeSlice';
+import styles from './Layout.module.scss';
 
 export const Layout = () => {
+  const { themeLight } = useAppSelector(selectedTheme);
   return (
     <>
-      <div style={{ position: 'relative', minHeight: '100vh' }}>
+      <div className={`${styles.divContainer}  ${themeLight ? '' : styles.dark}`}>
         <Suspense fallback={<Spinner />}>
-          <div style={{ paddingBottom: '2.5rem' }}>
+          <div className={styles.outletContainer}>
             <Header />
             <Outlet />
           </div>

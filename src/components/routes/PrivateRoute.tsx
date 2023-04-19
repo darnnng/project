@@ -7,7 +7,7 @@ export const PrivateRoute: FC<IRouteProps> = ({ children }) => {
   const isAuth = false; //TO-DO CHANGE
 
   if (!isAuth) {
-    return <Navigate to={`/${RoutePath.CATALOG}`} replace />;
+    return <Navigate to={`/${RoutePath.LOGIN}`} replace />;
   }
 
   return <>{children}</>;
