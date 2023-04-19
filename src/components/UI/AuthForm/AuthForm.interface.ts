@@ -2,5 +2,5 @@ import { IFormInput } from '@src/interfaces/IAuthFormInput';
 
 export interface IAuthFormProps {
   buttonName: string;
-  onSubmit: (input: IFormInput) => Promise<void>;
+  onSubmit: (input: IFormInput) => void;
 }

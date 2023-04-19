@@ -1,17 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { RoutePath } from '@constants/routes';
 import { IFormInput } from '@src/interfaces/IAuthFormInput';
 import { AuthForm } from '@components/UI/AuthForm';
+import { setUser } from '@src/redux/slices/userSlice';
+import { auth } from '@src/firebase';
+import { useAppDispatch } from '@src/hooks/reduxHooks';
 import styles from './LogInPage.module.scss';
 // npx i18next-scanner
 const LogInPage = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const onLoginSubmit = async (input: IFormInput) => {
+  const onLoginSubmit = (input: IFormInput) => {
     const { email, password } = input;
-    console.log(email, password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+          })
+        );
+        navigate(`/${RoutePath.CATALOG}`);
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (

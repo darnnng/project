@@ -1,7 +1,6 @@
 @import './../../styles/variables.scss';
 .divContainer {
   position: relative;
-  min-height: 100vh;
 }
 
 .dark {
@@ -9,5 +8,6 @@
 }
 
 .outletContainer {
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  min-height: 75vh;
 }

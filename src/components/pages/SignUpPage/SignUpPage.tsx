@@ -1,17 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { RoutePath } from '@constants/routes';
 import { IFormInput } from '@src/interfaces/IAuthFormInput';
 import { AuthForm } from '@components/UI/AuthForm';
 import styles from '@components/pages/LogInPage/LogInPage.module.scss';
+import { auth } from '@src/firebase';
+import { setUser } from '@src/redux/slices/userSlice';
+import { useAppDispatch } from '@src/hooks/reduxHooks';
 
 const SignUpPage = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onSignUpSubmit = async (input: IFormInput) => {
     const { email, password } = input;
     console.log(email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+          })
+        );
+        // addDoc(collection(db, `users`), {
+        //   email: user.email,
+        // });
+        navigate(`/${RoutePath.CATALOG}`);
+      })
+      .catch((err) => console.log(err.message));
+    //TO-DO ADD ERROR NOTIFICATION
   };
 
   return (
