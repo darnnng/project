@@ -1,7 +1,12 @@
 import React from 'react';
+import { CategoryMenu } from '@components/UI/CategoryMenu';
 
 const CatalogPage = () => {
-  return <div>CatalogPage</div>;
+  return (
+    <div>
+      <CategoryMenu />
+    </div>
+  );
 };
 
 export default CatalogPage;
