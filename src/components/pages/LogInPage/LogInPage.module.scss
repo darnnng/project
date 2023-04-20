@@ -14,7 +14,7 @@
   font-size: $fontLarge;
   margin-bottom: 25px;
   flex-wrap: wrap;
-  @media (max-width: 767px) {
+  @media (max-width: $screenMid) {
     font-size: $fontMid;
     padding: 0px 15px;
   }

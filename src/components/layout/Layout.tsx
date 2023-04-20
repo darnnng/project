@@ -5,6 +5,7 @@ import { Footer } from '@components/footer';
 import { Spinner } from '@components/UI/Spinner';
 import { useAppSelector } from '@src/hooks/reduxHooks';
 import { selectedTheme } from '@src/redux/slices/themeSlice';
+import { ErrorBoundary } from '@components/errorBoundary';
 import styles from './Layout.module.scss';
 
 export const Layout = () => {
@@ -15,7 +16,9 @@ export const Layout = () => {
         <Suspense fallback={<Spinner />}>
           <div className={styles.outletContainer}>
             <Header />
-            <Outlet />
+            <ErrorBoundary>
+              <Outlet />
+            </ErrorBoundary>
           </div>
           <Footer />
         </Suspense>

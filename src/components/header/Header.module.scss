@@ -9,7 +9,7 @@
   color: $dark;
   height: 70px;
   padding: 0px 30px;
-  @media (max-width: 767px) {
+  @media (max-width: $screenMid) {
     flex-direction: column;
     height: 120px;
     padding: 30px 0px;

@@ -42,7 +42,7 @@ form {
     border: 1px solid $error;
   }
 
-  @media (max-width: 520px) {
+  @media (max-width: $screenSmall) {
     max-width: 260px;
   }
 }

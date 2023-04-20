@@ -2,6 +2,8 @@ import React, { lazy } from 'react';
 import { Routes, Route, Navigate, BrowserRouter, Outlet } from 'react-router-dom';
 import { RoutePath } from '@constants/routes';
 import { Layout } from '@components/layout';
+import { useAppSelector } from '@src/hooks/reduxHooks';
+import { currentUser } from '@src/redux/slices/userSlice';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -13,9 +15,7 @@ const ItemPage = lazy(() => import('@components/pages/ItemPage'));
 const ErrorPage = lazy(() => import('@components/pages/ErrorPage'));
 
 export const AppRouter = () => {
-  //   const isAuth = useAuth(); TO-DO CHANGE
-
-  const isAuth = false;
+  const { isAuth } = useAppSelector(currentUser);
 
   return (
     <BrowserRouter>

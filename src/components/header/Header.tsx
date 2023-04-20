@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
 import { selectedLanguage, setLanguage } from '@src/redux/slices/languageSlice';
 import { Languages } from '@constants/languages';
 import { selectedTheme, setTheme } from '@src/redux/slices/themeSlice';
+import { currentUser, removeUser } from '@src/redux/slices/userSlice';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -13,6 +14,7 @@ export const Header = () => {
   const dispatch = useAppDispatch();
   const { language } = useAppSelector(selectedLanguage);
   const { themeLight } = useAppSelector(selectedTheme);
+  const { isAuth } = useAppSelector(currentUser);
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -31,6 +33,10 @@ export const Header = () => {
     dispatch(setTheme());
   };
 
+  const handleLogout = () => {
+    dispatch(removeUser());
+  };
+
   return (
     <header>
       <nav className={`${styles.smallHeader}  ${themeLight ? '' : styles.darkHeader}`}>
@@ -41,12 +47,19 @@ export const Header = () => {
             </Link>
           </li>
           <span> | </span>
-          <li className={styles.spanElement}>
-            <Link to={`/${RoutePath.SIGNUP}`} className={`${themeLight ? '' : styles.darkLink}`}>
-              {t('Join us')}
-            </Link>
-          </li>
-          <span> | </span>
+          {!isAuth && (
+            <>
+              <li className={styles.spanElement}>
+                <Link
+                  to={`/${RoutePath.SIGNUP}`}
+                  className={`${themeLight ? '' : styles.darkLink}`}
+                >
+                  {t('Join us')}
+                </Link>
+              </li>
+              <span> | </span>
+            </>
+          )}
 
           <li className={styles.spanElement}>
             <a className={`${themeLight ? '' : styles.darkLink}`}>{t('Switch language')}</a>
@@ -97,8 +110,16 @@ export const Header = () => {
           <span
             className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
           >
-            person
+            favorite
           </span>
+          {isAuth && (
+            <span
+              onClick={handleLogout}
+              className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
+            >
+              logout
+            </span>
+          )}
         </div>
       </div>
     </header>
