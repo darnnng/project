@@ -6,6 +6,7 @@ import { Spinner } from '@components/UI/Spinner';
 import { useAppSelector } from '@src/hooks/reduxHooks';
 import { selectedTheme } from '@src/redux/slices/themeSlice';
 import { ErrorBoundary } from '@components/errorBoundary';
+import { Notifier } from '@components/UI/Notifier';
 import styles from './Layout.module.scss';
 
 export const Layout = () => {
@@ -22,9 +23,8 @@ export const Layout = () => {
           </div>
           <Footer />
         </Suspense>
+        <Notifier />
       </div>
     </>
   );
 };
-
-//TO-DO ADD ERROR BOUNDARY && NOTIFIER

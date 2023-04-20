@@ -19,7 +19,6 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
   });
 
   const { t } = useTranslation();
-  bbjkbkj;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>

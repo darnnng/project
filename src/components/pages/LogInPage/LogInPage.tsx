@@ -8,12 +8,21 @@ import { AuthForm } from '@components/UI/AuthForm';
 import { setUser } from '@src/redux/slices/userSlice';
 import { auth } from '@src/firebase';
 import { useAppDispatch } from '@src/hooks/reduxHooks';
+import { createAlert } from '@src/redux/slices/notifierSlice';
 import styles from './LogInPage.module.scss';
 // npx i18next-scanner
 const LogInPage = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const onError = (error: string) => {
+    dispatch(
+      createAlert({
+        message: error,
+      })
+    );
+  };
 
   const onLoginSubmit = (input: IFormInput) => {
     const { email, password } = input;
@@ -27,7 +36,7 @@ const LogInPage = () => {
         );
         navigate(`/${RoutePath.CATALOG}`);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => onError(err.message));
   };
 
   return (
