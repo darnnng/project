@@ -1,0 +1,12 @@
+@import './../../../styles/variables.scss';
+
+.imagePoster {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.title {
+  margin-top: 30px;
+  font-family: $fontFamily;
+  font-size: $fontLarge;
+}

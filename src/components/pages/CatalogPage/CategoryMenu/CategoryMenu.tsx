@@ -18,7 +18,7 @@ export const CategoryMenu = () => {
         setCategories(result);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [url]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const categoriesList = categories.map((elem: any) => {
