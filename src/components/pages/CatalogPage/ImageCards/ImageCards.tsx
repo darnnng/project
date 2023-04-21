@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { options } from '@constants/apiOptions';
+import styles from './ImageCards.module.scss';
 
-const ImageCards = () => {
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=4&pagesize=2&categories=ladies_all`;
+export const ImageCards = () => {
+  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=3&categories=ladies_all`;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [items, setItems] = useState<any>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,18 +26,19 @@ const ImageCards = () => {
   console.log(items);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const itemsList = items?.results?.map((elem: any) => {
-    return { id: elem.code, name: elem.name, image: elem.allArticleBaseImages[0] };
+    return { id: elem.code, name: elem.name, image: elem.galleryImages[0].baseUrl };
   });
   return (
-    <div>
+    <div className={styles.cardsContainer}>
       {itemsList?.map((category: any) => (
-        <>
-          <div key={category.id}>{category.name}</div>
-          <img src={category.image} />
-        </>
+        <div key={category.id} className={styles.card}>
+          <div className={styles.imageName}>{category.name}</div>
+          <button className={styles.shopButton}>Shop now</button>
+          <div className={styles.imageWrap}>
+            <img className={styles.imageCard} src={category.image} />
+          </div>
+        </div>
       ))}
     </div>
   );
 };
-
-export default ImageCards;

@@ -2,7 +2,7 @@ import React from 'react';
 import { CategoryMenu } from '@components/pages/CatalogPage/CategoryMenu';
 import poster from './../../../assets/poster.jpg';
 import styles from './CatalogPage.module.scss';
-import ImageCards from './ImageCards/ImageCards';
+import { ImageCards } from './ImageCards';
 
 const CatalogPage = () => {
   return (
