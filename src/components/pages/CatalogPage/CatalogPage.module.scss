@@ -1,12 +1,91 @@
 @import './../../../styles/variables.scss';
-
-.imagePoster {
-  width: 100%;
-  margin-top: 60px;
+.imageCard {
+  width: 300px;
+  height: 350px;
 }
 
-.title {
-  margin-top: 30px;
-  font-family: $fontFamily;
+.itemLikeIcon {
+  font-family: 'Material Symbols Outlined';
+  color: $fontDark;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
   font-size: $fontLarge;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  cursor: pointer;
+  &:hover {
+    color: $hoverColor;
+  }
+}
+
+.darkIcons {
+  color: $fontLight;
+}
+
+.imageName {
+  font-size: $fontMid;
+  flex-wrap: wrap;
+}
+
+.nameDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.itemsContainer {
+  display: flex;
+  justify-content: center;
+  column-gap: 40px;
+  row-gap: 50px;
+  flex-wrap: wrap;
+  font-family: $fontFamily;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 100px;
+  font-size: $fontMid;
+  font-family: $fontFamily;
+  align-items: center;
+}
+
+.styledSelect {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  font-family: $fontFamily;
+  background-color: transparent;
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  option {
+    font-size: 16px;
+    background-color: $light1;
+    color: $fontDark;
+  }
+}
+
+.selectFilter {
+  display: flex;
+  justify-content: row;
+  column-gap: 10px;
+}
+
+.sortTitle {
+  min-width: 60px;
+  display: flex;
+  align-items: center;
 }

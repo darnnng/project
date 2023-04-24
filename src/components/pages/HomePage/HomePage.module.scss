@@ -1,0 +1,20 @@
+@import './../../../styles/variables.scss';
+
+.imagePoster {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.title {
+  margin: 30px auto;
+  justify-content: center;
+  font-family: $fontFamily;
+  font-size: $fontLarge;
+}
+
+.catalogContainer {
+  margin: 50px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

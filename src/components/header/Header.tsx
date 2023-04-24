@@ -42,7 +42,7 @@ export const Header = () => {
       <nav className={`${styles.smallHeader}  ${themeLight ? '' : styles.darkHeader}`}>
         <ul className={styles.spanContainer}>
           <li className={`${styles.spanElement}  ${themeLight ? '' : styles.darkSpan}`}>
-            <Link to={`/${RoutePath.CATALOG}`} className={`${themeLight ? '' : styles.darkLink}`}>
+            <Link to={`/${RoutePath.STORES}`} className={`${themeLight ? '' : styles.darkLink}`}>
               {t('Our stores')}
             </Link>
           </li>
