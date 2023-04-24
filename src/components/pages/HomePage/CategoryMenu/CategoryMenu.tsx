@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { options } from '@constants/apiOptions';
 import { Spinner } from '@components/UI/Spinner';
 import { RoutePath } from '@constants/routes';
 import styles from './CategoryMenu.module.scss';
+import { ICategory } from './CategoryMenu.interface';
 
 export const CategoryMenu = () => {
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/categories/list?lang=en&country=us`;
@@ -24,11 +24,11 @@ export const CategoryMenu = () => {
       .catch((err) => console.log(err));
   }, [url]);
 
-  const categoriesList = categories.map((elem: any) => {
+  const categoriesList = categories.map((elem: ICategory) => {
     return { name: elem.CatName, id: elem.tagCodes.join('') };
   });
 
-  const handleClick = (category: any) => {
+  const handleClick = (category: string) => {
     navigate(`/${RoutePath.CATALOG}/${category}`);
   };
 
@@ -49,6 +49,4 @@ export const CategoryMenu = () => {
   );
 };
 
-// кликаем по менбшке переходим на catalog/menuitem далее работаем
-// уже с catalog page там из useparams получаем категорию и в useeffect подгружаем
 //состояние загрузки передать попробовать в home page
