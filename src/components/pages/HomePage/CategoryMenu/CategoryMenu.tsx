@@ -14,7 +14,7 @@ export const CategoryMenu = () => {
 
   //TO-DO TRANSLATE FROM API
 
-  const { isLoading, error, data } = useQuery('repoData', () =>
+  const { isLoading, error, data } = useQuery('categoriesData', () =>
     fetch(url, options).then((res) => res.json())
   );
 

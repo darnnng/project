@@ -1,32 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
 import styles from './ImageCards.module.scss';
-import { ICardItem, ICardItemResults } from './ImageCards.interface';
+import { ICardItemResults, IImageCard } from './ImageCards.interface';
 
 export const ImageCards = () => {
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=3&categories=ladies_all`;
-  const [items, setItems] = useState<ICardItem>({ results: [] });
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   //TO-DO TRANSLATE FROM API
   //TO-DO ADD NOTIFIER
 
-  useEffect(() => {
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((result) => {
-        setIsLoading(false);
-        setItems(result);
-      })
-      .catch((err) => console.log(err));
-  }, [url]);
+  const { isLoading, error, data } = useQuery('cardsData', () =>
+    fetch(url, options).then((res) => res.json())
+  );
 
-  const itemsList = items?.results?.map((elem: ICardItemResults) => {
+  const itemsList = data?.results?.map((elem: ICardItemResults) => {
     return { id: elem.code, name: elem.name, image: elem.galleryImages[0].baseUrl };
   });
-  return (
+
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className={styles.cardsContainer}>
-      {itemsList?.map((element) => (
+      {itemsList?.map((element: IImageCard) => (
         <div key={element.id} className={styles.card}>
           <div className={styles.imageName}>{element.name}</div>
           <button className={styles.shopButton}>Shop now</button>

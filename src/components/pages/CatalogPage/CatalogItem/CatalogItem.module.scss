@@ -1,0 +1,41 @@
+@import './../../../../styles/variables.scss';
+.imageCard {
+  width: 300px;
+  height: 350px;
+}
+
+.itemLikeIcon {
+  font-family: 'Material Symbols Outlined';
+  color: $fontDark;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+  font-size: $fontLarge;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  cursor: pointer;
+  &:hover {
+    color: $hoverColor;
+  }
+}
+
+.darkIcons {
+  color: $fontLight;
+}
+
+.imageName {
+  font-size: $fontMid;
+  flex-wrap: wrap;
+}
+
+.nameDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+}

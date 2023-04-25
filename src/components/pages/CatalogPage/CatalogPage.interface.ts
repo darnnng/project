@@ -22,3 +22,12 @@ export interface ICatalogItemResults {
     formattedValue: string;
   };
 }
+
+export interface IListItem {
+  id: string;
+  image: string;
+  name: string;
+  price: string;
+  attribute: string;
+  isFavourite: boolean;
+}

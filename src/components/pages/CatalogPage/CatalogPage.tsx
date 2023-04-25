@@ -1,39 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
 import Pagination from '@components/pagination/Pagination';
+import { Spinner } from '@components/UI/Spinner';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './CatalogPage.module.scss';
-import { ICatalogItem, ICatalogItemResults } from './CatalogPage.interface';
+import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
+import { CatalogItem } from './CatalogItem/CatalogItem';
 
 const CatalogPage = () => {
   const { category } = useParams();
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=28&categories=${category}`;
-  const [items, setItems] = useState<ICatalogItem>({
-    results: [],
-    pagination: { totalNumberOfResults: 0, numberOfPages: 0 },
-  });
   const [currentPage, setCurrentPage] = useState(0);
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   //TO-DO TRANSLATE FROM API
-
   //TO-DO ADD NOTIFIER
 
-  useEffect(() => {
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((result) => {
-        setIsLoading(false);
-        setItems(result);
-      })
-      .catch((err) => console.log(err));
-  }, [url]);
+  const { isLoading, error, data } = useQuery('catalogData', () =>
+    fetch(url, options).then((res) => res.json())
+  );
 
-  const itemsList = items?.results
-    ? items?.results?.map((elem: ICatalogItemResults) => {
+  const itemsList = data?.results
+    ? data?.results?.map((elem: ICatalogItemResults) => {
         return {
           id: elem.defaultArticle.code,
           name: elem.defaultArticle.name,
@@ -44,8 +35,8 @@ const CatalogPage = () => {
         };
       })
     : [];
-  const totalNumberofItems = items?.pagination?.totalNumberOfResults;
-  const lastPage = items?.pagination?.numberOfPages;
+  const totalNumberofItems = data?.pagination?.totalNumberOfResults;
+  const lastPage = data?.pagination?.numberOfPages;
 
   //   const handleLikeClick = (itemId: string) => {
   //     const itemIndex = itemsList.findIndex((item: ICatalogItemResults) => item.id === itemId);
@@ -58,40 +49,30 @@ const CatalogPage = () => {
 
   return (
     <>
-      <CategoryMenu />
-      <div className={styles.filters}>
-        <div className={styles.selectFilter}>
-          <p className={styles.sortTitle}>{t('Sort by:')}</p>
-          <select defaultValue="stock" className={styles.styledSelect}>
-            <option value="stock">{t('Recommended')}</option>
-            <option value="descPrice">{t('Lowest price')}</option>
-            <option value="ascPrice">{t('Highest price')}</option>
-          </select>
-        </div>
-        <p className={styles.totalNumber}>Total number of items: {totalNumberofItems}</p>
-      </div>
-      <div className={styles.itemsContainer}>
-        {itemsList?.map((item) => (
-          <div key={item.id} className={styles.card}>
-            <img className={styles.imageCard} src={item.image} />
-            <div className={styles.cardsText}>
-              <div className={styles.nameDiv}>
-                <div className={styles.imageName}>{item.name}</div>
-                <div>
-                  {item.isFavourite ? (
-                    <span className={styles.itemLikeIcon}>favorite</span>
-                  ) : (
-                    <span className={styles.itemLikeIcon}>favorite</span>
-                  )}
-                </div>
-              </div>
-              <div className={styles.price}>{item.price}</div>
-              <div className={styles.attribute}>{item.attribute}</div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <CategoryMenu />
+          <div className={styles.filters}>
+            <div className={styles.selectFilter}>
+              <p className={styles.sortTitle}>{t('Sort by:')}</p>
+              <select defaultValue="stock" className={styles.styledSelect}>
+                <option value="stock">{t('Recommended')}</option>
+                <option value="descPrice">{t('Lowest price')}</option>
+                <option value="ascPrice">{t('Highest price')}</option>
+              </select>
             </div>
+            <p className={styles.totalNumber}>Total number of items: {totalNumberofItems}</p>
           </div>
-        ))}
-      </div>
-      <Pagination />
+          <div className={styles.itemsContainer}>
+            {itemsList?.map((item: IListItem) => (
+              <CatalogItem key={item.id} item={item} />
+            ))}
+          </div>
+          <Pagination />
+        </>
+      )}
     </>
   );
 };
