@@ -108,11 +108,13 @@ export const Header = () => {
               shopping_cart
             </span>
           </Link>
-          <span
-            className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
-          >
-            favorite
-          </span>
+          <Link to={`/${RoutePath.LIKES}`} className={styles.linkSignUp}>
+            <span
+              className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
+            >
+              favorite
+            </span>
+          </Link>
           {isAuth && (
             <span
               onClick={handleLogout}

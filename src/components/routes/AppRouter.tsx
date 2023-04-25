@@ -11,6 +11,7 @@ const SignUpPage = lazy(() => import('@components/pages/SignUpPage'));
 const CatalogPage = lazy(() => import('@components/pages/CatalogPage'));
 const HomePage = lazy(() => import('@components/pages/HomePage'));
 const BasketPage = lazy(() => import('@components/pages/BasketPage'));
+const FavouritesPage = lazy(() => import('@components/pages/FavouritesPage'));
 const ItemPage = lazy(() => import('@components/pages/ItemPage'));
 const ErrorPage = lazy(() => import('@components/pages/ErrorPage'));
 const StoresPage = lazy(() => import('@components/pages/StoresPage'));
@@ -60,6 +61,14 @@ export const AppRouter = () => {
             element={
               <PrivateRoute>
                 <BasketPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={RoutePath.LIKES}
+            element={
+              <PrivateRoute>
+                <FavouritesPage />
               </PrivateRoute>
             }
           />

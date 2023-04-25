@@ -6,5 +6,6 @@ export enum RoutePath {
   BASKET = 'basket',
   ERROR = 'error',
   STORES = 'stores',
+  LIKES = 'likes',
   GENERAL = '*',
 }
