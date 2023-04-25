@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { authSchema } from '@components/utils/validationSchema';
+import { authSchema } from '@src/utils/validationSchema';
 import { IFormInput } from '@src/interfaces/IAuthFormInput';
 import styles from './AuthForm.module.scss';
 import { IAuthFormProps } from './AuthForm.interface';

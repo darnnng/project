@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
 import { Spinner } from '@components/UI/Spinner';
 import { RoutePath } from '@constants/routes';
 import styles from './CategoryMenu.module.scss';
-import { ICategory } from './CategoryMenu.interface';
+import { ICategory, ICategoryItem } from './CategoryMenu.interface';
 
 export const CategoryMenu = () => {
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/categories/list?lang=en&country=us`;
-  const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const url =
+    'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/categories/list?lang=en&country=us';
   const navigate = useNavigate();
 
   //TO-DO TRANSLATE FROM API
 
-  useEffect(() => {
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((result) => {
-        setIsLoading(false);
-        setCategories(result);
-      })
-      .catch((err) => console.log(err));
-  }, [url]);
+  const { isLoading, error, data } = useQuery('repoData', () =>
+    fetch(url, options).then((res) => res.json())
+  );
 
-  const categoriesList = categories.map((elem: ICategory) => {
+  const categoriesList = data?.map((elem: ICategory) => {
     return { name: elem.CatName, id: elem.tagCodes.join('') };
   });
 
@@ -36,7 +30,7 @@ export const CategoryMenu = () => {
     <Spinner />
   ) : (
     <div className={styles.categoriesWrapper}>
-      {categoriesList.map((category) => (
+      {categoriesList.map((category: ICategoryItem) => (
         <div
           className={styles.categoryBox}
           key={category.name}

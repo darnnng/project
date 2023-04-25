@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { options } from '@constants/apiOptions';
+import Pagination from '@components/pagination/Pagination';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './CatalogPage.module.scss';
 import { ICatalogItem, ICatalogItemResults } from './CatalogPage.interface';
 
 const CatalogPage = () => {
   const { category } = useParams();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=30&categories=${category}`;
+  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=28&categories=${category}`;
   const [items, setItems] = useState<ICatalogItem>({
     results: [],
-    pagination: { totalNumberOfResults: 0 },
+    pagination: { totalNumberOfResults: 0, numberOfPages: 0 },
   });
+  const [currentPage, setCurrentPage] = useState(0);
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   //TO-DO TRANSLATE FROM API
+
   //TO-DO ADD NOTIFIER
 
   useEffect(() => {
@@ -40,6 +45,7 @@ const CatalogPage = () => {
       })
     : [];
   const totalNumberofItems = items?.pagination?.totalNumberOfResults;
+  const lastPage = items?.pagination?.numberOfPages;
 
   //   const handleLikeClick = (itemId: string) => {
   //     const itemIndex = itemsList.findIndex((item: ICatalogItemResults) => item.id === itemId);
@@ -55,11 +61,11 @@ const CatalogPage = () => {
       <CategoryMenu />
       <div className={styles.filters}>
         <div className={styles.selectFilter}>
-          <p className={styles.sortTitle}>Sort by:</p>
+          <p className={styles.sortTitle}>{t('Sort by:')}</p>
           <select defaultValue="stock" className={styles.styledSelect}>
-            <option value="stock">Recommended</option>
-            <option value="descPrice">Lowest price</option>
-            <option value="ascPrice">Highest price</option>
+            <option value="stock">{t('Recommended')}</option>
+            <option value="descPrice">{t('Lowest price')}</option>
+            <option value="ascPrice">{t('Highest price')}</option>
           </select>
         </div>
         <p className={styles.totalNumber}>Total number of items: {totalNumberofItems}</p>
@@ -85,6 +91,7 @@ const CatalogPage = () => {
           </div>
         ))}
       </div>
+      <Pagination />
     </>
   );
 };

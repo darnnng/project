@@ -2,6 +2,7 @@ export interface ICatalogItem {
   results: ICatalogItemResults[];
   pagination: {
     totalNumberOfResults: number;
+    numberOfPages: number;
   };
 }
 
