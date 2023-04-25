@@ -4,6 +4,8 @@ import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
 import { Spinner } from '@components/UI/Spinner';
 import { RoutePath } from '@constants/routes';
+import { useAppDispatch } from '@src/hooks/reduxHooks';
+import { createAlert } from '@src/redux/slices/notifierSlice';
 import styles from './CategoryMenu.module.scss';
 import { ICategory, ICategoryItem } from './CategoryMenu.interface';
 
@@ -11,12 +13,20 @@ export const CategoryMenu = () => {
   const url =
     'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/categories/list?lang=en&country=us';
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const handleError = (error: Error) => {
+    dispatch(
+      createAlert({
+        message: error.message,
+      })
+    );
+  };
 
-  //TO-DO TRANSLATE FROM API
-
-  const { isLoading, error, data } = useQuery('categoriesData', () =>
-    fetch(url, options).then((res) => res.json())
-  );
+  const { isLoading, data } = useQuery({
+    queryKey: 'categoriesData',
+    queryFn: () => fetch(url, options).then((res) => res.json()),
+    onError: (error) => handleError(error as Error),
+  });
 
   const categoriesList = data?.map((elem: ICategory) => {
     return { name: elem.CatName, id: elem.tagCodes.join('') };
@@ -42,5 +52,3 @@ export const CategoryMenu = () => {
     </div>
   );
 };
-
-//состояние загрузки передать попробовать в home page

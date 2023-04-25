@@ -6,7 +6,8 @@ import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
 import { selectedLanguage, setLanguage } from '@src/redux/slices/languageSlice';
 import { Languages } from '@constants/languages';
 import { selectedTheme, setTheme } from '@src/redux/slices/themeSlice';
-import { currentUser, removeUser } from '@src/redux/slices/userSlice';
+import { removeUser } from '@src/redux/slices/userSlice';
+import { useAuth } from '@src/hooks/useAuth';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -14,7 +15,7 @@ export const Header = () => {
   const dispatch = useAppDispatch();
   const { language } = useAppSelector(selectedLanguage);
   const { themeLight } = useAppSelector(selectedTheme);
-  const { isAuth } = useAppSelector(currentUser);
+  const isAuth = useAuth();
   const { i18n } = useTranslation();
 
   useEffect(() => {

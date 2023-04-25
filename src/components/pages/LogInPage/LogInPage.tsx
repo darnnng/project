@@ -11,6 +11,10 @@ import { useAppDispatch } from '@src/hooks/reduxHooks';
 import { createAlert } from '@src/redux/slices/notifierSlice';
 import styles from './LogInPage.module.scss';
 // npx i18next-scanner
+
+//фикс чтоб все переводилось
+//фикс темы цвета
+//фикс адаптива
 const LogInPage = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();

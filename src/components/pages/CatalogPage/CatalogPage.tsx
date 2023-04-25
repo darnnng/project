@@ -5,6 +5,8 @@ import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
 import Pagination from '@components/pagination/Pagination';
 import { Spinner } from '@components/UI/Spinner';
+import { createAlert } from '@src/redux/slices/notifierSlice';
+import { useAppDispatch } from '@src/hooks/reduxHooks';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './CatalogPage.module.scss';
 import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
@@ -14,14 +16,21 @@ const CatalogPage = () => {
   const { category } = useParams();
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=28&categories=${category}`;
   const [currentPage, setCurrentPage] = useState(0);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
+  const handleError = (error: Error) => {
+    dispatch(
+      createAlert({
+        message: error.message,
+      })
+    );
+  };
 
-  //TO-DO TRANSLATE FROM API
-  //TO-DO ADD NOTIFIER
-
-  const { isLoading, error, data } = useQuery('catalogData', () =>
-    fetch(url, options).then((res) => res.json())
-  );
+  const { isLoading, data } = useQuery({
+    queryKey: ['catalogData', url],
+    queryFn: () => fetch(url, options).then((res) => res.json()),
+    onError: (error) => handleError(error as Error),
+  });
 
   const itemsList = data?.results
     ? data?.results?.map((elem: ICatalogItemResults) => {
@@ -63,13 +72,20 @@ const CatalogPage = () => {
                 <option value="ascPrice">{t('Highest price')}</option>
               </select>
             </div>
-            <p className={styles.totalNumber}>Total number of items: {totalNumberofItems}</p>
+            <p className={styles.totalNumber}>
+              {t('Total number of items:')} {totalNumberofItems}
+            </p>
           </div>
-          <div className={styles.itemsContainer}>
-            {itemsList?.map((item: IListItem) => (
-              <CatalogItem key={item.id} item={item} />
-            ))}
-          </div>
+          {itemsList.length ? (
+            <div className={styles.itemsContainer}>
+              {itemsList?.map((item: IListItem) => (
+                <CatalogItem key={item.id} item={item} />
+              ))}
+            </div>
+          ) : (
+            <p className={styles.textNoItems}> Looks like there no items yet...</p>
+          )}
+
           <Pagination />
         </>
       )}
