@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
@@ -21,6 +21,10 @@ const CatalogPage = () => {
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=${page}&pagesize=28&categories=${category}`;
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    dispatch(setPage(0));
+  }, [category, dispatch]);
 
   const handleError = (error: Error) => {
     dispatch(
