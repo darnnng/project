@@ -38,7 +38,7 @@ $size: 40px;
     left: $offset;
     width: $size - ($offset * 2);
     height: $size - ($offset * 2);
-    background: $background;
+    background: transparent;
   }
 
   .darkSpinner {
