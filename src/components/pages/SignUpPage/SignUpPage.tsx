@@ -26,7 +26,6 @@ const SignUpPage = () => {
 
   const onSignUpSubmit = async (input: IFormInput) => {
     const { email, password } = input;
-    console.log(email, password);
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         dispatch(

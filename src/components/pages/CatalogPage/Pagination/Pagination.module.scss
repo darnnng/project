@@ -22,18 +22,8 @@
   color: #808e9b;
 }
 
-// .next {
-//   border-left: solid 1px #808e9b;
-//   font-size: 4px;
-//   height: 60px;
-//   position: absolute;
-//   right: 0;
-//   width: 150px;
-// }
-
 .pagination {
   align-items: center;
-  //background-color: $backgroundDark;
   display: flex;
   flex-direction: row;
   height: 50px;
@@ -43,25 +33,26 @@
   max-width: 500px;
   border-radius: 5px;
   border: 1px solid black;
+  background-color: $backgroundLight;
+  @media (max-width: $screenSmall) {
+    max-width: 350px;
+  }
+  @media (max-width: $screenXs) {
+    max-width: 260px;
+  }
 }
 
 .paginationpage {
   font-weight: 700;
 }
 
-// .previous {
-//   border-right: solid 1px #808e9b;
-//   font-size: 4px;
-//   height: 60px;
-//   left: 0;
-//   position: absolute;
-//   width: 150px;
-// }
-
 .paginationContainer {
   display: flex;
   justify-content: flex-end;
   font-family: $fontFamily;
   margin-top: 50px;
-  margin-right: 50px; //TO-DO ADD CONTAINER
+
+  @media (max-width: $screenSmall) {
+    justify-content: center;
+  }
 }

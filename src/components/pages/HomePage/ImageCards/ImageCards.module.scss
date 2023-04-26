@@ -18,6 +18,9 @@
   margin-left: 20px;
   flex-wrap: wrap;
   color: white;
+  @media (max-width: $screenMid) {
+    visibility: hidden;
+  }
 }
 
 .shopButton {
@@ -31,6 +34,16 @@
   bottom: 100px;
   padding: 5px;
   margin-left: 20px;
+  @media (max-width: $screenMid) {
+    bottom: unset;
+    margin-right: 0px;
+    margin-top: 340px;
+  }
+  @media (max-width: $screenXs) {
+    bottom: unset;
+    margin-right: 0px;
+    margin-top: 310px;
+  }
 }
 
 .cardsContainer {
@@ -38,6 +51,16 @@
   flex-direction: row;
   justify-content: center;
   column-gap: 40px;
+  @media (max-width: $screenMid) {
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 50px;
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: center;
 }
 
 .imageWrap {

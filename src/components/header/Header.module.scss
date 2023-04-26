@@ -138,6 +138,10 @@ nav {
       color: $hoverColor;
     }
   }
+  @media (max-width: $screenXs) {
+    flex-direction: column;
+    height: 100px;
+  }
 }
 
 nav ul li:hover > ul {

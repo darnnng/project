@@ -1,11 +1,3 @@
-export interface ICatalogItem {
-  results: ICatalogItemResults[];
-  pagination: {
-    totalNumberOfResults: number;
-    numberOfPages: number;
-  };
-}
-
 interface IDefaultArticle {
   code: string;
   name: string;

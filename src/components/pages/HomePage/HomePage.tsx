@@ -8,14 +8,14 @@ import { ImageCards } from './ImageCards';
 const HomePage = () => {
   const { t } = useTranslation();
   return (
-    <div>
+    <>
       <CategoryMenu />
       <img className={styles.imagePoster} src={poster} alt="poster" />
       <div className={styles.catalogContainer}>
         <div className={styles.title}>{t('Trending now')}</div>
         <ImageCards />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
-import { Pagination } from '@components/pages/CatalogPage/Pagination/Pagination';
+import { Pagination } from '@components/pages/CatalogPage/Pagination';
 import { Spinner } from '@components/UI/Spinner';
 import { createAlert } from '@src/redux/slices/notifierSlice';
 import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
@@ -60,7 +60,7 @@ const CatalogPage = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <>
+        <div className={styles.catalogPageContainer}>
           <CategoryMenu />
           <div className={styles.filters}>
             <div className={styles.selectFilter}>
@@ -86,7 +86,7 @@ const CatalogPage = () => {
           )}
 
           <Pagination pageCount={pageCount} onPageChange={onPageChange} page={page} />
-        </>
+        </div>
       )}
     </>
   );
