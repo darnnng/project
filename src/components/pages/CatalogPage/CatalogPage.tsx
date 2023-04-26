@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -37,8 +36,8 @@ const CatalogPage = () => {
     onError: (error) => handleError(error as Error),
   });
 
-  const onPageChange = (page: any) => {
-    dispatch(setPage(page.selected));
+  const onPageChange = (page: number) => {
+    dispatch(setPage(page));
   };
 
   const itemsList = data?.results
@@ -86,12 +85,7 @@ const CatalogPage = () => {
             <p className={styles.textNoItems}> Looks like there no items yet...</p>
           )}
 
-          <Pagination
-            pageCount={pageCount}
-            itemsLength={totalNumberofItems}
-            onPageChange={onPageChange}
-            page={page}
-          />
+          <Pagination pageCount={pageCount} onPageChange={onPageChange} page={page} />
         </>
       )}
     </>

@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import styles from './Pagination.module.scss';
+import { IPagination, ISelectedItem } from './Pagination.interface';
 
-export const Pagination = ({ pageCount, onPageChange, page }: any) => {
-  const handlePageClick = (event: any) => {
-    onPageChange(event);
+export const Pagination = ({ pageCount, onPageChange, page }: IPagination) => {
+  const handlePageClick = (event: ISelectedItem) => {
+    onPageChange(event.selected);
   };
 
   return (
