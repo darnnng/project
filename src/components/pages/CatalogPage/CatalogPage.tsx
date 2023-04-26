@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
-import Pagination from '@components/pagination/Pagination';
+import { Pagination } from '@components/pages/CatalogPage/Pagination/Pagination';
 import { Spinner } from '@components/UI/Spinner';
 import { createAlert } from '@src/redux/slices/notifierSlice';
-import { useAppDispatch } from '@src/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
+import { selectedPage, setPage } from '@src/redux/slices/paginationSlice';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './CatalogPage.module.scss';
 import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
 import { CatalogItem } from './CatalogItem/CatalogItem';
 
+//TO-DO ADD ENV
+
 const CatalogPage = () => {
   const { category } = useParams();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=28&categories=${category}`;
-  const [currentPage, setCurrentPage] = useState(0);
+  const { page } = useAppSelector(selectedPage);
+  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=${page}&pagesize=28&categories=${category}`;
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
   const handleError = (error: Error) => {
     dispatch(
       createAlert({
@@ -27,10 +32,14 @@ const CatalogPage = () => {
   };
 
   const { isLoading, data } = useQuery({
-    queryKey: ['catalogData', url],
+    queryKey: ['catalogData', [url, page]],
     queryFn: () => fetch(url, options).then((res) => res.json()),
     onError: (error) => handleError(error as Error),
   });
+
+  const onPageChange = (page: any) => {
+    dispatch(setPage(page.selected));
+  };
 
   const itemsList = data?.results
     ? data?.results?.map((elem: ICatalogItemResults) => {
@@ -45,16 +54,7 @@ const CatalogPage = () => {
       })
     : [];
   const totalNumberofItems = data?.pagination?.totalNumberOfResults;
-  const lastPage = data?.pagination?.numberOfPages;
-
-  //   const handleLikeClick = (itemId: string) => {
-  //     const itemIndex = itemsList.findIndex((item: ICatalogItemResults) => item.id === itemId);
-  //     if (itemIndex >= 0) {
-  //       const updatedItemsList = [...itemsList];
-  //       updatedItemsList[itemIndex].isFavourite = !updatedItemsList[itemIndex].isFavourite;
-  //       setItems(updatedItemsList);
-  //     }
-  //   };
+  const pageCount = data?.pagination?.numberOfPages;
 
   return (
     <>
@@ -86,7 +86,12 @@ const CatalogPage = () => {
             <p className={styles.textNoItems}> Looks like there no items yet...</p>
           )}
 
-          <Pagination />
+          <Pagination
+            pageCount={pageCount}
+            itemsLength={totalNumberofItems}
+            onPageChange={onPageChange}
+            page={page}
+          />
         </>
       )}
     </>

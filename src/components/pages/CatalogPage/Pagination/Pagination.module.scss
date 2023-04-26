@@ -1,0 +1,67 @@
+@import './../../../../styles/variables.scss';
+
+.item {
+  align-items: center;
+  color: $fontDark;
+  background-color: $backgroundLight;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.disabledpage {
+  color: #808e9b;
+}
+
+.active {
+  border: solid 1px #808e9b;
+  border-radius: 40px;
+  color: #808e9b;
+}
+
+// .next {
+//   border-left: solid 1px #808e9b;
+//   font-size: 4px;
+//   height: 60px;
+//   position: absolute;
+//   right: 0;
+//   width: 150px;
+// }
+
+.pagination {
+  align-items: center;
+  //background-color: $backgroundDark;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  justify-content: center;
+  list-style-type: none;
+  position: relative;
+  max-width: 500px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.paginationpage {
+  font-weight: 700;
+}
+
+// .previous {
+//   border-right: solid 1px #808e9b;
+//   font-size: 4px;
+//   height: 60px;
+//   left: 0;
+//   position: absolute;
+//   width: 150px;
+// }
+
+.paginationContainer {
+  display: flex;
+  justify-content: flex-end;
+  font-family: $fontFamily;
+  margin-top: 50px;
+  margin-right: 50px; //TO-DO ADD CONTAINER
+}

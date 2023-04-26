@@ -35,9 +35,7 @@ const SignUpPage = () => {
             id: user.uid,
           })
         );
-        // addDoc(collection(db, `users`), {
-        //   email: user.email,
-        // });
+
         navigate(`/${RoutePath.CATALOG}`);
       })
       .catch((err) => handleError(err.message));
