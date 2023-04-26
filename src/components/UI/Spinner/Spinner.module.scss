@@ -6,7 +6,7 @@ $size: 40px;
 
 .spinner {
   position: absolute;
-  top: calc(50% - #{$size / 2});
+  top: calc(50% - #{$size / 1.75});
   left: calc(50% - #{$size / 2});
   width: $size;
   height: $size;
@@ -38,7 +38,7 @@ $size: 40px;
     left: $offset;
     width: $size - ($offset * 2);
     height: $size - ($offset * 2);
-    background: transparent;
+    background: white;
   }
 
   .darkSpinner {
