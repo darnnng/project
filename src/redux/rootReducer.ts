@@ -6,6 +6,7 @@ import { themeChangeReducer } from './slices/themeSlice';
 import { userReducer } from './slices/userSlice';
 import { notifierReducer } from './slices/notifierSlice';
 import { pagesChangeReducer } from './slices/paginationSlice';
+import { filterChangeReducer } from './slices/filterSlice';
 
 const rootReducer = combineReducers({
   language: languageChangeReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   notifier: notifierReducer,
   pages: pagesChangeReducer,
+  filter: filterChangeReducer,
 });
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

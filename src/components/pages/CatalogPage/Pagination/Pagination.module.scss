@@ -6,10 +6,13 @@
   background-color: $backgroundLight;
   cursor: pointer;
   display: flex;
-  font-size: 14px;
+  font-size: 18px;
   height: 40px;
   justify-content: center;
   width: 40px;
+  &:hover {
+    background-color: rgb(246, 243, 243);
+  }
 }
 
 .disabledpage {

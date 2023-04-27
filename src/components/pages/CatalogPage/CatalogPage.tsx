@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
@@ -8,6 +8,7 @@ import { Spinner } from '@components/UI/Spinner';
 import { createAlert } from '@src/redux/slices/notifierSlice';
 import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
 import { selectedPage, setPage } from '@src/redux/slices/paginationSlice';
+import { selectedFilter, setFilter } from '@src/redux/slices/filterSlice';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './CatalogPage.module.scss';
 import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
@@ -17,13 +18,19 @@ import { CatalogItem } from './CatalogItem/CatalogItem';
 
 const CatalogPage = () => {
   const { category } = useParams();
+  const prevCategoryRef = useRef<string | undefined>(category);
   const { page } = useAppSelector(selectedPage);
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=${page}&pagesize=28&categories=${category}`;
+  const { filter } = useAppSelector(selectedFilter);
+  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=${page}&pagesize=28&categories=${category}&sortBy=${filter}`;
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(setPage(0));
+    if (prevCategoryRef.current !== category) {
+      dispatch(setPage(0));
+      dispatch(setFilter('stock'));
+    }
+    prevCategoryRef.current = category;
   }, [category, dispatch]);
 
   const handleError = (error: Error) => {
@@ -35,13 +42,17 @@ const CatalogPage = () => {
   };
 
   const { isLoading, data } = useQuery({
-    queryKey: ['catalogData', [url, page]],
+    queryKey: ['catalogData', [url, page, filter]],
     queryFn: () => fetch(url, options).then((res) => res.json()),
     onError: (error) => handleError(error as Error),
   });
 
   const onPageChange = (page: number) => {
     dispatch(setPage(page));
+  };
+
+  const onFilterChange = (filter: string) => {
+    dispatch(setFilter(filter));
   };
 
   const itemsList = data?.results
@@ -69,10 +80,14 @@ const CatalogPage = () => {
           <div className={styles.filters}>
             <div className={styles.selectFilter}>
               <p className={styles.sortTitle}>{t('Sort by:')}</p>
-              <select defaultValue="stock" className={styles.styledSelect}>
+              <select
+                defaultValue={filter}
+                className={styles.styledSelect}
+                onChange={(event) => onFilterChange(event.target.value)}
+              >
                 <option value="stock">{t('Recommended')}</option>
-                <option value="descPrice">{t('Lowest price')}</option>
-                <option value="ascPrice">{t('Highest price')}</option>
+                <option value="descPrice">{t('Highest price')}</option>
+                <option value="ascPrice">{t('Lowest price')}</option>
               </select>
             </div>
             <p className={styles.totalNumber}>
@@ -86,7 +101,7 @@ const CatalogPage = () => {
               ))}
             </div>
           ) : (
-            <p className={styles.textNoItems}> Looks like there no items yet...</p>
+            <p className={styles.textNoItems}> {t('Looks like there no items yet...')}</p>
           )}
 
           <Pagination pageCount={pageCount} onPageChange={onPageChange} page={page} />
