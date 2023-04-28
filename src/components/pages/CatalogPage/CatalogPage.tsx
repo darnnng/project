@@ -13,8 +13,7 @@ import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './CatalogPage.module.scss';
 import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
 import { CatalogItem } from './CatalogItem/CatalogItem';
-
-//TO-DO ADD ENV
+import { SortingSelect } from './SortingSelect';
 
 const CatalogPage = () => {
   const { category } = useParams();
@@ -78,18 +77,7 @@ const CatalogPage = () => {
         <div className={styles.catalogPageContainer}>
           <CategoryMenu />
           <div className={styles.filters}>
-            <div className={styles.selectFilter}>
-              <p className={styles.sortTitle}>{t('Sort by:')}</p>
-              <select
-                defaultValue={filter}
-                className={styles.styledSelect}
-                onChange={(event) => onFilterChange(event.target.value)}
-              >
-                <option value="stock">{t('Recommended')}</option>
-                <option value="descPrice">{t('Highest price')}</option>
-                <option value="ascPrice">{t('Lowest price')}</option>
-              </select>
-            </div>
+            <SortingSelect onFilterChange={onFilterChange} filter={filter} />
             <p className={styles.totalNumber}>
               {t('Total number of items:')} {totalNumberofItems}
             </p>
