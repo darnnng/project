@@ -15,6 +15,13 @@ import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
 import { CatalogItem } from './CatalogItem/CatalogItem';
 import { SortingSelect } from './SortingSelect';
 
+//TO-DO ADD ENV
+//TO-DO добавить фильтр
+//TO-DO добавить search-bar
+//TO-DO добавить карточку товара(со слайдером, по кнопке details можно будет открыть детальнее(повесить href на слово details))
+//TO-DO добавить favourites(работа с firebase)
+//TO-DO SELECT вынести в отдельный компонент??
+
 const CatalogPage = () => {
   const { category } = useParams();
   const prevCategoryRef = useRef<string | undefined>(category);
@@ -85,7 +92,7 @@ const CatalogPage = () => {
           {itemsList.length ? (
             <div className={styles.itemsContainer}>
               {itemsList?.map((item: IListItem) => (
-                <CatalogItem key={item.id} item={item} />
+                <CatalogItem key={item.id} item={item} category={category!} />
               ))}
             </div>
           ) : (
