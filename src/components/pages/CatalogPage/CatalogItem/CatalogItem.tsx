@@ -16,13 +16,6 @@ export const CatalogItem = ({ item, category }: ICatalogItemProps) => {
       <div className={styles.cardsText}>
         <div className={styles.nameDiv}>
           <div className={styles.imageName}>{item.name}</div>
-          <div>
-            {item.isFavourite ? (
-              <span className={styles.itemLikeIcon}>favorite</span>
-            ) : (
-              <span className={styles.itemLikeIcon}>favorite</span>
-            )}
-          </div>
         </div>
         <div className={styles.price}>{item.price}</div>
         <div className={styles.attribute}>{item.attribute}</div>

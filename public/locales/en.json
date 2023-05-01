@@ -1,5 +1,6 @@
 {
   "ABOUT US": "ABOUT US",
+  "Add to cart": "Add to cart",
   "Already have an account?": "Already have an account?",
   "By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use": "By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use",
   "CONTACTS": "CONTACTS",
@@ -10,12 +11,14 @@
   "Follow link": "Follow link",
   "Highest price": "Highest price",
   "Join us": "Join us",
+  "Looks like there no items yet...": "Looks like there no items yet...",
   "Lowest price": "Lowest price",
   "Main page": "Main page",
   "Not a member?": "Not a member?",
   "Our stores": "Our stores",
   "Password": "Password",
   "Recommended": "Recommended",
+  "Select size": "Select size",
   "Shop now": "Shop now",
   "Sign in": "Sign in",
   "Sign up": "Sign up",
@@ -25,5 +28,12 @@
   "Total number of items:": "Total number of items:",
   "Trending now": "Trending now",
   "WELCOME BACK! LOG IN FOR MORE OPPORTUNITIES": "WELCOME BACK! LOG IN FOR MORE OPPORTUNITIES",
-  "WELCOME! SIGN UP FOR MORE OPPORTUNITIES": "WELCOME! SIGN UP FOR MORE OPPORTUNITIES"
+  "WELCOME! SIGN UP FOR MORE OPPORTUNITIES": "WELCOME! SIGN UP FOR MORE OPPORTUNITIES",
+  "article number:": "article number:",
+  "country of production:": "country of production:",
+  "details": "details",
+  "in stock:": "in stock:",
+  "materials: ": "materials:",
+  "variants available:": "variants available:",
+  "year of production:": "year of production:"
 }

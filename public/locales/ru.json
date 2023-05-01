@@ -1,5 +1,6 @@
 {
   "ABOUT US": "О нас",
+  "Add to cart": "Добавить в корзину",
   "Already have an account?": "Уже зарегистрированы?",
   "By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use": "Авторизуясь, вы соглашаетесь с Политикой конфиденциальности Threads & Co.",
   "CONTACTS": "Контакты",
@@ -10,12 +11,14 @@
   "Follow link": "Перейдите по ссылке",
   "Highest price": "По убыванию цены",
   "Join us": "Присоединяйтесь",
+  "Looks like there no items yet...": "Пока ещё нет товаров...",
   "Lowest price": "По возрастанию цены",
   "Main page": "Главная страница",
   "Not a member?": "Не зарегистрированы?",
   "Our stores": "Наши магазины",
   "Password": "Пароль",
   "Recommended": "Рекомендуемые",
+  "Select size": "Выберите размер",
   "Shop now": "Купить сейчас",
   "Sign in": "Войти",
   "Sign up": "Зарегистрироваться",
@@ -25,5 +28,12 @@
   "Total number of items:": "Общее количество товаров:",
   "Trending now": "Сейчас в тренде",
   "WELCOME BACK! LOG IN FOR MORE OPPORTUNITIES": "С возвращением! Войдите, чтобы получить больше возможностей",
-  "WELCOME! SIGN UP FOR MORE OPPORTUNITIES": "Добро пожаловать! Зарегистрируйтесь, чтобы получить больше возможностей"
+  "WELCOME! SIGN UP FOR MORE OPPORTUNITIES": "Добро пожаловать! Зарегистрируйтесь, чтобы получить больше возможностей",
+  "article number:": "артикль:",
+  "country of production:": "страна производства:",
+  "details": "детали",
+  "in stock:": "наличие:",
+  "materials: ": "материалы:",
+  "variants available:": "доступные варианты:",
+  "year of production:": "год производства:"
 }
