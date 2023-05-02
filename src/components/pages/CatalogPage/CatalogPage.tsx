@@ -15,13 +15,6 @@ import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
 import { CatalogItem } from './CatalogItem/CatalogItem';
 import { SortingSelect } from './SortingSelect';
 
-//TO-DO ADD ENV
-//TO-DO добавить фильтр
-//TO-DO добавить search-bar
-//TO-DO добавить карточку товара(со слайдером, по кнопке details можно будет открыть детальнее(повесить href на слово details))
-//TO-DO добавить favourites(работа с firebase)
-//TO-DO SELECT вынести в отдельный компонент??
-
 const CatalogPage = () => {
   const { category } = useParams();
   const prevCategoryRef = useRef<string | undefined>(category);
@@ -98,8 +91,9 @@ const CatalogPage = () => {
           ) : (
             <p className={styles.textNoItems}> {t('Looks like there no items yet...')}</p>
           )}
-
-          <Pagination pageCount={pageCount} onPageChange={onPageChange} page={page} />
+          {!!totalNumberofItems && (
+            <Pagination pageCount={pageCount} onPageChange={onPageChange} page={page} />
+          )}
         </div>
       )}
     </>

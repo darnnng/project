@@ -10,7 +10,6 @@ export const addToFavouritesDb = async (userId: string, itemId: number) => {
     return;
   }
   const updatedFavorites = [...favorites, itemId];
-  console.log(updatedFavorites);
   await set(user, {
     favorites: updatedFavorites,
   });
@@ -28,8 +27,6 @@ export const deleteFromFavouritesDb = async (userId: string, itemId: number) => 
   await set(user, {
     favorites: favorites,
   });
-
-  console.log('delete');
 };
 
 export const getFavouritesDb = async (userId: string) => {
