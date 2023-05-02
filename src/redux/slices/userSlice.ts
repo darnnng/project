@@ -3,7 +3,7 @@ import { RootState } from '../store';
 
 const initialState = {
   email: null,
-  id: null,
+  userId: null,
 };
 
 const userSlice = createSlice({
@@ -12,11 +12,11 @@ const userSlice = createSlice({
   reducers: {
     setUser(state, action) {
       state.email = action.payload.email;
-      state.id = action.payload.id;
+      state.userId = action.payload.id;
     },
     removeUser(state) {
       state.email = null;
-      state.id = null;
+      state.userId = null;
     },
   },
 });

@@ -1,28 +1,41 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { createAlert } from '@src/redux/slices/notifierSlice';
-import { useAppDispatch } from '@src/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '@src/hooks/reduxHooks';
 import { options } from '@constants/apiOptions';
 import { Spinner } from '@components/UI/Spinner';
+import { currentUser } from '@src/redux/slices/userSlice';
+import {
+  addToFavouritesDb,
+  checkIsFavourite,
+  deleteFromFavouritesDb,
+} from '@src/api/favouritesApi';
+import { RoutePath } from '@constants/routes';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './ItemPage.module.scss';
+import { IArticle, IFabric, IGalleryImage, IVariantsList } from './ItemPage.interface';
 
 const ItemPage = () => {
   const { id } = useParams();
+  const { userId } = useAppSelector(currentUser); //TO-DO create useauth again maybe?
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [liked, setLiked] = useState(false);
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
-  const handleError = (error: Error) => {
-    dispatch(
-      createAlert({
-        message: error.message,
-      })
-    );
-  };
-  const [isLiked, setIsLiked] = useState(false);
+
+  const handleError = useCallback(
+    (error: Error) => {
+      dispatch(
+        createAlert({
+          message: error.message,
+        })
+      );
+    },
+    [dispatch]
+  );
 
   const { isLoading, data } = useQuery({
     queryKey: ['singleItemData', [url]],
@@ -30,19 +43,39 @@ const ItemPage = () => {
     onError: (error) => handleError(error as Error),
   });
 
-  const galleryImages = data?.product?.articlesList[0]?.galleryDetails?.map(
-    (elem: any) => elem.baseUrl
-  ); //T0-DO менять картинки по клику на артикль
-  const articlesImages = data?.product?.articlesList.map((elem: any) =>
-    elem.fabricSwatchThumbnails.map((elem: any) => elem.baseUrl)
-  );
-  const links = articlesImages?.map((elem: any) => elem[0]);
-  const sizesArray = data?.product?.articlesList.map((element: any) => element.variantsList);
-  const sizes = sizesArray ? sizesArray[0]?.map((elem: any) => elem?.size?.name) : [];
+  useEffect(() => {
+    checkIsFavourite(userId!, +id!)
+      .then((result) => {
+        setLiked(result);
+      })
+      .catch((error) => {
+        handleError(error);
+      });
+  }, [userId, id, liked, handleError]);
 
-  const handleSetLike = () => {
-    setIsLiked(!isLiked);
+  const handleSetLike = async () => {
+    if (userId == null) {
+      navigate(`/${RoutePath.LOGIN}/`);
+      return;
+    }
+    if (liked) {
+      await deleteFromFavouritesDb(userId!, +id!);
+      setLiked(false);
+    } else {
+      await addToFavouritesDb(userId!, +id!);
+      setLiked(true);
+    }
   };
+
+  const galleryImages = data?.product?.articlesList[0]?.galleryDetails?.map(
+    (elem: IGalleryImage) => elem.baseUrl
+  ); //T0-DO менять картинки по клику на артикль
+  const articlesImages = data?.product?.articlesList.map((elem: IArticle) =>
+    elem.fabricSwatchThumbnails.map((elem: IFabric) => elem.baseUrl)
+  );
+  const links = articlesImages?.map((elem: string[]) => elem[0]);
+  const sizesArray = data?.product?.articlesList.map((element: IArticle) => element.variantsList);
+  const sizes = sizesArray ? sizesArray[0]?.map((elem: IVariantsList) => elem?.size?.name) : [];
 
   return (
     <>
@@ -81,7 +114,7 @@ const ItemPage = () => {
               <div className={styles.favouritesContainer}>
                 <p className={styles.favouritesTitle}>Add to your favourites:</p>
                 <div onClick={handleSetLike} className={styles.materialIcons}>
-                  {isLiked ? 'favorite' : 'favorite_border'}
+                  {liked ? 'favorite' : 'favorite_border'}
                 </div>
               </div>
             </div>
@@ -117,8 +150,5 @@ const ItemPage = () => {
     </>
   );
 };
-
-// data?.product?.articlesList?.map((element) => element.galleryDetails).map((elem) => elem.url);
-// data?.product?.articlesList?.map((element) => element.variantsList).map((elem) => elem.name);
 
 export default ItemPage;
