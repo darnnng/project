@@ -44,7 +44,7 @@ const ItemPage = () => {
   });
 
   useEffect(() => {
-    checkIsFavourite(userId!, +id!)
+    checkIsFavourite(userId!, +id!) //TO-DO change??? (заменить на проверку exists в массиве favs из favsSlice)
       .then((result) => {
         setLiked(result);
       })
@@ -112,7 +112,9 @@ const ItemPage = () => {
                 )}
               </div>
               <div className={styles.favouritesContainer}>
-                <p className={styles.favouritesTitle}>Add to your favourites:</p>
+                <p className={styles.favouritesTitle}>
+                  {liked ? t('Add to your favourites:') : t('Remove from favourites:')}
+                </p>
                 <div onClick={handleSetLike} className={styles.materialIcons}>
                   {liked ? 'favorite' : 'favorite_border'}
                 </div>

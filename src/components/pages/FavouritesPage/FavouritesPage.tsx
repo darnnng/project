@@ -50,8 +50,8 @@ const FavouritesPage = () => {
               </div>
             </div>
             <div className={styles.buttonContainer}>
-              <button>Delete</button>
-              <button>Add to cart</button>
+              <div className={styles.materialIcons}>delete</div>
+              <button className={styles.addButton}>Add to cart</button>
             </div>
           </div>
         ))}

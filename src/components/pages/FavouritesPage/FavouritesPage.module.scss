@@ -59,3 +59,35 @@
   align-items: flex-end;
   column-gap: 20px;
 }
+
+.materialIcons {
+  font-family: 'Material Icons';
+  cursor: pointer;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 32px;
+  display: inline-block;
+  color: $hoverColor;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+.addButton {
+  // min-width: 200px;
+  // min-height: 45px;
+  font-family: $fontFamily;
+  background-color: $hoverColor;
+  color: $fontLight;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: $fontMid;
+  border: none;
+  &:hover {
+    background-color: $backgroundLight;
+    color: $fontDark;
+  }
+}
