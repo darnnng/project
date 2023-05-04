@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { options } from '@constants/apiOptions';
-import { Spinner } from '@components/UI/Spinner';
 import { RoutePath } from '@constants/routes';
 import { useAppDispatch } from '@src/hooks/reduxHooks';
 import { createAlert } from '@src/redux/slices/notifierSlice';
@@ -22,13 +21,13 @@ export const CategoryMenu = () => {
     );
   };
 
-  const { isLoading, data } = useQuery({
+  const { data: catData } = useQuery({
     queryKey: 'categoriesData',
     queryFn: () => fetch(url, options).then((res) => res.json()),
     onError: (error) => handleError(error as Error),
   });
 
-  const categoriesList = data?.map((elem: ICategory) => {
+  const categoriesList = catData?.map((elem: ICategory) => {
     return { name: elem.CatName, id: elem.tagCodes.join('') };
   });
 
@@ -36,11 +35,9 @@ export const CategoryMenu = () => {
     navigate(`/${RoutePath.CATALOG}/${category}`);
   };
 
-  return isLoading ? (
-    <Spinner />
-  ) : (
+  return (
     <div className={styles.categoriesWrapper}>
-      {categoriesList.map((category: ICategoryItem) => (
+      {categoriesList?.map((category: ICategoryItem) => (
         <div
           className={styles.categoryBox}
           key={category.name}
@@ -48,7 +45,7 @@ export const CategoryMenu = () => {
         >
           {category.name}
         </div>
-      ))}
+      )) || []}
     </div>
   );
 };

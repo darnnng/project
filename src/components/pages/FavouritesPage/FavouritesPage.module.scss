@@ -18,7 +18,6 @@
 .favImage {
   width: 100px;
   height: 150px;
-  background-color: aqua;
 }
 
 .favItem {
@@ -60,34 +59,37 @@
   column-gap: 20px;
 }
 
-.materialIcons {
-  font-family: 'Material Icons';
-  cursor: pointer;
+.materialSymbolsOutlined {
+  font-family: 'Material Symbols Outlined';
+  color: $fontDark;
+  text-decoration: none;
   font-weight: normal;
   font-style: normal;
-  font-size: 32px;
+  font-size: $fontLarge;
   display: inline-block;
-  color: $hoverColor;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+  cursor: pointer;
+  &:hover {
+    color: $hoverColor;
+  }
 }
 
 .addButton {
   // min-width: 200px;
   // min-height: 45px;
   font-family: $fontFamily;
-  background-color: $hoverColor;
+  background-color: $backgroundDark;
   color: $fontLight;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: $fontMid;
   border: none;
   &:hover {
-    background-color: $backgroundLight;
-    color: $fontDark;
+    background-color: $hoverColor;
   }
 }

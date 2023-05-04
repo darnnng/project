@@ -8,7 +8,6 @@ export const CatalogItem = ({ item, category }: ICatalogItemProps) => {
   const navigate = useNavigate();
   const handleClick = (id: string) => {
     navigate(`/${RoutePath.CATALOG}/${category}/${id}`);
-    console.log(id);
   };
   return (
     <div key={item.id} className={styles.card}>

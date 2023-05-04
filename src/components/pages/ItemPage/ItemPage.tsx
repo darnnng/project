@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
@@ -43,29 +43,28 @@ const ItemPage = () => {
     onError: (error) => handleError(error as Error),
   });
 
+  const firebaseItem = useMemo(
+    () => ({
+      id: data?.product?.articlesList[0].code,
+      picture: data?.product?.articlesList[0].galleryDetails[0].baseUrl,
+      price: String(data?.product?.articlesList[0].whitePrice.price),
+      name: data?.product?.articlesList[0].name,
+      inStock: String(data?.product?.inStock),
+    }),
+    [data?.product?.articlesList, data?.product?.inStock]
+  );
+
+  console.log('firebase', firebaseItem); // TO-DO стоит ли создавать firebase item если можнл передать в кнопку item просто
+
   useEffect(() => {
-    checkIsFavourite(userId!, +id!) //TO-DO change??? (заменить на проверку exists в массиве favs из favsSlice)
+    checkIsFavourite(userId!, firebaseItem)
       .then((result) => {
         setLiked(result);
       })
       .catch((error) => {
         handleError(error);
       });
-  }, [userId, id, liked, handleError]);
-
-  const handleSetLike = async () => {
-    if (userId == null) {
-      navigate(`/${RoutePath.LOGIN}/`);
-      return;
-    }
-    if (liked) {
-      await deleteFromFavouritesDb(userId!, +id!);
-      setLiked(false);
-    } else {
-      await addToFavouritesDb(userId!, +id!);
-      setLiked(true);
-    }
-  };
+  }, [userId, liked, handleError, firebaseItem]);
 
   const galleryImages = data?.product?.articlesList[0]?.galleryDetails?.map(
     (elem: IGalleryImage) => elem.baseUrl
@@ -76,6 +75,20 @@ const ItemPage = () => {
   const links = articlesImages?.map((elem: string[]) => elem[0]);
   const sizesArray = data?.product?.articlesList.map((element: IArticle) => element.variantsList);
   const sizes = sizesArray ? sizesArray[0]?.map((elem: IVariantsList) => elem?.size?.name) : [];
+
+  const handleSetLike = async () => {
+    if (userId == null) {
+      navigate(`/${RoutePath.LOGIN}/`);
+      return;
+    }
+    if (liked) {
+      await deleteFromFavouritesDb(userId!, firebaseItem);
+      setLiked(false);
+    } else {
+      await addToFavouritesDb(userId!, firebaseItem);
+      setLiked(true);
+    }
+  };
 
   return (
     <>
@@ -113,7 +126,7 @@ const ItemPage = () => {
               </div>
               <div className={styles.favouritesContainer}>
                 <p className={styles.favouritesTitle}>
-                  {liked ? t('Add to your favourites:') : t('Remove from favourites:')}
+                  {liked ? t('Remove from favourites:') : t('Add to your favourites:')}
                 </p>
                 <div onClick={handleSetLike} className={styles.materialIcons}>
                   {liked ? 'favorite' : 'favorite_border'}

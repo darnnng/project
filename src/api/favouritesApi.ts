@@ -1,32 +1,25 @@
-import { get, ref, set } from 'firebase/database';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { get, ref, remove, set } from 'firebase/database';
 import { db } from '@src/firebase';
 
-export const addToFavouritesDb = async (userId: string, itemId: number) => {
-  const user = ref(db, `users/${userId}`);
-
-  const snapshot = await get(user);
-  const favorites = snapshot.val()?.favorites || [];
-  if (favorites.includes(itemId)) {
+export const addToFavouritesDb = async (userId: string, item: any) => {
+  const userRef = ref(db, `users/${userId}/favorites/${item.id}`);
+  const snapshot = await get(userRef);
+  const existingItem = snapshot.val();
+  if (existingItem) {
     return;
   }
-  const updatedFavorites = [...favorites, itemId];
-  await set(user, {
-    favorites: updatedFavorites,
-  });
+  await set(userRef, item);
 };
 
-export const deleteFromFavouritesDb = async (userId: string, itemId: number) => {
-  const user = ref(db, `users/${userId}`);
-  const snapshot = await get(user);
-  const favorites = snapshot.val()?.favorites || [];
-  const itemIndex = favorites.indexOf(itemId);
-  if (itemIndex === -1) {
+export const deleteFromFavouritesDb = async (userId: string, item: any) => {
+  const userRef = ref(db, `users/${userId}/favorites/${item.id}`);
+  const snapshot = await get(userRef);
+  const existingItem = snapshot.val();
+  if (!existingItem) {
     return;
   }
-  favorites.splice(itemIndex, 1);
-  await set(user, {
-    favorites: favorites,
-  });
+  await remove(userRef);
 };
 
 export const getFavouritesDb = async (userId: string) => {
@@ -35,9 +28,8 @@ export const getFavouritesDb = async (userId: string) => {
   return snapshot.val()?.favorites || [];
 };
 
-export const checkIsFavourite = async (userId: string, itemId: number) => {
-  const user = ref(db, `users/${userId}`);
+export const checkIsFavourite = async (userId: string, item: any) => {
+  const user = ref(db, `users/${userId}/favorites/${item.id}`);
   const snapshot = await get(user);
-  const favourites = snapshot.val()?.favorites || [];
-  return favourites.indexOf(itemId) !== -1;
+  return snapshot.exists();
 };
