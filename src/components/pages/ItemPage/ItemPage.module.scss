@@ -159,7 +159,7 @@
   cursor: pointer;
   font-weight: normal;
   font-style: normal;
-  font-size: 32px; /* Preferred icon size */
+  font-size: 32px;
   display: inline-block;
   color: rgb(183, 80, 80);
   line-height: 1;
@@ -168,6 +168,10 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .favouritesContainer {

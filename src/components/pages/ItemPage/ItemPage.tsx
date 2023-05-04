@@ -19,7 +19,7 @@ import { IArticle, IFabric, IGalleryImage, IVariantsList } from './ItemPage.inte
 
 const ItemPage = () => {
   const { id } = useParams();
-  const { userId } = useAppSelector(currentUser); //TO-DO create useauth again maybe?
+  const { userId } = useAppSelector(currentUser); //TO-DO create useauth again ?
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -54,7 +54,21 @@ const ItemPage = () => {
     [data?.product?.articlesList, data?.product?.inStock]
   );
 
-  console.log('firebase', firebaseItem); // TO-DO стоит ли создавать firebase item если можнл передать в кнопку item просто
+  const galleryImages = data?.product?.articlesList[0]?.galleryDetails?.map(
+    (elem: IGalleryImage) => elem.baseUrl
+  );
+  const articlesImages = data?.product?.articlesList.map((elem: IArticle) =>
+    elem.fabricSwatchThumbnails.map((elem: IFabric) => elem.baseUrl)
+  );
+  const links = articlesImages?.map((elem: string[]) => elem[0]);
+  const sizesArray = data?.product?.articlesList.map((element: IArticle) => element.variantsList);
+  const sizes = sizesArray ? sizesArray[0]?.map((elem: IVariantsList) => elem?.size?.name) : [];
+
+  console.log(data?.product?.articlesList);
+
+  // const handleChangeArticle = (articleId) => {
+  //   //заменить в useParams id на articleID
+  // };
 
   useEffect(() => {
     checkIsFavourite(userId!, firebaseItem)
@@ -65,16 +79,6 @@ const ItemPage = () => {
         handleError(error);
       });
   }, [userId, liked, handleError, firebaseItem]);
-
-  const galleryImages = data?.product?.articlesList[0]?.galleryDetails?.map(
-    (elem: IGalleryImage) => elem.baseUrl
-  ); //T0-DO менять картинки по клику на артикль
-  const articlesImages = data?.product?.articlesList.map((elem: IArticle) =>
-    elem.fabricSwatchThumbnails.map((elem: IFabric) => elem.baseUrl)
-  );
-  const links = articlesImages?.map((elem: string[]) => elem[0]);
-  const sizesArray = data?.product?.articlesList.map((element: IArticle) => element.variantsList);
-  const sizes = sizesArray ? sizesArray[0]?.map((elem: IVariantsList) => elem?.size?.name) : [];
 
   const handleSetLike = async () => {
     if (userId == null) {
@@ -104,8 +108,10 @@ const ItemPage = () => {
               <div className={styles.mainInfoBlockPrice}>{data?.product?.whitePrice?.price} $</div>
               <div className={styles.mainInfoBlockItem}> {t('variants available:')} </div>
               <div className={styles.articlesOptions}>
-                {links?.map((elem: string) => (
-                  <img key={elem} className={styles.articleImg} src={elem} />
+                {links?.map((
+                  elem: string //тут попробовать заменить на articleImages и при этом передать id
+                ) => (
+                  <img key={elem} className={styles.articleImg} src={elem} /> // функция handleChageSArticle
                 ))}
               </div>
 
