@@ -19,3 +19,8 @@ export interface IArticle {
   fabricSwatchThumbnails: IFabric[];
   variantsList: IVariantsList;
 }
+
+export interface IArticleElement {
+  id: string;
+  img: string;
+}

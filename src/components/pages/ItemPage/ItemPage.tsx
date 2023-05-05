@@ -15,10 +15,10 @@ import {
 import { RoutePath } from '@constants/routes';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './ItemPage.module.scss';
-import { IArticle, IFabric, IGalleryImage, IVariantsList } from './ItemPage.interface';
+import { IArticle, IArticleElement, IGalleryImage, IVariantsList } from './ItemPage.interface';
 
 const ItemPage = () => {
-  const { id } = useParams();
+  const { id, category } = useParams();
   const { userId } = useAppSelector(currentUser); //TO-DO create useauth again ?
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -43,32 +43,33 @@ const ItemPage = () => {
     onError: (error) => handleError(error as Error),
   });
 
+  const article = useMemo(
+    () => data?.product?.articlesList.find((element: IArticle) => element?.code === id),
+    [data?.product?.articlesList, id]
+  );
+
   const firebaseItem = useMemo(
     () => ({
-      id: data?.product?.articlesList[0].code,
-      picture: data?.product?.articlesList[0].galleryDetails[0].baseUrl,
-      price: String(data?.product?.articlesList[0].whitePrice.price),
-      name: data?.product?.articlesList[0].name,
+      id: article?.code,
+      picture: article?.galleryDetails[0].baseUrl,
+      price: String(article?.whitePrice.price),
+      name: article?.name,
       inStock: String(data?.product?.inStock),
     }),
-    [data?.product?.articlesList, data?.product?.inStock]
+    [article, data?.product?.inStock]
   );
 
-  const galleryImages = data?.product?.articlesList[0]?.galleryDetails?.map(
-    (elem: IGalleryImage) => elem.baseUrl
-  );
-  const articlesImages = data?.product?.articlesList.map((elem: IArticle) =>
-    elem.fabricSwatchThumbnails.map((elem: IFabric) => elem.baseUrl)
-  );
-  const links = articlesImages?.map((elem: string[]) => elem[0]);
-  const sizesArray = data?.product?.articlesList.map((element: IArticle) => element.variantsList);
-  const sizes = sizesArray ? sizesArray[0]?.map((elem: IVariantsList) => elem?.size?.name) : [];
+  const galleryImages = article?.galleryDetails?.map((elem: IGalleryImage) => elem.baseUrl);
+  const sizes = article?.variantsList?.map((elem: IVariantsList) => elem?.size?.name) || [];
 
-  console.log(data?.product?.articlesList);
+  const articles = data?.product?.articlesList.map((elem: IArticle) => ({
+    id: elem?.code,
+    img: elem.fabricSwatchThumbnails[0]?.baseUrl,
+  }));
 
-  // const handleChangeArticle = (articleId) => {
-  //   //заменить в useParams id на articleID
-  // };
+  const handleChangeArticle = (articleId: string) => {
+    navigate(`/catalog/${category}/${articleId}`);
+  };
 
   useEffect(() => {
     checkIsFavourite(userId!, firebaseItem)
@@ -108,10 +109,13 @@ const ItemPage = () => {
               <div className={styles.mainInfoBlockPrice}>{data?.product?.whitePrice?.price} $</div>
               <div className={styles.mainInfoBlockItem}> {t('variants available:')} </div>
               <div className={styles.articlesOptions}>
-                {links?.map((
-                  elem: string //тут попробовать заменить на articleImages и при этом передать id
-                ) => (
-                  <img key={elem} className={styles.articleImg} src={elem} /> // функция handleChageSArticle
+                {articles?.map((elem: IArticleElement) => (
+                  <img
+                    key={elem.id}
+                    className={styles.articleImg}
+                    src={elem.img}
+                    onClick={() => handleChangeArticle(elem.id)}
+                  />
                 ))}
               </div>
 
