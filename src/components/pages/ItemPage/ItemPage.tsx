@@ -61,7 +61,6 @@ const ItemPage = () => {
 
   const galleryImages = article?.galleryDetails?.map((elem: IGalleryImage) => elem.baseUrl);
   const sizes = article?.variantsList?.map((elem: IVariantsList) => elem?.size?.name) || [];
-
   const articles = data?.product?.articlesList.map((elem: IArticle) => ({
     id: elem?.code,
     img: elem.fabricSwatchThumbnails[0]?.baseUrl,
