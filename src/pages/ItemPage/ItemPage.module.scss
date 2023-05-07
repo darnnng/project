@@ -1,0 +1,186 @@
+@import './../../shared/variables.scss';
+.itemPageContainer {
+  margin: 5px 30px;
+  display: flex;
+  flex-direction: column;
+  font-family: $fontFamily;
+}
+
+.upContainer {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 100px;
+  margin-bottom: 50px;
+  @media (max-width: $screenMid) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.sliderBlock {
+  width: 400px;
+  height: 550px;
+  @media (max-width: $screenXs) {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+.mainInfoBlock {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  row-gap: 20px;
+}
+
+.mainInfoBlockName {
+  font-size: $fontExtraLarge;
+  font-weight: bold;
+}
+
+.mainInfoBlockPrice {
+  font-size: $fontLarge;
+}
+
+.mainInfoBlockItem {
+  font-size: $fontMid;
+}
+
+.styledSelect {
+  width: 100%;
+  min-width: 200px;
+  min-height: 45px;
+  font-size: 16px;
+  padding: 10px;
+  font-family: $fontFamily;
+  background-color: transparent;
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  option {
+    font-size: 16px;
+    background-color: $light1;
+    color: $fontDark;
+  }
+}
+
+.articleImg {
+  border: 1px solid black;
+  width: 60px;
+  height: 60px;
+}
+
+.downContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  flex-direction: column;
+  text-align: center;
+  margin: 0px 100px;
+  row-gap: 10px;
+  p {
+    width: 100%;
+    text-align: left;
+    span {
+      font-weight: 400;
+    }
+  }
+  @media (max-width: $screenMid) {
+    margin: 0;
+  }
+}
+
+.detailsTitle {
+  font-size: $fontExtraLarge;
+  color: $fontDark;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.downContainerItem {
+  font-size: $fontMid;
+}
+
+.addButton {
+  min-width: 200px;
+  min-height: 45px;
+  font-family: $fontFamily;
+  background-color: $backgroundDark;
+  color: $fontLight;
+  padding: 10px;
+  font-size: $fontMid;
+  &:hover {
+    background-color: $backgroundLight;
+    color: $fontDark;
+  }
+}
+
+.disabledAddButton {
+  min-width: 200px;
+  min-height: 45px;
+  font-family: $fontFamily;
+  background-color: $hoverColor;
+  color: $fontLight;
+  padding: 10px;
+  font-size: $fontMid;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+}
+
+.likeButton {
+  height: 50px;
+  width: 45px;
+  border: 2px black solid;
+  background-color: $backgroundLight;
+}
+
+.articlesOptions {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  row-gap: 10px;
+  max-width: 280px;
+  flex-wrap: wrap;
+}
+
+.materialIcons {
+  font-family: 'Material Icons';
+  cursor: pointer;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 32px;
+  display: inline-block;
+  color: rgb(183, 80, 80);
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.favouritesContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+  align-items: center;
+}
+
+.favouritesTitle {
+  font-size: $fontMid;
+}

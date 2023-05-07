@@ -9,7 +9,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/index.tsx',
+    app: './src/app/index.tsx',
   },
   plugins: [
     new EnvironmentPlugin([]),
@@ -90,7 +90,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        include: resolve(__dirname, 'src/assets'),
+        include: resolve(__dirname, 'src/pages/HomePage/assets'),
         type: 'asset/resource',
       },
     ],
@@ -100,7 +100,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.scss', '.json'],
     alias: {
       '@constants': path.resolve(__dirname, './src/constants/'),
-      '@components': path.resolve(__dirname, './src/components/'),
+      '@pages': path.resolve(__dirname, './src/pages/'),
       '@src': path.resolve(__dirname, 'src/'),
       '@public': path.resolve(__dirname, 'public'),
     },

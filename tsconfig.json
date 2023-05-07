@@ -21,8 +21,8 @@
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "@constants/*": ["./src/constants/*"],
-      "@components/*": ["./src/components/*"],
+      "@constants/*": ["src/shared/constants/*"],
+      "@pages/*": ["./src/pages/*"],
       "@src/*": ["./src/*"],
       "@public/*": ["./public/*"]
     }

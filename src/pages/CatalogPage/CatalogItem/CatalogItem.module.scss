@@ -1,0 +1,22 @@
+@import './../../../shared/variables.scss';
+.imageCard {
+  width: 300px;
+  height: 350px;
+  cursor: pointer;
+}
+
+.darkIcons {
+  color: $fontLight;
+}
+
+.imageName {
+  font-size: $fontMid;
+  flex-wrap: wrap;
+}
+
+.nameDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+}

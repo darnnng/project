@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@src/redux/store';
+import { RootState } from '@src/app/store';
 
 const initialState = {
   themeLight: true,

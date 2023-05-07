@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Languages } from '@constants/languages';
-import { RootState } from '@src/redux/store';
+import { Languages } from '@src/shared/constants/languages';
+import { RootState } from '@src/app/store';
 
 const initialState = {
   language: Languages.EN,

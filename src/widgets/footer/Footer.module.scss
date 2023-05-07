@@ -1,0 +1,74 @@
+@import './../../shared/variables.scss';
+
+.footer {
+  background-color: $dark;
+  color: $backgroundLight;
+  font-family: $fontFamily;
+  width: 100%;
+  position: absolute;
+  left: 0;
+
+  @media (max-width: $screenMid) {
+    justify-content: center;
+  }
+}
+
+.footerUp {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 80px;
+  @media (max-width: $screenMid) {
+    padding: 20px 20px;
+  }
+}
+
+.footerBigTitle {
+  font-size: $fontMid;
+}
+
+.footerLinkText {
+  text-decoration: none;
+  color: $hoverColor;
+  font-size: 18px;
+  &:hover {
+    color: $light1;
+  }
+}
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  @media (max-width: $screenMid) {
+    justify-content: center;
+  }
+}
+
+.footerLinksSocial {
+  display: flex;
+  column-gap: 15px;
+}
+
+.footerDown {
+  color: $backgroundLight;
+  padding: 20px 20px 0px;
+}
+
+.materialSymbolsOutlined {
+  font-family: 'Material Symbols Outlined';
+  color: $hoverColor;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+  font-size: $fontLarge;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  cursor: pointer;
+  &:hover {
+    color: $backgroundLight;
+  }
+}
