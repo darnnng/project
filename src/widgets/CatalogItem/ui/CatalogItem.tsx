@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@src/shared/constants/routes';
+import { ICatalogItemProps } from '../model/CatalogItem.interface';
 import styles from './CatalogItem.module.scss';
-import { ICatalogItemProps } from './CatalogItem.interface';
 
 export const CatalogItem = ({ item, category }: ICatalogItemProps) => {
   const navigate = useNavigate();

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import poster from '@src/pages/HomePage/assets/poster.jpg';
-import { CategoryMenu } from '@src/pages/HomePage/CategoryMenu';
+import { CategoryMenu } from '@src/widgets/CategoryMenu';
+import { ImageCards } from '@src/widgets/ImageCards';
 import styles from './HomePage.module.scss';
-import { ImageCards } from './ImageCards';
 
 const HomePage = () => {
   const { t } = useTranslation();

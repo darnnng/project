@@ -13,7 +13,7 @@ import {
   deleteFromFavouritesDb,
 } from '@src/features/AddFavourites/api/favouritesApi';
 import { RoutePath } from '@src/shared/constants/routes';
-import { CategoryMenu } from '../HomePage/CategoryMenu';
+import { CategoryMenu } from '../../widgets/CategoryMenu';
 import styles from './ItemPage.module.scss';
 import { IArticle, IArticleElement, IGalleryImage, IVariantsList } from './ItemPage.interface';
 

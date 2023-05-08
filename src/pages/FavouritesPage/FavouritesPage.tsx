@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FavouriteList } from '@src/widgets/FavouriteList/FavouriteList';
-import { CategoryMenu } from '../HomePage/CategoryMenu';
+import { CategoryMenu } from '../../widgets/CategoryMenu';
 import styles from './FavouritesPage.module.scss';
 
 const FavouritesPage = () => {

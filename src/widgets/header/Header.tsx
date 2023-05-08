@@ -2,18 +2,17 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from '@src/shared/constants/routes';
-import { useAppDispatch, useAppSelector } from '@src/shared/model/reduxHooks';
+import { useAppSelector } from '@src/shared/model/reduxHooks';
 import { selectedLanguage } from '@src/features/LangChange/model/languageSlice';
 import { selectedTheme } from '@src/features/ThemeChange/model/themeSlice';
 import { useAuth } from '@src/features/Authorization/model/useAuth';
-import { removeUser } from '@src/features/Authorization/model/userSlice';
 import { ThemeChangeBtn } from '@src/features/ThemeChange';
 import { LangBtn } from '@src/features/LangChange/ui/LangBtn';
+import { Logout } from '@src/features/Logout';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const { language } = useAppSelector(selectedLanguage);
   const { themeLight } = useAppSelector(selectedTheme);
   const isAuth = useAuth();
@@ -22,10 +21,6 @@ export const Header = () => {
   useEffect(() => {
     i18n.changeLanguage(language);
   }, [i18n, language]);
-
-  const handleLogout = () => {
-    dispatch(removeUser());
-  };
 
   return (
     <header>
@@ -85,14 +80,7 @@ export const Header = () => {
               favorite
             </span>
           </Link>
-          {isAuth && (
-            <span
-              onClick={handleLogout}
-              className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
-            >
-              logout
-            </span>
-          )}
+          {isAuth && <Logout />}
         </div>
       </div>
     </header>
