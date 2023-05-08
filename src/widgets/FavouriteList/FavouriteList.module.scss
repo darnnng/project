@@ -1,0 +1,10 @@
+@import './../../shared/variables.scss';
+.favouritesContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.noItemsText {
+  font-size: $fontMid;
+}

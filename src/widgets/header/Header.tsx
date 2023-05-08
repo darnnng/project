@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from '@src/shared/constants/routes';
 import { useAppDispatch, useAppSelector } from '@src/shared/model/reduxHooks';
-import { selectedLanguage, setLanguage } from '@src/redux/slices/languageSlice';
-import { Languages } from '@src/shared/constants/languages';
-import { selectedTheme, setTheme } from '@src/redux/slices/themeSlice';
-import { removeUser } from '@src/redux/slices/userSlice';
-import { useAuth } from '@src/hooks/useAuth';
+import { selectedLanguage } from '@src/features/LangChange/model/languageSlice';
+import { selectedTheme } from '@src/features/ThemeChange/model/themeSlice';
+import { useAuth } from '@src/features/Authorization/model/useAuth';
+import { removeUser } from '@src/features/Authorization/model/userSlice';
+import { ThemeChangeBtn } from '@src/features/ThemeChange';
+import { LangBtn } from '@src/features/LangChange/ui/LangBtn';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -21,18 +22,6 @@ export const Header = () => {
   useEffect(() => {
     i18n.changeLanguage(language);
   }, [i18n, language]);
-
-  const handleSetEng = () => {
-    dispatch(setLanguage(Languages.EN));
-  };
-
-  const handleSetRus = () => {
-    dispatch(setLanguage(Languages.RU));
-  };
-
-  const handleChangeTheme = () => {
-    dispatch(setTheme());
-  };
 
   const handleLogout = () => {
     dispatch(removeUser());
@@ -62,28 +51,9 @@ export const Header = () => {
             </>
           )}
 
-          <li className={styles.spanElement}>
-            <a className={`${themeLight ? '' : styles.darkLink}`}>{t('Switch language')}</a>
-            <ul>
-              <li>
-                <a className={`${themeLight ? '' : styles.darkLang}`} onClick={handleSetEng}>
-                  EN
-                </a>
-              </li>
-              <li>
-                <a className={`${themeLight ? '' : styles.darkLang}`} onClick={handleSetRus}>
-                  RU
-                </a>
-              </li>
-            </ul>
-          </li>
+          <LangBtn />
           <span> | </span>
-          <li
-            className={` ${styles.spanElement} ${themeLight ? '' : styles.darkSpan}`}
-            onClick={handleChangeTheme}
-          >
-            {t('Switch theme')}
-          </li>
+          <ThemeChangeBtn />
         </ul>
       </nav>
       <div className={`${styles.bigHeader}  ${themeLight ? '' : styles.darkHeader}`}>

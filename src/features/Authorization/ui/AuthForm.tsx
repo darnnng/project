@@ -3,9 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { authSchema } from '@src/shared/lib/validation/validationSchema';
-import { IFormInput } from '@src/features/AuthForm/IAuthFormInput';
+import { IAuthFormProps, IFormInput } from '../model/types';
 import styles from './AuthForm.module.scss';
-import { IAuthFormProps } from './AuthForm.interface';
 
 export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
   const {

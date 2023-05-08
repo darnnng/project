@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { RoutePath } from '@src/shared/constants/routes';
-import { IFormInput } from '@src/features/AuthForm/IAuthFormInput';
-import { AuthForm } from '@src/features/AuthForm';
+import { AuthForm } from '@src/features/Authorization';
 import styles from '@pages/LogInPage/LogInPage.module.scss';
 import { auth } from '@src/shared/api/firebase';
-import { setUser } from '@src/redux/slices/userSlice';
+import { setUser } from '@src/features/Authorization/model/userSlice';
 import { useAppDispatch } from '@src/shared/model/reduxHooks';
-import { createAlert } from '@src/redux/slices/notifierSlice';
+import { createAlert } from '@src/shared/model/notifierSlice';
+import { IFormInput } from '@src/features/Authorization/model/types';
 
 const SignUpPage = () => {
   const { t } = useTranslation();

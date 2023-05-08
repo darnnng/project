@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { options } from '@src/shared/api/apiOptions';
-import { createAlert } from '@src/redux/slices/notifierSlice';
+import { createAlert } from '@src/shared/model/notifierSlice';
 import { useAppDispatch } from '@src/shared/model/reduxHooks';
 import { RoutePath } from '@src/shared/constants/routes';
 import styles from './ImageCards.module.scss';

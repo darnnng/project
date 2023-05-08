@@ -3,17 +3,17 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { options } from '@src/shared/api/apiOptions';
-import { Pagination } from '@src/pages/CatalogPage/Pagination';
+import { Pagination } from '@src/features/Pagination';
 import { Spinner } from '@src/shared/ui/Spinner';
-import { createAlert } from '@src/redux/slices/notifierSlice';
+import { createAlert } from '@src/shared/model/notifierSlice';
 import { useAppDispatch, useAppSelector } from '@src/shared/model/reduxHooks';
-import { selectedPage, setPage } from '@src/redux/slices/paginationSlice';
-import { selectedFilter, setFilter } from '@src/redux/slices/filterSlice';
+import { selectedPage, setPage } from '@src/features/Pagination/model/paginationSlice';
+import { selectedFilter, setFilter } from '@src/features/Sorting/model/filterSlice';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
+import { SortingSelect } from '../../features/Sorting';
 import styles from './CatalogPage.module.scss';
 import { ICatalogItemResults, IListItem } from './CatalogPage.interface';
 import { CatalogItem } from './CatalogItem/CatalogItem';
-import { SortingSelect } from './SortingSelect';
 
 const CatalogPage = () => {
   const { category } = useParams();

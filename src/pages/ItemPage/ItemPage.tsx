@@ -2,16 +2,16 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { createAlert } from '@src/redux/slices/notifierSlice';
+import { createAlert } from '@src/shared/model/notifierSlice';
 import { useAppDispatch, useAppSelector } from '@src/shared/model/reduxHooks';
 import { options } from '@src/shared/api/apiOptions';
 import { Spinner } from '@src/shared/ui/Spinner';
-import { currentUser } from '@src/redux/slices/userSlice';
+import { currentUser } from '@src/features/Authorization/model/userSlice';
 import {
   addToFavouritesDb,
   checkIsFavourite,
   deleteFromFavouritesDb,
-} from '@src/api/favouritesApi';
+} from '@src/features/AddFavourites/api/favouritesApi';
 import { RoutePath } from '@src/shared/constants/routes';
 import { CategoryMenu } from '../HomePage/CategoryMenu';
 import styles from './ItemPage.module.scss';

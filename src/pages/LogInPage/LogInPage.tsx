@@ -3,12 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { RoutePath } from '@src/shared/constants/routes';
-import { IFormInput } from '@src/features/AuthForm/IAuthFormInput';
-import { AuthForm } from '@src/features/AuthForm';
-import { setUser } from '@src/redux/slices/userSlice';
+import { AuthForm } from '@src/features/Authorization';
+import { setUser } from '@src/features/Authorization/model/userSlice';
 import { auth } from '@src/shared/api/firebase';
 import { useAppDispatch } from '@src/shared/model/reduxHooks';
-import { createAlert } from '@src/redux/slices/notifierSlice';
+import { createAlert } from '@src/shared/model/notifierSlice';
+import { IFormInput } from '@src/features/Authorization/model/types';
 import styles from './LogInPage.module.scss';
 
 const LogInPage = () => {

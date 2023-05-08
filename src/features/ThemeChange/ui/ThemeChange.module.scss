@@ -1,0 +1,9 @@
+@import './../../../shared/variables.scss';
+.spanElement {
+  cursor: pointer;
+  color: $fontDark;
+  padding: 0px 10px;
+  &:hover {
+    color: $hoverColor;
+  }
+}

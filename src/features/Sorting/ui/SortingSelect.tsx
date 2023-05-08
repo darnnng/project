@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ISortingSelectProps } from '../model/types';
 import styles from './SortingSelect.module.scss';
-import { ISortingSelectProps } from './SortingSelect.interface';
 
 export const SortingSelect = ({ filter, onFilterChange }: ISortingSelectProps) => {
   const { t } = useTranslation();

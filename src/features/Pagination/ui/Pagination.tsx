@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
+import { IPagination, ISelectedItem } from '../model/types';
 import styles from './Pagination.module.scss';
-import { IPagination, ISelectedItem } from './Pagination.interface';
 
 export const Pagination = ({ pageCount, onPageChange, page }: IPagination) => {
   const handlePageClick = (event: ISelectedItem) => {

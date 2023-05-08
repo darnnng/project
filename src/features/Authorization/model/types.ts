@@ -1,4 +1,7 @@
-import { IFormInput } from '@src/features/AuthForm/IAuthFormInput';
+export interface IFormInput {
+  email: string;
+  password: string;
+}
 
 export interface IAuthFormProps {
   buttonName: string;

@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { options } from '@src/shared/api/apiOptions';
 import { RoutePath } from '@src/shared/constants/routes';
 import { useAppDispatch } from '@src/shared/model/reduxHooks';
-import { createAlert } from '@src/redux/slices/notifierSlice';
+import { createAlert } from '@src/shared/model/notifierSlice';
 import styles from './CategoryMenu.module.scss';
 import { ICategory, ICategoryItem } from './CategoryMenu.interface';
 
