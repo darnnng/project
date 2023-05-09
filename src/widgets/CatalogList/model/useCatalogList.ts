@@ -21,7 +21,7 @@ export function useCatalogList(url: string, page: number, filter: string) {
         return {
           id: elem.defaultArticle.code,
           name: elem.defaultArticle.name,
-          image: elem.allArticleBaseImages ? elem.allArticleBaseImages[0] : elem.images[0].baseUrl,
+          image: elem.allArticleBaseImages ? elem.allArticleBaseImages[0] : elem.images[0].baseUrl, //TO-DO USE ANOTHER PROPERTY ('CAUSE IMAGES REPEAT)
           attribute: elem.sellingAttributes ? elem.sellingAttributes[0] : ' ',
           price: elem.price.formattedValue,
           isFavourite: false,

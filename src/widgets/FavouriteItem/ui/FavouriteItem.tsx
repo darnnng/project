@@ -10,6 +10,8 @@ export const FavouriteItem = ({
   handleAddToCart,
 }: IFavouriteItemsProps) => {
   const { t } = useTranslation();
+  //TO-DO MAKE NOT IN STOCK GRAY COLOR
+
   return (
     <div key={item.id} className={styles.favItem}>
       <div className={styles.itemInfo}>
@@ -28,7 +30,7 @@ export const FavouriteItem = ({
           delete
         </div>
         <button className={styles.addButton} onClick={handleAddToCart}>
-          {item.inStock ? t('Add to cart') : t('Not in stock')}
+          {item.inStock === 'false' ? t('Not in stock') : t('Add to cart')}
         </button>
       </div>
     </div>

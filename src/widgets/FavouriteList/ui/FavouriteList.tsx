@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { currentUser } from '@entities/user/model/userSlice';
-import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
+import { useAppSelector } from '@shared/model/reduxHooks';
 import { deleteFromFavouritesDb, getFavouritesDb } from '@features/AddFavourites/api/favouritesApi';
-import { createAlert } from '@shared/model/notifierSlice';
+import { useHandleError } from '@src/shared/model/useHandleError';
 import { FavouriteItem } from '../../FavouriteItem';
 import { IFavItem } from '../model/IFavouritesList.interface';
 import styles from './FavouriteList.module.scss';
@@ -12,21 +12,10 @@ export const FavouriteList = () => {
   const { t } = useTranslation();
   const [favItems, setFavItems] = useState<Record<string, IFavItem>>({});
   const { userId } = useAppSelector(currentUser);
-  const dispatch = useAppDispatch();
-
-  const handleError = useCallback(
-    (error: Error) => {
-      dispatch(
-        createAlert({
-          message: error.message,
-        })
-      );
-    },
-    [dispatch]
-  );
+  const handleError = useHandleError();
 
   useEffect(() => {
-    getFavouritesDb(userId!)
+    getFavouritesDb(userId!) //TO-DO SORT BY ADDING DATE
       .then((result) => {
         setFavItems(result);
       })

@@ -13,8 +13,6 @@ export const useImageCards = (url: string) => {
     onError: (error) => handleError(error as Error),
   });
 
-  console.log('hjhk');
-
   const itemsList = useMemo(() => {
     return data?.results?.map((elem: ICardItemResults) => {
       return {
