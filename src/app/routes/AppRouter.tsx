@@ -2,7 +2,7 @@ import React, { lazy } from 'react';
 import { Routes, Route, Navigate, BrowserRouter, Outlet } from 'react-router-dom';
 import { RoutePath } from '@src/shared/constants/routes';
 import { Layout } from '@src/app/layout';
-import { useAuth } from '@src/features/Authorization/model/useAuth';
+import { useAuth } from '@src/entities/user/model/useAuth';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 

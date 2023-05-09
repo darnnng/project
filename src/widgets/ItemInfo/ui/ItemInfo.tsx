@@ -1,15 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppSelector } from '@src/shared/model/reduxHooks';
-import { currentUser } from '@src/features/Authorization/model/userSlice';
-import { useHandleError } from '@src/shared/lib/useError';
-import { RoutePath } from '@constants/routes';
-import {
-  addToFavouritesDb,
-  checkIsFavourite,
-  deleteFromFavouritesDb,
-} from '@src/features/AddFavourites/api/favouritesApi';
+import { AddFavButton } from '@features/AddFavourites';
 import { IArticleElement } from '../model/ItemInfo.interface';
 import { useSingleItem } from '../lib/useSingleItem';
 import styles from './ItemInfo.module.scss';
@@ -17,39 +9,12 @@ import styles from './ItemInfo.module.scss';
 export const ItemInfo = () => {
   const { t } = useTranslation();
   const { id, category } = useParams();
-  const { userId } = useAppSelector(currentUser); //TO-DO create useauth again ?
-  const [liked, setLiked] = useState(false);
-  const handleError = useHandleError();
   const navigate = useNavigate();
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
-  const { articles, galleryImages, data, sizes, firebaseItem } = useSingleItem(url, id!);
+  const { articles, galleryImages, data, sizes } = useSingleItem(url, id!);
 
   const handleChangeArticle = (articleId: string) => {
     navigate(`/catalog/${category}/${articleId}`);
-  };
-
-  useEffect(() => {
-    checkIsFavourite(userId!, firebaseItem)
-      .then((result) => {
-        setLiked(result);
-      })
-      .catch((error) => {
-        handleError(error);
-      });
-  }, [userId, liked, handleError, firebaseItem]);
-
-  const handleSetLike = async () => {
-    if (userId == null) {
-      navigate(`/${RoutePath.LOGIN}/`);
-      return;
-    }
-    if (liked) {
-      await deleteFromFavouritesDb(userId!, firebaseItem);
-      setLiked(false);
-    } else {
-      await addToFavouritesDb(userId!, firebaseItem);
-      setLiked(true);
-    }
   };
 
   return (
@@ -86,14 +51,7 @@ export const ItemInfo = () => {
               </button>
             )}
           </div>
-          <div className={styles.favouritesContainer}>
-            <p className={styles.favouritesTitle}>
-              {liked ? t('Remove from favourites:') : t('Add to your favourites:')}
-            </p>
-            <div onClick={handleSetLike} className={styles.materialIcons}>
-              {liked ? 'favorite' : 'favorite_border'}
-            </div>
-          </div>
+          <AddFavButton />
         </div>
       </div>
       <div className={styles.downContainer}>

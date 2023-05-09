@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { RoutePath } from '@src/shared/constants/routes';
 import { AuthForm } from '@src/features/Authorization';
-import { setUser } from '@src/features/Authorization/model/userSlice';
+import { setUser } from '@src/entities/user/model/userSlice';
 import { auth } from '@src/shared/api/firebase';
 import { useAppDispatch } from '@src/shared/model/reduxHooks';
 import { createAlert } from '@src/shared/model/notifierSlice';

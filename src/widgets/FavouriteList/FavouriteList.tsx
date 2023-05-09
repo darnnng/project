@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { currentUser } from '@src/features/Authorization/model/userSlice';
+import { currentUser } from '@src/entities/user/model/userSlice';
 import { useAppDispatch, useAppSelector } from '@src/shared/model/reduxHooks';
 import {
   deleteFromFavouritesDb,

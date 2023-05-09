@@ -5,7 +5,7 @@ import { RoutePath } from '@src/shared/constants/routes';
 import { useAppSelector } from '@src/shared/model/reduxHooks';
 import { selectedLanguage } from '@src/features/LangChange/model/languageSlice';
 import { selectedTheme } from '@src/features/ThemeChange/model/themeSlice';
-import { useAuth } from '@src/features/Authorization/model/useAuth';
+import { useAuth } from '@src/entities/user/model/useAuth';
 import { ThemeChangeBtn } from '@src/features/ThemeChange';
 import { LangBtn } from '@src/features/LangChange/ui/LangBtn';
 import { Logout } from '@src/features/Logout';

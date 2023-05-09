@@ -2,14 +2,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { RoutePath } from '@src/shared/constants/routes';
-import { AuthForm } from '@src/features/Authorization';
+import { RoutePath } from '@shared/constants/routes';
+import { AuthForm } from '@features/Authorization';
 import styles from '@pages/LogInPage/LogInPage.module.scss';
-import { auth } from '@src/shared/api/firebase';
-import { setUser } from '@src/features/Authorization/model/userSlice';
-import { useAppDispatch } from '@src/shared/model/reduxHooks';
-import { createAlert } from '@src/shared/model/notifierSlice';
-import { IFormInput } from '@src/features/Authorization/model/types';
+import { auth } from '@shared/api/firebase';
+import { setUser } from '@entities/user/model/userSlice';
+import { useAppDispatch } from '@shared/model/reduxHooks';
+import { createAlert } from '@shared/model/notifierSlice';
+import { IFormInput } from '@features/Authorization/model/types';
 
 const SignUpPage = () => {
   const { t } = useTranslation();

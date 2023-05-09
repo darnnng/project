@@ -21,9 +21,12 @@
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "@constants/*": ["src/shared/constants/*"],
-      "@pages/*": ["./src/pages/*"],
       "@src/*": ["./src/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@features/*": ["./src/features/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@shared/*": ["./src/shared/*"],
       "@public/*": ["./public/*"]
     }
   },

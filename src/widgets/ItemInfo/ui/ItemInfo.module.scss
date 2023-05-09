@@ -147,34 +147,3 @@
   max-width: 280px;
   flex-wrap: wrap;
 }
-
-.materialIcons {
-  font-family: 'Material Icons';
-  cursor: pointer;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 32px;
-  display: inline-block;
-  color: rgb(183, 80, 80);
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  transition: transform 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.2);
-  }
-}
-
-.favouritesContainer {
-  display: flex;
-  flex-direction: row;
-  column-gap: 5px;
-  align-items: center;
-}
-
-.favouritesTitle {
-  font-size: $fontMid;
-}
