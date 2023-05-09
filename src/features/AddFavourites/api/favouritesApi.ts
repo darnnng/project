@@ -1,6 +1,6 @@
 import { get, ref, remove, set } from 'firebase/database';
 import { db } from '@src/shared/api/firebase';
-import { IFavItem } from '@src/widgets/FavouriteList/IFavouritesList.interface';
+import { IFavItem } from '../model/types';
 
 export const addToFavouritesDb = async (userId: string, item: IFavItem) => {
   const userObj = ref(db, `users/${userId}/favorites/${item.id}`);

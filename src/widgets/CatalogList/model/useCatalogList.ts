@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query';
-import { useHandleError } from '@src/shared/lib/useError';
+import { useMemo } from 'react';
+import { useHandleError } from '@src/shared/model/useHandleError';
 import { options } from '@src/shared/api/apiOptions';
-import { ICatalogItemResults, IListItem } from '../model/CatalogList.interface';
+import { ICatalogItemResults, IListItem } from './CatalogList.interface';
 
 export function useCatalogList(url: string, page: number, filter: string) {
   const handleError = useHandleError();
@@ -14,8 +15,9 @@ export function useCatalogList(url: string, page: number, filter: string) {
     },
   });
 
-  const itemsList: IListItem[] = data?.results
-    ? data?.results?.map((elem: ICatalogItemResults) => {
+  const itemsList: IListItem[] = useMemo(() => {
+    return (
+      data?.results?.map((elem: ICatalogItemResults) => {
         return {
           id: elem.defaultArticle.code,
           name: elem.defaultArticle.name,
@@ -24,10 +26,12 @@ export function useCatalogList(url: string, page: number, filter: string) {
           price: elem.price.formattedValue,
           isFavourite: false,
         };
-      })
-    : [];
-  const totalNumberofItems = data?.pagination?.totalNumberOfResults;
-  const pageCount = data?.pagination?.numberOfPages;
+      }) || []
+    );
+  }, [data]);
 
-  return { isLoading, itemsList, totalNumberofItems, pageCount };
+  const totalNumberOfItems = useMemo(() => data?.pagination?.totalNumberOfResults || 0, [data]);
+  const pageCount = useMemo(() => data?.pagination?.numberOfPages || 0, [data]);
+
+  return { isLoading, itemsList, totalNumberOfItems, pageCount };
 }

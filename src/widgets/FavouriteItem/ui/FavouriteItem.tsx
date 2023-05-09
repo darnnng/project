@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { IFavouriteItemsProps } from '../model/FavouriteItem.interface';
 import styles from './FavouriteItem.module.scss';
-import { IFavouriteItemsProps } from './FavouriteItem.interface';
 
 export const FavouriteItem = ({
   item,

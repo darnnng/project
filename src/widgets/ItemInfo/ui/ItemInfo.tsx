@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AddFavButton } from '@features/AddFavourites';
+import { useSingleItem } from '@entities/item/model/useSingleItem';
 import { IArticleElement } from '../model/ItemInfo.interface';
-import { useSingleItem } from '../lib/useSingleItem';
 import styles from './ItemInfo.module.scss';
 
 export const ItemInfo = () => {

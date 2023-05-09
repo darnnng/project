@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { options } from '@src/shared/api/apiOptions';
-import { useHandleError } from '@src/shared/lib/useError';
-import { ICategory } from '../model/CategoryMenu.interface';
+import { useHandleError } from '@src/shared/model/useHandleError';
+import { ICategory } from './CategoryMenu.interface';
 
 export function useCategoriesList() {
   const handleError = useHandleError();

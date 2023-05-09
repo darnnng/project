@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { RoutePath } from '@src/shared/constants/routes';
+import { RoutePath } from '@shared/constants/routes';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {

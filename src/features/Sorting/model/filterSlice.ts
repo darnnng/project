@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@src/app/store';
 
 const initialState = {
   filter: 'stock',
@@ -16,5 +15,5 @@ const filterChangeSlice = createSlice({
 });
 
 export const { setFilter } = filterChangeSlice.actions;
-export const selectedFilter = (state: RootState) => state.filter;
+export const selectedFilter = (state: AppState) => state.filter;
 export const filterChangeReducer = filterChangeSlice.reducer;

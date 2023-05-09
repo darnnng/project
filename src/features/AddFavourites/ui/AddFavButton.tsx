@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '@shared/model/reduxHooks';
-import { currentUser } from '@src/entities/user/model/userSlice';
+import { currentUser } from '@entities/user/model/userSlice';
 import { RoutePath } from '@shared/constants/routes';
-import { useSingleItem } from '@widgets/ItemInfo/lib/useSingleItem';
-import { useHandleError } from '@src/shared/lib/useError';
+import { useSingleItem } from '@src/entities/item/model/useSingleItem';
+import { useHandleError } from '@shared/model/useHandleError';
 import { addToFavouritesDb, checkIsFavourite, deleteFromFavouritesDb } from '../api/favouritesApi';
 import styles from './AddFavButton.module.scss';
 

@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { authSchema } from '@src/features/Authorization/lib/validationSchema';
 import { IAuthFormProps, IFormInput } from '../model/types';
+import { authSchema } from '../lib/validationSchema';
 import styles from './AuthForm.module.scss';
 
 export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {

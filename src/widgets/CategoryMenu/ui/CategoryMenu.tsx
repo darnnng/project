@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@src/shared/constants/routes';
-import { useCategoriesList } from '../lib/useCategories';
+import { useCategoriesList } from '../model/useCategories';
 import { ICategoryItem } from '../model/CategoryMenu.interface';
 import styles from './CategoryMenu.module.scss';
 

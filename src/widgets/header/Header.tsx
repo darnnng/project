@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from '@src/shared/constants/routes';
 import { useAppSelector } from '@src/shared/model/reduxHooks';
-import { selectedLanguage } from '@src/features/LangChange/model/languageSlice';
-import { selectedTheme } from '@src/features/ThemeChange/model/themeSlice';
-import { useAuth } from '@src/entities/user/model/useAuth';
-import { ThemeChangeBtn } from '@src/features/ThemeChange';
-import { LangBtn } from '@src/features/LangChange/ui/LangBtn';
-import { Logout } from '@src/features/Logout';
+import { selectedLanguage } from '@features/LangChange/model/languageSlice';
+import { selectedTheme } from '@features/ThemeChange/model/themeSlice';
+import { useAuth } from '@entities/user/model/useAuth';
+import { ThemeChangeBtn } from '@features/ThemeChange';
+import { LangBtn } from '@features/LangChange/ui/LangBtn';
+import { Logout } from '@features/Logout';
 import styles from './Header.module.scss';
 
 export const Header = () => {

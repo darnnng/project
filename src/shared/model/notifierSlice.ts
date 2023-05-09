@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@src/app/store';
 
 interface IAlert {
   message: string;
@@ -24,5 +23,5 @@ export const notifierSlice = createSlice({
 });
 
 export const { createAlert } = notifierSlice.actions;
-export const notifications = (state: RootState) => state.notifier;
+export const notifications = (state: AppState) => state.notifier;
 export const notifierReducer = notifierSlice.reducer;
