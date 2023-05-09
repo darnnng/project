@@ -1,58 +1,12 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useHandleError } from '@src/shared/lib/useError';
+import { IArticle, IGalleryImage, IVariantsList } from '../model/ItemInfo.interface';
 
-interface IArticle {
-  code: string;
-  name: string;
-  galleryDetails: Array<{ baseUrl: string }>;
-  fabricSwatchThumbnails: Array<{ baseUrl: string }>;
-  whitePrice: { price: number };
-  variantsList: Array<{ size: { name: string } }>;
-}
-
-interface IGalleryImage {
-  baseUrl: string;
-}
-
-interface IVariantsList {
-  size: {
-    name: string;
-  };
-}
-
-interface ICatalogItemResults {
-  defaultArticle: {
-    code: string;
-    name: string;
-  };
-  allArticleBaseImages: string[];
-  images: Array<{ baseUrl: string }>;
-  sellingAttributes: string[];
-  price: {
-    formattedValue: string;
-  };
-}
-
-interface ICatalogData {
-  results: Array<ICatalogItemResults>;
-  pagination: {
-    totalNumberOfResults: number;
-    numberOfPages: number;
-  };
-}
-
-interface ISingleItemData {
-  product: {
-    inStock: boolean;
-    articlesList: Array<IArticle>;
-  };
-}
-
-export function useFetchSingleItem(url: string, id: string) {
+export function useSingleItem(url: string, id: string) {
   const handleError = useHandleError();
 
-  const { isLoading, data } = useQuery<ISingleItemData>({
+  const { isLoading, data } = useQuery({
     queryKey: ['singleItemData', [url]],
     queryFn: () => fetch(url).then((res) => res.json()),
     onError: (error) => handleError(error as Error),
@@ -95,6 +49,7 @@ export function useFetchSingleItem(url: string, id: string) {
 
   return {
     isLoading,
+    data,
     firebaseItem,
     galleryImages,
     sizes,
