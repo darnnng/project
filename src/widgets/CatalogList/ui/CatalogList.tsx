@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '@src/shared/model/reduxHooks';
-import { selectedFilter } from '@src/features/Sorting/model/filterSlice';
-import { selectedPage } from '@src/features/Pagination/model/paginationSlice';
-import { CatalogItem } from '@src/widgets/CatalogItem';
+import { useAppSelector } from '@shared/model/reduxHooks';
+import { selectedFilter } from '@features/Sorting/model/filterSlice';
+import { selectedPage } from '@features/Pagination/model/paginationSlice';
+import { CatalogItem } from '@entities/catalogItem';
 import { useCatalogList } from '../model/useCatalogList';
 import { IListItem } from '../model/CatalogList.interface';
 import styles from './CatalogList.module.scss';

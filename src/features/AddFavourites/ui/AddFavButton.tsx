@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '@shared/model/reduxHooks';
 import { currentUser } from '@entities/user/model/userSlice';
 import { RoutePath } from '@shared/constants/routes';
-import { useSingleItem } from '@src/entities/item/model/useSingleItem';
 import { useHandleError } from '@shared/model/useHandleError';
+import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
 import { addToFavouritesDb, checkIsFavourite, deleteFromFavouritesDb } from '../api/favouritesApi';
 import styles from './AddFavButton.module.scss';
 
