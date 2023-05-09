@@ -1,5 +1,5 @@
-import { createAlert } from '../model/notifierSlice';
-import { useAppDispatch } from '../model/reduxHooks';
+import { createAlert } from './notifierSlice';
+import { useAppDispatch } from './reduxHooks';
 
 export function useHandleError() {
   const dispatch = useAppDispatch();

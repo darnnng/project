@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@src/app/store';
 
 const initialState = {
   page: 0,
@@ -16,5 +15,5 @@ const pagesChangeSlice = createSlice({
 });
 
 export const { setPage } = pagesChangeSlice.actions;
-export const selectedPage = (state: RootState) => state.pages;
+export const selectedPage = (state: AppState) => state.pages;
 export const pagesChangeReducer = pagesChangeSlice.reducer;

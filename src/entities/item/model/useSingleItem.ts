@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { useHandleError } from '@src/shared/lib/useError';
+import { useHandleError } from '@shared/model/useHandleError';
 import { options } from '@shared/api/apiOptions';
-import { IArticle, IGalleryImage, IVariantsList } from '../model/ItemInfo.interface';
+import { IArticle, IGalleryImage, IVariantsList } from './types';
 
 export function useSingleItem(url: string, id: string) {
   const handleError = useHandleError();

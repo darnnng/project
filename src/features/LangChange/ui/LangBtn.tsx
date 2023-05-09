@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Languages } from '@src/shared/constants/languages';
-import { setLanguage } from '@src/features/LangChange/model/languageSlice';
-import { useAppDispatch, useAppSelector } from '@src/shared/model/reduxHooks';
+import { Languages } from '@shared/constants/languages';
+import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
 import { selectedTheme } from '@src/features/ThemeChange/model/themeSlice';
+import { setLanguage } from '../model/languageSlice';
 import styles from './LangBtn.module.scss';
 
 export const LangBtn = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FavouriteList } from '@src/widgets/FavouriteList/FavouriteList';
+import { FavouriteList } from '@src/widgets/FavouriteList/ui/FavouriteList';
 import { CategoryMenu } from '../../widgets/CategoryMenu';
 import styles from './FavouritesPage.module.scss';
 

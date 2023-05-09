@@ -5,7 +5,7 @@ import { useAppSelector } from '@src/shared/model/reduxHooks';
 import { selectedFilter } from '@src/features/Sorting/model/filterSlice';
 import { selectedPage } from '@src/features/Pagination/model/paginationSlice';
 import { CatalogItem } from '@src/widgets/CatalogItem';
-import { useCatalogList } from '../lib/useCatalogList';
+import { useCatalogList } from '../model/useCatalogList';
 import { IListItem } from '../model/CatalogList.interface';
 import styles from './CatalogList.module.scss';
 

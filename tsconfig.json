@@ -30,6 +30,6 @@
       "@public/*": ["./public/*"]
     }
   },
-  "include": ["./src/**/*", "./declaration.d.ts"],
+  "include": ["./src/**/*", "./declaration.d.ts", "src/app/storeTypes.d.ts"],
   "exclude": ["public", "node_modules"]
 }

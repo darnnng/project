@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@src/app/store';
 
 const initialState = {
   email: null,
@@ -22,5 +21,5 @@ const userSlice = createSlice({
 });
 
 export const { setUser, removeUser } = userSlice.actions;
-export const currentUser = (state: RootState) => state.user;
+export const currentUser = (state: AppState) => state.user;
 export const userReducer = userSlice.reducer;

@@ -1,14 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { currentUser } from '@src/entities/user/model/userSlice';
-import { useAppDispatch, useAppSelector } from '@src/shared/model/reduxHooks';
-import {
-  deleteFromFavouritesDb,
-  getFavouritesDb,
-} from '@src/features/AddFavourites/api/favouritesApi';
-import { IFavItem } from '@src/widgets/FavouriteList/IFavouritesList.interface';
-import { createAlert } from '@src/shared/model/notifierSlice';
-import { FavouriteItem } from '../FavouriteItem';
+import { currentUser } from '@entities/user/model/userSlice';
+import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
+import { deleteFromFavouritesDb, getFavouritesDb } from '@features/AddFavourites/api/favouritesApi';
+import { createAlert } from '@shared/model/notifierSlice';
+import { FavouriteItem } from '../../FavouriteItem';
+import { IFavItem } from '../model/IFavouritesList.interface';
 import styles from './FavouriteList.module.scss';
 
 export const FavouriteList = () => {
