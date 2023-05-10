@@ -38,6 +38,8 @@ const CatalogPage = () => {
     dispatch(setFilter(filter));
   };
 
+  //TO-DO ADD PAGE NUMBER
+
   return (
     <>
       {isLoading ? (

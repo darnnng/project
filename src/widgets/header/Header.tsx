@@ -66,7 +66,7 @@ export const Header = () => {
         </div>
         <h3 className={styles.mainTitle}>Threads & Co.</h3>
         <div className={styles.iconsRight}>
-          <Link to={`/${RoutePath.BASKET}`} className={styles.linkSignUp}>
+          <Link to={`/${RoutePath.CART}`} className={styles.linkSignUp}>
             <span
               className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
             >

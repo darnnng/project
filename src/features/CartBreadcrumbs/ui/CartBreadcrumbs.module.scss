@@ -1,0 +1,21 @@
+@import './../../../shared/variables.scss';
+
+.navMenu {
+  font-family: $fontFamily;
+  font-size: $fontLarge;
+}
+
+.crumbsList {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.selected {
+  color: rgb(90, 86, 86);
+}
+
+.crumbItem {
+  cursor: pointer;
+}

@@ -29,9 +29,15 @@ export const FavouriteItem = ({
         >
           delete
         </div>
-        <button className={styles.addButton} onClick={handleAddToCart}>
-          {item.inStock === 'false' ? t('Not in stock') : t('Add to cart')}
-        </button>
+        {item.inStock === 'false' ? (
+          <button className={styles.disabledAddButton} disabled>
+            {t('Not in stock')}
+          </button>
+        ) : (
+          <button className={styles.addButton} onClick={handleAddToCart}>
+            {t('Add to cart')}
+          </button>
+        )}
       </div>
     </div>
   );
