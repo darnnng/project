@@ -1,0 +1,13 @@
+@import './../../shared/variables.scss';
+.divContainer {
+  position: relative;
+}
+
+.dark {
+  background-color: $backgroundDarkGray;
+}
+
+.outletContainer {
+  padding-bottom: 2rem;
+  min-height: 75vh;
+}

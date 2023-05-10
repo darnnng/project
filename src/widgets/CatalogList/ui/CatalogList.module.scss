@@ -1,0 +1,10 @@
+@import './../../../shared/variables.scss';
+
+.itemsContainer {
+  display: flex;
+  justify-content: center;
+  column-gap: 40px;
+  row-gap: 50px;
+  flex-wrap: wrap;
+  font-family: $fontFamily;
+}

@@ -21,12 +21,15 @@
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "@constants/*": ["./src/constants/*"],
-      "@components/*": ["./src/components/*"],
       "@src/*": ["./src/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@features/*": ["./src/features/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@shared/*": ["./src/shared/*"],
       "@public/*": ["./public/*"]
     }
   },
-  "include": ["./src/**/*", "./declaration.d.ts"],
+  "include": ["./src/**/*", "./declaration.d.ts", "src/app/storeTypes.d.ts"],
   "exclude": ["public", "node_modules"]
 }

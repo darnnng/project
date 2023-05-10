@@ -1,0 +1,27 @@
+@import './../../shared/variables.scss';
+
+.login {
+  font-family: $fontFamily;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  flex-direction: column;
+}
+
+.loginTitle {
+  font-size: $fontLarge;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  @media (max-width: $screenMid) {
+    font-size: $fontMid;
+    padding: 0px 15px;
+  }
+}
+
+.linkSignUp {
+  text-decoration: none;
+  color: $hoverColor;
+  padding-left: 5px;
+}

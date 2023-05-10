@@ -9,7 +9,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/index.tsx',
+    app: './src/app/index.tsx',
   },
   plugins: [
     new EnvironmentPlugin([]),
@@ -66,6 +66,7 @@ module.exports = {
           },
           {
             loader: 'css-loader',
+
             options: {
               importLoaders: 1,
               modules: {
@@ -90,7 +91,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        include: resolve(__dirname, 'src/assets'),
+        include: resolve(__dirname, 'src/pages/HomePage/assets'),
         type: 'asset/resource',
       },
     ],
@@ -99,9 +100,12 @@ module.exports = {
     symlinks: false,
     extensions: ['.ts', '.tsx', '.js', '.scss', '.json'],
     alias: {
-      '@constants': path.resolve(__dirname, './src/constants/'),
-      '@components': path.resolve(__dirname, './src/components/'),
       '@src': path.resolve(__dirname, 'src/'),
+      '@pages': path.resolve(__dirname, './src/pages/'),
+      '@widgets': path.resolve(__dirname, './src/widgets/'),
+      '@features': path.resolve(__dirname, './src/features/'),
+      '@entities': path.resolve(__dirname, './src/entities/'),
+      '@shared': path.resolve(__dirname, './src/shared/'),
       '@public': path.resolve(__dirname, 'public'),
     },
   },
