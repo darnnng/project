@@ -1,0 +1,15 @@
+@import './../../../shared/variables.scss';
+
+.addButton {
+  min-width: 200px;
+  min-height: 45px;
+  font-family: $fontFamily;
+  background-color: $backgroundDark;
+  color: $fontLight;
+  padding: 10px;
+  font-size: $fontMid;
+  &:hover {
+    background-color: $backgroundLight;
+    color: $fontDark;
+  }
+}

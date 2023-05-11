@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AddFavButton } from '@features/AddFavourites';
@@ -9,6 +9,7 @@ import styles from './ItemInfo.module.scss';
 export const ItemInfo = () => {
   const { t } = useTranslation();
   const { id, category } = useParams();
+  const [size, setSize] = useState('');
   const navigate = useNavigate();
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
   const { articles, galleryImages, data, sizes } = useSingleItem(url, id!);
@@ -16,6 +17,12 @@ export const ItemInfo = () => {
   const handleChangeArticle = (articleId: string) => {
     navigate(`/catalog/${category}/${articleId}`);
   };
+
+  const handleChangeSize = (size: string) => {
+    setSize(size);
+  };
+
+  //ПЕРЕДАВАТЬ КАК ПРОПСЫ SIZE В ADD BUTTON
 
   return (
     <>
@@ -36,7 +43,10 @@ export const ItemInfo = () => {
             ))}
           </div>
 
-          <select className={styles.styledSelect}>
+          <select
+            onChange={(event) => handleChangeSize(event.target.value)}
+            className={styles.styledSelect}
+          >
             <option hidden>{t('Select size')}</option>
             {sizes?.map((size: string) => (
               <option key={size}>{size}</option>
