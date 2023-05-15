@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { CartBreadcrumbs } from '@features/CartBreadcrumbs';
+import { CategoryMenu } from '@src/widgets/CategoryMenu';
+import { FavouriteList } from '@src/widgets/FavouriteList';
 import styles from './FavouritesPage.module.scss';
 
 const FavouritesPage = () => {
@@ -8,9 +9,10 @@ const FavouritesPage = () => {
 
   return (
     <>
-      <CartBreadcrumbs />
+      <CategoryMenu />
       <div className={styles.pageContainer}>
         <p className={styles.pageTitle}>{t('Your favourites')}</p>
+        <FavouriteList />
       </div>
     </>
   );

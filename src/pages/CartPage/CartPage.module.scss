@@ -1,5 +1,14 @@
+@import './../../shared/variables.scss';
+
 .pageContainer {
   display: flex;
   flex-direction: column;
+  font-family: $fontFamily;
   margin: 20px 40px;
+}
+
+.orderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

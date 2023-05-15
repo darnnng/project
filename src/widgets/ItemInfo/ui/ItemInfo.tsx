@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AddFavButton } from '@features/AddFavourites';
 import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
+import { AddToCartBtn } from '@src/features/AddToCart/ui/AddToCartBtn';
 import { IArticleElement } from '../model/ItemInfo.interface';
 import styles from './ItemInfo.module.scss';
 
@@ -12,7 +13,7 @@ export const ItemInfo = () => {
   const [size, setSize] = useState('');
   const navigate = useNavigate();
   const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
-  const { articles, galleryImages, data, sizes } = useSingleItem(url, id!);
+  const { articles, galleryImages, data, sizes, firebaseItem } = useSingleItem(url, id!);
 
   const handleChangeArticle = (articleId: string) => {
     navigate(`/catalog/${category}/${articleId}`);
@@ -21,8 +22,6 @@ export const ItemInfo = () => {
   const handleChangeSize = (size: string) => {
     setSize(size);
   };
-
-  //ПЕРЕДАВАТЬ КАК ПРОПСЫ SIZE В ADD BUTTON
 
   return (
     <>
@@ -53,8 +52,8 @@ export const ItemInfo = () => {
             ))}
           </select>
           <div className={styles.btnContainer}>
-            {data?.product?.inStock ? (
-              <button className={styles.addButton}>{t('Add to cart')}</button>
+            {firebaseItem?.inStock ? (
+              <AddToCartBtn size={size} />
             ) : (
               <button className={styles.disabledAddButton} disabled>
                 {t('Out of stock')}
