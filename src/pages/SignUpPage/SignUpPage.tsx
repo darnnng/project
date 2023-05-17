@@ -8,21 +8,14 @@ import styles from '@pages/LogInPage/LogInPage.module.scss';
 import { auth } from '@shared/api/firebase';
 import { setUser } from '@entities/user/model/userSlice';
 import { useAppDispatch } from '@shared/model/reduxHooks';
-import { createAlert } from '@shared/model/notifierSlice';
 import { IFormInput } from '@features/Authorization/model/types';
+import { useHandleError } from '@src/shared/model/useHandleError';
 
 const SignUpPage = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const handleError = (error: string) => {
-    dispatch(
-      createAlert({
-        message: error,
-      })
-    );
-  };
+  const handleError = useHandleError();
 
   const onSignUpSubmit = async (input: IFormInput) => {
     const { email, password } = input;
@@ -34,7 +27,6 @@ const SignUpPage = () => {
             id: user.uid,
           })
         );
-
         navigate(`/${RoutePath.CATALOG}`);
       })
       .catch((err) => handleError(err.message));

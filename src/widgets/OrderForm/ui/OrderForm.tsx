@@ -3,20 +3,21 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { RoutePath } from '@src/shared/constants/routes';
-import { useAppSelector } from '@shared/model/reduxHooks';
-import { currentUser } from '@entities/user/model/userSlice';
-import { useHandleError } from '@src/shared/model/useHandleError';
+import { RoutePath } from '@shared/constants/routes';
+import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
+import { currentUser, setAddress } from '@entities/user/model/userSlice';
+import { useHandleError } from '@shared/model/useHandleError';
 import { orderSchema } from '../lib/validationSchema';
-import { IOrderFormInput, IOrderFormProps } from '../model/OrderForm.interface';
+import { IOrderFormInput } from '../model/OrderForm.interface';
 import styles from './OrderForm.module.scss';
 
-export const OrderForm = ({ cartItems }: IOrderFormProps) => {
+export const OrderForm = () => {
   const { t } = useTranslation();
   const [price, setPrice] = useState('0');
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const handleError = useHandleError();
-  const { userId } = useAppSelector(currentUser);
+  const { userId, cartItems } = useAppSelector(currentUser);
 
   const {
     register,
@@ -39,21 +40,11 @@ export const OrderForm = ({ cartItems }: IOrderFormProps) => {
     setPrice(totalCost.toFixed(2));
   }, [userId, handleError, cartItems]);
 
-  const onSubmit = (input: IOrderFormInput) => {
-    const { city, street, house } = input;
-    navigate(`/${RoutePath.PAYMENT}`);
+  console.log('oRDER');
 
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then(({ user }) => {
-    //     dispatch(
-    //       setUser({
-    //         email: user.email,
-    //         id: user.uid,
-    //       })
-    //     );
-    //     navigate(`/${RoutePath.CATALOG}`);
-    //   })
-    //   .catch((err) => onError(err.message));
+  const onSubmit = (input: IOrderFormInput) => {
+    dispatch(setAddress(input));
+    navigate(`/${RoutePath.PAYMENT}`);
   };
 
   //по клику proceed to checkout создавать заказ в котором будут свойства items,adres, price, paid:false
