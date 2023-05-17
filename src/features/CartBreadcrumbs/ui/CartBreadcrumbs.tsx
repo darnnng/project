@@ -15,19 +15,11 @@ export const CartBreadcrumbs = () => {
   return (
     <nav className={styles.navMenu}>
       <ul className={styles.crumbsList}>
-        <li
-          className={`${styles.crumbItem} ${
-            isSelected(`/${RoutePath.CART}`) ? styles.selected : ''
-          }`}
-        >
+        <li className={` ${isSelected(`/${RoutePath.CART}`) ? styles.selected : ''}`}>
           {t('Order details')}
         </li>
-        <li className={styles.crumbItem}>❯</li>
-        <li
-          className={`${styles.crumbItem} ${
-            isSelected(`/${RoutePath.PAYMENT}`) ? styles.selected : ''
-          }`}
-        >
+        <li>❯</li>
+        <li className={` ${isSelected(`/${RoutePath.PAYMENT}`) ? styles.selected : ''}`}>
           {t('Payment')}
         </li>
       </ul>

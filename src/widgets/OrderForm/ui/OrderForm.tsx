@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@src/shared/constants/routes';
+import { useAppSelector } from '@shared/model/reduxHooks';
+import { currentUser } from '@entities/user/model/userSlice';
+import { useHandleError } from '@src/shared/model/useHandleError';
 import { orderSchema } from '../lib/validationSchema';
-import { IOrderFormInput } from '../model/OrderForm.interface';
+import { IOrderFormInput, IOrderFormProps } from '../model/OrderForm.interface';
 import styles from './OrderForm.module.scss';
 
-export const OrderForm = () => {
+export const OrderForm = ({ cartItems }: IOrderFormProps) => {
   const { t } = useTranslation();
+  const [price, setPrice] = useState('0');
   const navigate = useNavigate();
+  const handleError = useHandleError();
+  const { userId } = useAppSelector(currentUser);
+
   const {
     register,
     handleSubmit,
@@ -20,6 +27,17 @@ export const OrderForm = () => {
     defaultValues: { city: '', street: '', house: '' },
     resolver: yupResolver(orderSchema),
   });
+
+  useEffect(() => {
+    let totalCost = 0;
+    for (const itemId in cartItems) {
+      const item = cartItems[itemId];
+      if (item?.price) {
+        totalCost += parseFloat(item.price);
+      }
+    }
+    setPrice(totalCost.toFixed(2));
+  }, [userId, handleError, cartItems]);
 
   const onSubmit = (input: IOrderFormInput) => {
     const { city, street, house } = input;
@@ -37,6 +55,8 @@ export const OrderForm = () => {
     //   })
     //   .catch((err) => onError(err.message));
   };
+
+  //по клику proceed to checkout создавать заказ в котором будут свойства items,adres, price, paid:false
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -83,7 +103,9 @@ export const OrderForm = () => {
         </div>
         <div className={styles.divider} />
         <div className={styles.divTotal}>
-          <p className={styles.totalTitle}>Total: </p>
+          <p className={styles.totalTitle}>
+            Total: <b>{price}$</b>
+          </p>
         </div>
         <button className={styles.checkoutBtn} type="submit">
           {t('Proceed to checkout')}

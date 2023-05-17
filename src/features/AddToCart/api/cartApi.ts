@@ -27,6 +27,23 @@ export const getItemsFromCart = async (userId: string) => {
   const snapshot = await get(cartObj);
   return snapshot.val()?.cart || [];
 };
+
+// export const getCartPrice = async (userId: string) => {
+//   const cartObj = ref(db, `users/${userId}`);
+//   const snapshot = await get(cartObj);
+//   const cart = snapshot.val()?.cart || [];
+//   let totalCost = 0;
+
+//   for (const itemId in cart) {
+//     const item = cart[itemId];
+//     if (item.price) {
+//       totalCost += parseFloat(item.price);
+//     }
+//   }
+
+//   return totalCost.toFixed(2);
+// };
+
 //TO-DO чек по размеру?
 export const checkIfIsInCart = async (userId: string, item: any) => {
   const cartObj = ref(db, `users/${userId}/cart/${item.id}`);

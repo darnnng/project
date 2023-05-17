@@ -10,7 +10,6 @@ export const FavouriteItem = ({
   handleAddToCart,
 }: IFavouriteItemsProps) => {
   const { t } = useTranslation();
-  //TO-DO MAKE NOT IN STOCK GRAY COLOR
 
   return (
     <div key={item.id} className={styles.favItem}>

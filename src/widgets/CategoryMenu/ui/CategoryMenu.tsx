@@ -7,7 +7,7 @@ import styles from './CategoryMenu.module.scss';
 
 export const CategoryMenu = () => {
   const navigate = useNavigate();
-  const categoriesList = useCategoriesList();
+  const { categoriesList } = useCategoriesList();
   const handleClick = (category: string) => {
     navigate(`/${RoutePath.CATALOG}/${category}`);
   };

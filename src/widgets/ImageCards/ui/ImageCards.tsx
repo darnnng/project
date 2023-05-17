@@ -7,11 +7,9 @@ import { useImageCards } from '../model/useImageCards';
 import styles from './ImageCards.module.scss';
 
 export const ImageCards = () => {
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=3&categories=ladies_all`;
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const { itemsList } = useImageCards(url);
+  const { itemsList } = useImageCards();
 
   const moveToItemPage = (id: string) => {
     navigate(`/${RoutePath.CATALOG}/ladies_all/${id}`);

@@ -12,6 +12,10 @@ form {
     margin-bottom: 5px;
   }
 
+  input:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+
   button {
     padding: 0.5rem;
     background-color: $dark;

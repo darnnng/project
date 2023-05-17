@@ -4,8 +4,9 @@ import { options } from '@shared/api/apiOptions';
 import { useHandleError } from '@shared/model/useHandleError';
 import { ICardItemResults } from './ImageCards.interface';
 
-export const useImageCards = (url: string) => {
+export const useImageCards = () => {
   const handleError = useHandleError();
+  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=3&categories=ladies_all`;
 
   const { data, isLoading } = useQuery({
     queryKey: 'cardsData',
