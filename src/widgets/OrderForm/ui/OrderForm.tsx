@@ -47,8 +47,6 @@ export const OrderForm = () => {
     navigate(`/${RoutePath.PAYMENT}`);
   };
 
-  //по клику proceed to checkout создавать заказ в котором будут свойства items,adres, price, paid:false
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.formContainer}>

@@ -3,7 +3,6 @@ import { ICartItemProps } from '../model/types';
 import styles from './CartItem.module.scss';
 
 export const CartItem = ({ item, handleDeleteFromCart, userId }: ICartItemProps) => {
-  //TO-DO SMTH WITH RERENDERINGS
   return (
     <div key={item.id} className={styles.cartItem}>
       <div className={styles.itemInfo}>

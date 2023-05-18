@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { currentUser, setCartItems } from '@entities/user/model/userSlice';
@@ -6,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
 import { CartItem } from '@entities/cartItem/ui/CartItem';
 import { deleteFromCartDb, getItemsFromCart } from '@src/features/AddToCart/api/cartApi';
 import { useHandleError } from '@shared/model/useHandleError';
-import { ICartItem } from '../model/CartItemList.interface';
+import { ICartItem } from '@entities/cartItem/model/types';
 import styles from './CartList.module.scss';
 
 export const CartList = () => {
@@ -37,12 +36,10 @@ export const CartList = () => {
       });
   };
 
-  console.log('bla');
-
   return (
     <div className={styles.cartContainer}>
       {cartItems && Object.values(cartItems).length ? (
-        Object.values(cartItems)?.map((item: any) => (
+        Object.values(cartItems)?.map((item: ICartItem) => (
           <CartItem
             key={item.id}
             item={item}

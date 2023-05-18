@@ -1,16 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ICartItem } from '@entities/cartItem/model/types';
-
-interface IUserState {
-  email: string | null;
-  userId: string | null;
-  cartItems: Record<string, ICartItem> | Record<string, never>;
-  address: {
-    city: string;
-    street: string;
-    house: string;
-  };
-}
+import { IUserState } from './types';
 
 const initialState: IUserState = {
   email: null,
