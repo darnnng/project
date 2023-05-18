@@ -1,0 +1,19 @@
+@import './../../shared/variables.scss';
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: $fontFamily;
+  margin: 40px 40px;
+}
+
+.orderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 1450px) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}

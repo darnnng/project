@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Spinner } from '@shared/ui/Spinner';
 import { ItemInfo } from '@widgets/ItemInfo';
 import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
-import { CategoryMenu } from '../../widgets/CategoryMenu';
+import { CategoryMenu } from '@widgets/CategoryMenu';
 import styles from './ItemPage.module.scss';
 
 const ItemPage = () => {

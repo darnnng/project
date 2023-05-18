@@ -1,0 +1,86 @@
+@import './../../../shared/variables.scss';
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+  background-color: $light1;
+  padding: 20px;
+  border: 1px solid $hoverColor;
+  border-radius: 5px;
+  margin-top: 20px;
+  height: 100%;
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  button {
+    padding: 0.5rem;
+    background-color: $dark;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: $fontFamily;
+    margin: 20px 0px;
+
+    &:hover {
+      background-color: $hoverColor;
+    }
+  }
+
+  .formLabel {
+    font-size: 12px;
+    color: $hoverColor;
+    font-family: $fontFamilyRoboto;
+  }
+
+  .formInput {
+    font-family: $fontFamily;
+  }
+  .formErrorInput {
+    font-family: $fontFamily;
+    border: 1px solid $error;
+  }
+
+  @media (max-width: $screenSmall) {
+    max-width: 260px;
+  }
+}
+
+.errorMessage {
+  color: $error;
+  font-size: 14px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.orderTitle {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  background-color: $hoverColor;
+  height: 2px;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.totalTitle {
+  font-size: $fontMid;
+}
+
+.checkoutBtn {
+  width: 100%;
+}

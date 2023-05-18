@@ -7,22 +7,15 @@ import { AuthForm } from '@src/features/Authorization';
 import { setUser } from '@src/entities/user/model/userSlice';
 import { auth } from '@src/shared/api/firebase';
 import { useAppDispatch } from '@src/shared/model/reduxHooks';
-import { createAlert } from '@src/shared/model/notifierSlice';
 import { IFormInput } from '@src/features/Authorization/model/types';
+import { useHandleError } from '@src/shared/model/useHandleError';
 import styles from './LogInPage.module.scss';
 
 const LogInPage = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const onError = (error: string) => {
-    dispatch(
-      createAlert({
-        message: error,
-      })
-    );
-  };
+  const onError = useHandleError();
 
   const onLoginSubmit = (input: IFormInput) => {
     const { email, password } = input;

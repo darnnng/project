@@ -24,7 +24,7 @@ export function useSingleItem(url: string, id: string) {
       picture: article?.galleryDetails[0]?.baseUrl,
       price: String(article?.whitePrice.price),
       name: article?.name,
-      inStock: String(data?.product?.inStock),
+      inStock: article?.inStore || data?.product?.inStock,
     }),
     [article, data?.product?.inStock]
   );

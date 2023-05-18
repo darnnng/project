@@ -3,9 +3,11 @@ export enum RoutePath {
   LOGIN = 'login',
   SIGNUP = 'signup',
   CATALOG = 'catalog',
-  BASKET = 'basket',
+  CART = 'cart',
   ERROR = 'error',
   STORES = 'stores',
   LIKES = 'likes',
+  DETAILS = 'details',
+  PAYMENT = 'payment',
   GENERAL = '*',
 }

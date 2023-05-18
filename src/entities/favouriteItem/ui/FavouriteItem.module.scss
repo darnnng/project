@@ -5,6 +5,7 @@
   height: 150px;
   border: 1px solid $backgroundDark;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .favItem {
@@ -81,4 +82,14 @@
   &:hover {
     background-color: $hoverColor;
   }
+}
+
+.disabledAddButton {
+  font-family: $fontFamily;
+  background-color: $hoverColor;
+  color: $fontLight;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: $fontMid;
+  border: none;
 }

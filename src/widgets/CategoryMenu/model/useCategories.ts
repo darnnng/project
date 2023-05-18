@@ -8,7 +8,7 @@ export function useCategoriesList() {
   const url =
     'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/categories/list?lang=en&country=us';
 
-  const { data: catData } = useQuery({
+  const { data: catData, isLoading: categoriesLoading } = useQuery({
     queryKey: 'categoriesData',
     queryFn: () => fetch(url, options).then((res) => res.json()),
     onError: (error) => handleError(error as Error),
@@ -18,5 +18,5 @@ export function useCategoriesList() {
     return { name: elem.CatName, id: elem.tagCodes.join('') };
   });
 
-  return categoriesList;
+  return { categoriesList, categoriesLoading };
 }

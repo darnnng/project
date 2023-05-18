@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IUserState } from './types';
 
-const initialState = {
+const initialState: IUserState = {
   email: null,
   userId: null,
+  cartItems: {},
+  address: {
+    city: '',
+    street: '',
+    house: '',
+  },
 };
 
 const userSlice = createSlice({
@@ -13,13 +20,28 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.userId = action.payload.id;
     },
+    setCartItems(state, action) {
+      const items = action.payload;
+      if (items) {
+        state.cartItems = items;
+      }
+    },
+    setAddress(state, action) {
+      state.address = action.payload;
+    },
     removeUser(state) {
       state.email = null;
       state.userId = null;
+      state.cartItems = {};
+      state.address = {
+        city: '',
+        street: '',
+        house: '',
+      };
     },
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, setCartItems, setAddress } = userSlice.actions;
 export const currentUser = (state: AppState) => state.user;
 export const userReducer = userSlice.reducer;

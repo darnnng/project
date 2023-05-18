@@ -23,11 +23,10 @@
 
 .selectFilter {
   display: flex;
-  justify-content: row;
+  flex-direction: row;
   column-gap: 10px;
-  @media (max-width: $screenMid) {
+  @media (max-width: $screenXs) {
     row-gap: 20px;
-    flex-direction: column;
   }
 }
 

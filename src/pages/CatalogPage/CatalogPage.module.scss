@@ -45,3 +45,12 @@
     width: 200px;
   }
 }
+
+.pagesDiv {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  @media (max-width: $screenSmall) {
+    flex-direction: column;
+  }
+}

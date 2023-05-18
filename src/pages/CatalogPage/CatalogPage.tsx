@@ -38,6 +38,8 @@ const CatalogPage = () => {
     dispatch(setFilter(filter));
   };
 
+  //TO-DO RETURN TO THE TOP OF THE PAGE WHEN CHANGING PAGE
+
   return (
     <>
       {isLoading ? (
@@ -47,9 +49,14 @@ const CatalogPage = () => {
           <CategoryMenu />
           <div className={styles.filters}>
             <SortingSelect onFilterChange={onFilterChange} filter={filter} />
-            <p className={styles.totalNumber}>
-              {t('Total number of items:')} {totalNumberOfItems}
-            </p>
+            <div className={styles.pagesDiv}>
+              <p>
+                {t('Page')} <b>{page + 1}</b>
+              </p>
+              <p className={styles.totalNumber}>
+                {t('Total number of items:')} {totalNumberOfItems}
+              </p>
+            </div>
           </div>
           <CatalogList />
           {!!totalNumberOfItems && (
