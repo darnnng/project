@@ -1,11 +1,11 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppSelector } from '@src/shared/model/reduxHooks';
-import { currentUser } from '@src/entities/user/model/userSlice';
-import { useHandleError } from '@src/shared/model/useHandleError';
-import { useCartItem } from '@src/entities/cartItem/model/useCartItem';
-import { RoutePath } from '@src/shared/constants/routes';
+import { useAppSelector } from '@shared/model/reduxHooks';
+import { currentUser } from '@entities/user/model/userSlice';
+import { useHandleError } from '@shared/model/useHandleError';
+import { useCartItem } from '@entities/cartItem/model/useCartItem';
+import { RoutePath } from '@shared/constants/routes';
 import { addToCartDb, checkIfIsInCart } from '../api/cartApi';
 import { IAddBtnProps } from '../model/types';
 import styles from './AddToCartBtn.module.scss';

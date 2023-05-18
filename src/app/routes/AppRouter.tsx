@@ -57,6 +57,8 @@ export const AppRouter = () => {
             <Route path=":category/:id" element={<ItemPage />} />
           </Route>
 
+          <Route path={'/:id'} element={<ItemPage />}></Route>
+
           <Route
             path={RoutePath.CART}
             element={

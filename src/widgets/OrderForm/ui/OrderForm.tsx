@@ -40,8 +40,6 @@ export const OrderForm = () => {
     setPrice(totalCost.toFixed(2));
   }, [userId, handleError, cartItems]);
 
-  console.log('oRDER');
-
   const onSubmit = (input: IOrderFormInput) => {
     dispatch(setAddress(input));
     navigate(`/${RoutePath.PAYMENT}`);

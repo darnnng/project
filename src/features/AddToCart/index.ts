@@ -1,1 +1,1 @@
-export {};
+export { AddToCartBtn } from './ui/AddToCartBtn';

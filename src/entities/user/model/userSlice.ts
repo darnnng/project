@@ -27,7 +27,6 @@ const userSlice = createSlice({
       }
     },
     setAddress(state, action) {
-      console.log(action.payload);
       state.address = action.payload;
     },
     removeUser(state) {

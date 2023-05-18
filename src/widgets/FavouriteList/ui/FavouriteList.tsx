@@ -37,10 +37,6 @@ export const FavouriteList = () => {
       });
   };
 
-  const handleAddToCart = () => {
-    console.log('item was added to cart'); //TO-DO IMLEMENT CART
-  };
-
   return (
     <div className={styles.favouritesContainer}>
       {Object.values(favItems).length ? (
@@ -50,7 +46,6 @@ export const FavouriteList = () => {
             item={item}
             handleDeleteFromFavs={handleDeleteFromFavs}
             userId={userId!}
-            handleAddToCart={handleAddToCart}
           />
         ))
       ) : (
