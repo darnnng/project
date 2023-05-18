@@ -14,7 +14,7 @@ const HomePage = () => {
   const { isLoading } = useImageCards();
   return (
     <>
-      {categoriesLoading || isLoading ? (
+      {categoriesLoading && isLoading ? (
         <Spinner />
       ) : (
         <>
