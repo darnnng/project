@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { currentUser, setCartItems } from '@entities/user/model/userSlice';
 import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
@@ -6,6 +6,7 @@ import { CartItem } from '@entities/cartItem/ui/CartItem';
 import { deleteFromCartDb, getItemsFromCart } from '@src/features/AddToCart/api/cartApi';
 import { useHandleError } from '@shared/model/useHandleError';
 import { ICartItem } from '@entities/cartItem/model/types';
+import { Spinner } from '@shared/ui/Spinner';
 import styles from './CartList.module.scss';
 
 export const CartList = () => {
@@ -13,6 +14,7 @@ export const CartList = () => {
   const { userId, cartItems } = useAppSelector(currentUser);
   const handleError = useHandleError();
   const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getItemsFromCart(userId!) //TO-DO SORT BY ADDING DATE
@@ -21,7 +23,8 @@ export const CartList = () => {
       })
       .catch((error) => {
         handleError(error);
-      });
+      })
+      .finally(() => setLoading(false));
   }, [userId, handleError, dispatch]);
 
   const handleDeleteFromCart = (userId: string, item: ICartItem) => {
@@ -38,8 +41,10 @@ export const CartList = () => {
 
   return (
     <div className={styles.cartContainer}>
-      {cartItems && Object.values(cartItems).length ? (
-        Object.values(cartItems)?.map((item: ICartItem) => (
+      {loading ? (
+        <Spinner />
+      ) : cartItems && Object.values(cartItems).length ? (
+        Object.values(cartItems).map((item: ICartItem) => (
           <CartItem
             key={item.id}
             item={item}

@@ -5,6 +5,7 @@ import { useAppSelector } from '@shared/model/reduxHooks';
 import { deleteFromFavouritesDb, getFavouritesDb } from '@features/AddFavourites/api/favouritesApi';
 import { useHandleError } from '@src/shared/model/useHandleError';
 import { FavouriteItem } from '@entities/favouriteItem';
+import { Spinner } from '@shared/ui/Spinner';
 import { IFavItem } from '../model/IFavouritesList.interface';
 import styles from './FavouriteList.module.scss';
 
@@ -13,6 +14,7 @@ export const FavouriteList = () => {
   const [favItems, setFavItems] = useState<Record<string, IFavItem>>({});
   const { userId } = useAppSelector(currentUser);
   const handleError = useHandleError();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getFavouritesDb(userId!) //TO-DO SORT BY ADDING DATE
@@ -21,7 +23,8 @@ export const FavouriteList = () => {
       })
       .catch((error) => {
         handleError(error);
-      });
+      })
+      .finally(() => setLoading(false));
   }, [userId, handleError]);
 
   const handleDeleteFromFavs = (userId: string, item: IFavItem) => {
@@ -39,7 +42,9 @@ export const FavouriteList = () => {
 
   return (
     <div className={styles.favouritesContainer}>
-      {Object.values(favItems).length ? (
+      {loading ? (
+        <Spinner />
+      ) : Object.values(favItems).length ? (
         Object.values(favItems)?.map((item: IFavItem) => (
           <FavouriteItem
             key={item.id}
