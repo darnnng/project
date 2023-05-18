@@ -7,4 +7,4 @@ api that was used for project: https://rapidapi.com/apidojo/api/hm-hennes-maurit
 
 webpack 5 typescript scss-modules <br> React Router i18n (+i18scanner) redux-toolkit redux-persist <br> react-hook-form(+ yup for validation) react-query firebase
 используется методология Feature-Sliced Design 
-настроен проект, роутинг, мелкие компоненты(типа notifier и т.д),логин/регистрация, смена темы, локализация, главная страница,страница каталога (пагинация, фильтры), страница товара (добавление в favourites), страница с favourite items; пока в отдельном ПР лежит страница корзины- cart page 
+настроен проект, роутинг, мелкие компоненты(типа notifier и т.д),логин/регистрация, смена темы, локализация, главная страница,страница каталога (пагинация, фильтры), страница товара (добавление в favourites), страница с favourite items; пока в отдельном ПР лежит страница корзины- cart page (ветка feature/cart)
