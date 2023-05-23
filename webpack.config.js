@@ -1,11 +1,8 @@
+import path, { resolve } from 'path';
 import { fileURLToPath } from 'url';
-import path, { resolve as _resolve } from 'path';
-const __filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(__filename);
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import ESLintPlugin from 'eslint-webpack-plugin';
-import pkg from 'webpack';
+import CompressionPlugin from 'compression-webpack-plugin';
+import { ESBuildMinifyPlugin } from 'esbuild-loader';
+import { merge } from 'webpack-merge';
 import {
   configureAssetsLoader,
   configureImagesLoader,
@@ -15,68 +12,81 @@ import {
   configureTSXLoader,
   configureTsLoader,
 } from './config/loaders.js';
+import { setPluginsPkg } from './config/plugins.js';
+import { setResolvers } from './config/resolvers.js';
+import { buildDevServer } from './config/buildDevServer.js';
+const __filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(__filename);
 
-const { EnvironmentPlugin, ProvidePlugin } = pkg;
+const webpackConfig = (env) => {
+  const isProduction = env === 'production';
 
-export const entry = {
-  app: './src/app/index.tsx',
-};
-export const plugins = [
-  new EnvironmentPlugin([]),
-  new HtmlWebpackPlugin({
-    template: './public/index.html',
-  }),
-  new ForkTsCheckerWebpackPlugin(),
-  new ESLintPlugin({
-    emitError: true,
-    emitWarning: true,
-    failOnError: true,
-    extensions: ['.ts', '.tsx', '.js'],
-  }),
-  new ProvidePlugin({
-    process: 'process/browser',
-  }),
-];
-export const module = {
-  rules: [
-    configureStyleLoader(),
-    configureTsLoader(),
-    configureAssetsLoader(),
-    configureSCSSLoader(),
-    configureSCSSmoduleLoader(),
-    configureTSXLoader(),
-    configureImagesLoader(),
-  ],
+  const config = {
+    entry: {
+      app: path.resolve(dirname, './src/app/index.tsx'),
+    },
+    plugins: setPluginsPkg(),
+    module: {
+      rules: [
+        configureStyleLoader(),
+        configureTsLoader(),
+        configureAssetsLoader(),
+        configureSCSSLoader(),
+        configureSCSSmoduleLoader(),
+        configureTSXLoader(),
+        configureImagesLoader(),
+      ],
+    },
+    resolve: setResolvers(),
+    optimization: {
+      splitChunks: {
+        chunks: 'async',
+      },
+    },
+    performance: {
+      hints: false,
+    },
+  };
+
+  const development = {
+    mode: 'development',
+    devtool: 'eval-source-map',
+    optimization: {
+      minimize: false,
+    },
+    devServer: buildDevServer(),
+    output: {
+      publicPath: '/',
+    },
+  };
+
+  const production = {
+    mode: 'production',
+    devtool: 'source-map',
+    plugins: [
+      new CompressionPlugin({
+        algorithm: 'gzip',
+      }),
+    ],
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new ESBuildMinifyPlugin({
+          target: 'es2015',
+        }),
+      ],
+    },
+    output: {
+      filename: '[name].[contenthash:8].js',
+      chunkFilename: '[name].[contenthash:8].js',
+      assetModuleFilename: 'assets/[hash][ext]',
+      path: resolve(dirname, './build'),
+      publicPath: '/',
+      clean: true,
+    },
+  };
+
+  return isProduction ? merge(config, production) : merge(config, development);
 };
 
-export const resolve = {
-  symlinks: false,
-  extensions: ['.ts', '.tsx', '.js', '.scss', '.json'],
-  alias: {
-    '@src': _resolve(dirname, 'src/'),
-    '@pages': _resolve(dirname, './src/pages/'),
-    '@widgets': _resolve(dirname, './src/widgets/'),
-    '@features': _resolve(dirname, './src/features/'),
-    '@entities': _resolve(dirname, './src/entities/'),
-    '@shared': _resolve(dirname, './src/shared/'),
-    '@public': _resolve(dirname, 'public'),
-  },
-};
-
-export const optimization = {
-  splitChunks: {
-    chunks: 'async',
-  },
-};
-export const performance = {
-  hints: false,
-};
-
-export const config = {
-  entry,
-  plugins,
-  module,
-  resolve,
-  optimization,
-  performance,
-};
+export default webpackConfig;

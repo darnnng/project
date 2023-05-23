@@ -5,19 +5,23 @@ import pkg from 'webpack';
 
 const { EnvironmentPlugin, ProvidePlugin } = pkg;
 
-export const pluginsPkg = [
-  new EnvironmentPlugin([]),
-  new HtmlWebpackPlugin({
-    template: './public/index.html',
-  }),
-  new ForkTsCheckerWebpackPlugin(),
-  new ESLintPlugin({
-    emitError: true,
-    emitWarning: true,
-    failOnError: true,
-    extensions: ['.ts', '.tsx', '.js'],
-  }),
-  new ProvidePlugin({
-    process: 'process/browser',
-  }),
-];
+export const setPluginsPkg = () => {
+  return [
+    new EnvironmentPlugin([]),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+    new ForkTsCheckerWebpackPlugin(),
+    new ESLintPlugin({
+      emitError: true,
+      emitWarning: true,
+      failOnError: true,
+      extensions: ['.ts', '.tsx', '.js'],
+    }),
+    new ProvidePlugin({
+      process: 'process/browser',
+    }),
+  ];
+};
+//rest websockets отличие
+//хранилища в браузере local и тд
