@@ -10,7 +10,7 @@ const LogInPage = lazy(() => import('@pages/LogInPage'));
 const SignUpPage = lazy(() => import('@pages/SignUpPage'));
 const CatalogPage = lazy(() => import('@pages/CatalogPage'));
 const HomePage = lazy(() => import('@pages/HomePage'));
-const CartPage = lazy(() => import('@src/pages/CartPage'));
+const CartPage = lazy(() => import('@pages/CartPage'));
 const FavouritesPage = lazy(() => import('@pages/FavouritesPage'));
 const ItemPage = lazy(() => import('@pages/ItemPage'));
 const ErrorPage = lazy(() => import('@pages/ErrorPage'));

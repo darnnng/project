@@ -5,6 +5,7 @@ import { useCoordinates } from '../model/useCoordinates';
 import styles from './Map.module.scss';
 
 export const CitiesMap = () => {
+  //TO-DO TROUBLES WITH LOADING
   const { loading, coordinates } = useCoordinates();
   const { t } = useTranslation();
 
@@ -34,3 +35,5 @@ export const CitiesMap = () => {
     </div>
   );
 };
+
+export default CitiesMap;
