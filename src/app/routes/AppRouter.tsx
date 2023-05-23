@@ -16,6 +16,7 @@ const ItemPage = lazy(() => import('@pages/ItemPage'));
 const ErrorPage = lazy(() => import('@pages/ErrorPage'));
 const StoresPage = lazy(() => import('@pages/StoresPage'));
 const Payment = lazy(() => import('@pages/CartPaymentPage'));
+const MapsPage = lazy(() => import('@pages/MapsPage'));
 
 export const AppRouter = () => {
   const isAuth = useAuth();
@@ -76,6 +77,8 @@ export const AppRouter = () => {
               </PrivateRoute>
             }
           />
+
+          <Route path={RoutePath.MAPS} element={<MapsPage />} />
 
           <Route
             path={RoutePath.LIKES}

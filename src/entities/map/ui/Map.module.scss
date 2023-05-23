@@ -1,0 +1,13 @@
+@import './../../../shared/variables.scss';
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: $fontFamily;
+  margin: 40px 40px;
+}
+
+.pageSmallTitle {
+  color: $hoverColor;
+  margin-bottom: 20px;
+}

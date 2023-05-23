@@ -9,5 +9,6 @@ export enum RoutePath {
   LIKES = 'likes',
   DETAILS = 'details',
   PAYMENT = 'payment',
+  MAPS = 'maps',
   GENERAL = '*',
 }

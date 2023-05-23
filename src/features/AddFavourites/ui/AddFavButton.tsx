@@ -30,7 +30,7 @@ export const AddFavButton = () => {
   }, [userId, liked, handleError, firebaseItem]);
 
   const handleSetLike = async () => {
-    if (userId == null) {
+    if (!userId) {
       navigate(`/${RoutePath.LOGIN}/`);
       return;
     }

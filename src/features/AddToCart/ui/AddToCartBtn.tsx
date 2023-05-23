@@ -32,7 +32,7 @@ export const AddToCartBtn = memo(({ size }: IAddBtnProps) => {
   }, [userId, handleError, cartItem]);
 
   const handleAddToCart = async () => {
-    if (userId == null) {
+    if (!userId) {
       navigate(`/${RoutePath.LOGIN}/`);
       return;
     }

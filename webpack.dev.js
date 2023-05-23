@@ -1,9 +1,12 @@
-const { join } = require('path');
-var path = require('path');
-const { merge } = require('webpack-merge');
-const config = require('./webpack.config');
+import path, { join } from 'path';
+import { fileURLToPath } from 'url';
+import { merge } from 'webpack-merge';
+import { config } from './webpack.config.js';
 
-module.exports = merge(config, {
+const __filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(__filename);
+
+export default merge(config, {
   mode: 'development',
   devtool: 'eval-source-map',
   optimization: {
@@ -11,7 +14,7 @@ module.exports = merge(config, {
   },
   devServer: {
     port: process.env.PORT,
-    static: join(__dirname, 'public'),
+    static: join(dirname, 'public'),
     hot: true,
     open: true,
     liveReload: true,
