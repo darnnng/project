@@ -23,5 +23,3 @@ export const setPluginsPkg = () => {
     }),
   ];
 };
-//rest websockets отличие
-//хранилища в браузере local и тд
