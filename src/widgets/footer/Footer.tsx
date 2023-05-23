@@ -13,7 +13,7 @@ export const Footer = () => {
           <p className={styles.footerBigTitle}>{t('ABOUT US')}</p>
           <div className={styles.footerLinks}>
             <p>
-              <Link className={styles.footerLinkText} to={`/${RoutePath.CATALOG}`}>
+              <Link className={styles.footerLinkText} to={`/${RoutePath.MAPS}`}>
                 {t('Our stores')}
               </Link>
             </p>
