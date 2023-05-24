@@ -6,10 +6,7 @@ import { merge } from 'webpack-merge';
 import {
   configureAssetsLoader,
   configureImagesLoader,
-  // configureMinimizeCss,
-  configureSCSSLoader,
-  //configureSCSSmoduleLoader,
-  configureStyleLoader,
+  configureSCSSmoduleLoader,
   configureTSXLoader,
   configureTsLoader,
 } from './config/loaders.js';
@@ -19,32 +16,6 @@ import { setResolvers } from './config/resolvers.js';
 import { buildDevServer } from './config/buildDevServer.js';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
-
-export const configureSCSSmoduleLoader = (isProduction) => {
-  return {
-    test: /\.module\.scss$/i,
-
-    use: [
-      {
-        loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-      },
-      {
-        loader: 'css-loader',
-
-        options: {
-          importLoaders: 1,
-          modules: {
-            mode: 'local',
-          },
-        },
-      },
-      {
-        loader: 'sass-loader',
-      },
-    ],
-    sideEffects: true,
-  };
-};
 
 const webpackConfig = (env) => {
   const isProduction = env === 'production';
@@ -56,14 +27,11 @@ const webpackConfig = (env) => {
     plugins: setPluginsPkg(),
     module: {
       rules: [
-        configureStyleLoader(isProduction),
         configureTsLoader(),
         configureAssetsLoader(),
-        configureSCSSLoader(isProduction),
         configureSCSSmoduleLoader(isProduction),
         configureTSXLoader(),
         configureImagesLoader(),
-        // configureMinimizeCss(),
       ],
     },
     resolve: setResolvers(),

@@ -4,14 +4,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
-export const configureStyleLoader = (isProduction) => {
-  return {
-    test: /\.css$/i,
-    use: [isProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
-    sideEffects: true,
-  };
-};
-
 export const configureTsLoader = () => {
   return {
     test: /\.tsx?$/,
@@ -27,36 +19,10 @@ export const configureAssetsLoader = () => {
   };
 };
 
-export const configureSCSSLoader = (isProduction) => {
-  return {
-    test: /\.scss$/i,
-    include: [_resolve(dirname, 'src')],
-    exclude: /\.module\.scss$/i,
-    use: [
-      {
-        loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-      },
-      {
-        loader: 'css-loader',
-        options: {
-          importLoaders: 1,
-          modules: {
-            mode: 'icss',
-          },
-        },
-      },
-      {
-        loader: 'sass-loader',
-      },
-    ],
-    sideEffects: true,
-  };
-};
-
 export const configureSCSSmoduleLoader = (isProduction) => {
   return {
     test: /\.module\.scss$/i,
-    include: [_resolve(dirname, 'src')],
+
     use: [
       {
         loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
