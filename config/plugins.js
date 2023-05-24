@@ -2,7 +2,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import pkg from 'webpack';
-
 const { EnvironmentPlugin, ProvidePlugin } = pkg;
 
 export const setPluginsPkg = () => {

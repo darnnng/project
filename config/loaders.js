@@ -1,12 +1,14 @@
 import { fileURLToPath } from 'url';
 import path, { resolve as _resolve } from 'path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
-export const configureStyleLoader = () => {
+export const configureStyleLoader = (isProduction) => {
   return {
     test: /\.css$/i,
-    use: ['style-loader', 'css-loader'],
+    use: [isProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
+    sideEffects: true,
   };
 };
 
@@ -25,13 +27,14 @@ export const configureAssetsLoader = () => {
   };
 };
 
-export const configureSCSSLoader = () => {
+export const configureSCSSLoader = (isProduction) => {
   return {
     test: /\.scss$/i,
+    include: [_resolve(dirname, 'src')],
     exclude: /\.module\.scss$/i,
     use: [
       {
-        loader: 'style-loader',
+        loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
       },
       {
         loader: 'css-loader',
@@ -46,15 +49,17 @@ export const configureSCSSLoader = () => {
         loader: 'sass-loader',
       },
     ],
+    sideEffects: true,
   };
 };
 
-export const configureSCSSmoduleLoader = () => {
+export const configureSCSSmoduleLoader = (isProduction) => {
   return {
     test: /\.module\.scss$/i,
+    include: [_resolve(dirname, 'src')],
     use: [
       {
-        loader: 'style-loader',
+        loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
       },
       {
         loader: 'css-loader',
@@ -70,6 +75,7 @@ export const configureSCSSmoduleLoader = () => {
         loader: 'sass-loader',
       },
     ],
+    sideEffects: true,
   };
 };
 

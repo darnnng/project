@@ -6,17 +6,45 @@ import { merge } from 'webpack-merge';
 import {
   configureAssetsLoader,
   configureImagesLoader,
+  // configureMinimizeCss,
   configureSCSSLoader,
-  configureSCSSmoduleLoader,
+  //configureSCSSmoduleLoader,
   configureStyleLoader,
   configureTSXLoader,
   configureTsLoader,
 } from './config/loaders.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { setPluginsPkg } from './config/plugins.js';
 import { setResolvers } from './config/resolvers.js';
 import { buildDevServer } from './config/buildDevServer.js';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
+
+export const configureSCSSmoduleLoader = (isProduction) => {
+  return {
+    test: /\.module\.scss$/i,
+
+    use: [
+      {
+        loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+      },
+      {
+        loader: 'css-loader',
+
+        options: {
+          importLoaders: 1,
+          modules: {
+            mode: 'local',
+          },
+        },
+      },
+      {
+        loader: 'sass-loader',
+      },
+    ],
+    sideEffects: true,
+  };
+};
 
 const webpackConfig = (env) => {
   const isProduction = env === 'production';
@@ -28,13 +56,14 @@ const webpackConfig = (env) => {
     plugins: setPluginsPkg(),
     module: {
       rules: [
-        configureStyleLoader(),
+        configureStyleLoader(isProduction),
         configureTsLoader(),
         configureAssetsLoader(),
-        configureSCSSLoader(),
-        configureSCSSmoduleLoader(),
+        configureSCSSLoader(isProduction),
+        configureSCSSmoduleLoader(isProduction),
         configureTSXLoader(),
         configureImagesLoader(),
+        // configureMinimizeCss(),
       ],
     },
     resolve: setResolvers(),
@@ -67,6 +96,10 @@ const webpackConfig = (env) => {
       new CompressionPlugin({
         algorithm: 'gzip',
       }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].scss',
+        chunkFilename: 'css/[name].[contenthash:8].scss',
+      }),
     ],
     optimization: {
       minimize: true,
@@ -79,7 +112,7 @@ const webpackConfig = (env) => {
     output: {
       filename: '[name].[contenthash:8].js',
       chunkFilename: '[name].[contenthash:8].js',
-      assetModuleFilename: 'assets/[hash][ext]',
+      assetModuleFilename: '[hash][ext]',
       path: resolve(dirname, './build'),
       publicPath: '/',
       clean: true,
