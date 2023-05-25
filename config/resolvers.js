@@ -16,6 +16,7 @@ export const setResolvers = () => {
       '@entities': _resolve(dirname, './../src/entities/'),
       '@shared': _resolve(dirname, './../src/shared/'),
       '@public': _resolve(dirname, './../public'),
+      'node-fetch': 'node-fetch/lib/index.js',
     },
   };
 };
