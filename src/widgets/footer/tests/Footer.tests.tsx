@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import { customRender } from '@shared/lib/utils.tests';
 import { Footer } from '../Footer';
-import { customRender } from './utils.tests';
 
 test('renders title', () => {
   customRender(<Footer />);
@@ -9,4 +9,6 @@ test('renders title', () => {
   const linkElements = screen.getAllByRole('link');
   expect(divElement).toBeInTheDocument();
   expect(linkElements).toHaveLength(4);
+  const { container } = customRender(<Footer />);
+  expect(container).toMatchSnapshot();
 });

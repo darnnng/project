@@ -5,7 +5,7 @@ import { QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 import '@shared/lib/i18n/i18n';
 import { store } from '@src/app/store';
-import { queryClient } from '@src/shared/lib/i18n/queryClientOptions';
+import { queryClient } from '@src/shared/lib/queryClientOptions';
 
 const Providers: React.FC = ({ children }: React.PropsWithChildren<object>) => {
   return (
