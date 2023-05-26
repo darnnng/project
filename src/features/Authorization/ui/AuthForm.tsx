@@ -43,14 +43,16 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
           type="password"
           {...register('password')}
         />
-        <span role="alert" className={styles.errorMessage}>
+        <span role="alert" data-testid="alert" className={styles.errorMessage}>
           {errors.password?.message as string}
         </span>
       </div>
       <p className={styles.formLabel}>
         {t('By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use')}
       </p>
-      <button type="submit">{buttonName}</button>
+      <button data-testid="submitBtn" type="submit">
+        {buttonName}
+      </button>
     </form>
   );
 };

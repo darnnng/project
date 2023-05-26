@@ -1,6 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders title 1`] = `
+exports[`Footer test footer snapshot matches 1`] = `
+<div>
+  <footer
+    class="footer"
+  >
+    <div
+      class="footerUp"
+    >
+      <div
+        class="aboutSection"
+      >
+        <p
+          class="footerBigTitle"
+        >
+          ABOUT US
+        </p>
+        <div
+          class="footerLinks"
+        >
+          <p>
+            <a
+              class="footerLinkText"
+              href="/maps"
+            >
+              Our stores
+            </a>
+          </p>
+          <p>
+            <a
+              class="footerLinkText"
+              href="/catalog"
+            >
+              Catalog
+            </a>
+          </p>
+        </div>
+      </div>
+      <div
+        class="socialMedia"
+      >
+        <p
+          class="footerBigTitle"
+        >
+          CONTACTS
+        </p>
+        <div
+          class="footerLinksSocial"
+        >
+          <a
+            href="https://www.facebook.com/"
+          >
+            <span
+              class="materialSymbolsOutlined"
+            >
+              groups
+            </span>
+          </a>
+          <a
+            href="https://www.google.com/gmail/about/"
+          >
+            <span
+              class="materialSymbolsOutlined"
+            >
+              mail
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="footerDown"
+    >
+      <span>
+        Threads & Co., Inc. All rights reserved
+      </span>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Footer test renders elements 1`] = `
 <div>
   <footer
     class="footer"

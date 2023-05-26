@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { RenderOptions, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
@@ -17,4 +17,5 @@ const Providers: React.FC = ({ children }: React.PropsWithChildren<object>) => {
   );
 };
 
-export const customRender = (ui: React.ReactElement) => render(ui, { wrapper: Providers });
+export const customRender = (ui: React.ReactElement, options?: RenderOptions) =>
+  render(ui, { wrapper: Providers, ...options });
