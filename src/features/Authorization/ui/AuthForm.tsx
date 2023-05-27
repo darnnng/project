@@ -30,7 +30,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
           type="email"
           {...register('email')}
         />
-        <span role="alert" className={styles.errorMessage}>
+        <span role="alert" data-testid="alert1" className={styles.errorMessage}>
           {errors.email?.message as string}
         </span>
       </div>
@@ -43,7 +43,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
           type="password"
           {...register('password')}
         />
-        <span role="alert" data-testid="alert" className={styles.errorMessage}>
+        <span role="alert" data-testid="alert2" className={styles.errorMessage}>
           {errors.password?.message as string}
         </span>
       </div>
