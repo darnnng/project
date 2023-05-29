@@ -33,12 +33,12 @@ const LogInPage = () => {
   };
 
   return (
-    <div className={styles.login}>
+    <div data-testid="login-page" className={styles.login}>
       <h3 className={styles.loginTitle}>{t('WELCOME BACK! LOG IN FOR MORE OPPORTUNITIES')}</h3>
       <AuthForm onSubmit={onLoginSubmit} buttonName={t('Sign in')} />
       <p className={styles.link}>
         {t('Not a member?')}
-        <Link to={`/${RoutePath.SIGNUP}`} className={styles.linkSignUp}>
+        <Link data-testid="signup-link" to={`/${RoutePath.SIGNUP}`} className={styles.linkSignUp}>
           {t('Join us')}
         </Link>
       </p>

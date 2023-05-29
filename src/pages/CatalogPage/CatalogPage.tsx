@@ -45,7 +45,7 @@ const CatalogPage = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className={styles.catalogPageContainer}>
+        <div data-testid="catalog-page" className={styles.catalogPageContainer}>
           <CategoryMenu />
           <div className={styles.filters}>
             <SortingSelect onFilterChange={onFilterChange} filter={filter} />
