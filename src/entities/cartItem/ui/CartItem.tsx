@@ -10,6 +10,7 @@ export const CartItem = ({ item, handleDeleteFromCart, userId }: ICartItemProps)
   const handleSeeItem = () => {
     navigate(`/${item.id}`);
   };
+  console.log(item);
   const { themeLight } = useAppSelector(selectedTheme);
   return (
     <div key={item.id} className={`${styles.cartItem}  ${themeLight ? '' : styles.darkCartItem}`}>

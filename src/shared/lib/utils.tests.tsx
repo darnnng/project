@@ -7,7 +7,7 @@ import '@shared/lib/i18n/i18n';
 import { store } from '@src/app/store';
 import { queryClient } from '@src/shared/lib/queryClientOptions';
 
-const Providers: React.FC = ({ children }: React.PropsWithChildren<object>) => {
+export const Providers: React.FC = ({ children }: React.PropsWithChildren<object>) => {
   return (
     <QueryClientProvider client={queryClient}>
       <MemoryRouter>
@@ -16,6 +16,10 @@ const Providers: React.FC = ({ children }: React.PropsWithChildren<object>) => {
     </QueryClientProvider>
   );
 };
+
+export const customHookWrapper = ({ children }: { children?: React.ReactNode }) => (
+  <Provider store={store}>{children}</Provider>
+);
 
 export const customRender = (ui: React.ReactElement, options?: RenderOptions) =>
   render(ui, { wrapper: Providers, ...options });
