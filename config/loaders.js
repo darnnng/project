@@ -12,49 +12,21 @@ export const configureTsLoader = () => {
   };
 };
 
-export const configureAssetsLoader = () => {
+export const miniSCSS = () => {
   return {
-    test: /\.(woff|woff2|eof|ttf|otf)$/i,
-    type: 'asset/resource',
-  };
-};
-
-export const configureSCSSmoduleLoader = (isProduction) => {
-  return {
-    test: /\.module\.scss$/i,
-
+    test: /\.scss$/,
     use: [
-      {
-        loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-      },
+      MiniCssExtractPlugin.loader,
       {
         loader: 'css-loader',
-
         options: {
-          importLoaders: 1,
-          modules: {
-            mode: 'local',
-          },
+          modules: true,
+          sourceMap: true,
+          importLoaders: 2,
         },
       },
-      {
-        loader: 'sass-loader',
-      },
+      'sass-loader',
     ],
-    sideEffects: true,
-  };
-};
-
-export const configureTSXLoader = () => {
-  return {
-    test: /\.tsx?$/,
-    loader: 'esbuild-loader',
-    include: [_resolve(dirname, 'src')],
-    exclude: /node_modules/,
-    options: {
-      loader: 'tsx',
-      target: 'es2015',
-    },
   };
 };
 

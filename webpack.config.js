@@ -3,17 +3,12 @@ import { fileURLToPath } from 'url';
 import CompressionPlugin from 'compression-webpack-plugin';
 import { ESBuildMinifyPlugin } from 'esbuild-loader';
 import { merge } from 'webpack-merge';
-import {
-  configureAssetsLoader,
-  configureImagesLoader,
-  configureSCSSmoduleLoader,
-  configureTSXLoader,
-  configureTsLoader,
-} from './config/loaders.js';
+import { configureImagesLoader, configureTsLoader, miniSCSS } from './config/loaders.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { setPluginsPkg } from './config/plugins.js';
 import { setResolvers } from './config/resolvers.js';
 import { buildDevServer } from './config/buildDevServer.js';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
@@ -26,13 +21,7 @@ const webpackConfig = (env) => {
     },
     plugins: setPluginsPkg(),
     module: {
-      rules: [
-        configureTsLoader(),
-        configureAssetsLoader(),
-        configureSCSSmoduleLoader(isProduction),
-        configureTSXLoader(),
-        configureImagesLoader(),
-      ],
+      rules: [configureTsLoader(), configureImagesLoader(), miniSCSS()],
     },
     resolve: setResolvers(),
     optimization: {
@@ -65,8 +54,8 @@ const webpackConfig = (env) => {
         algorithm: 'gzip',
       }),
       new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].scss',
-        chunkFilename: 'css/[name].[contenthash:8].scss',
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].css',
       }),
     ],
     optimization: {
@@ -74,6 +63,9 @@ const webpackConfig = (env) => {
       minimizer: [
         new ESBuildMinifyPlugin({
           target: 'es2015',
+        }),
+        new CssMinimizerPlugin({
+          test: /\.css$/i,
         }),
       ],
     },
