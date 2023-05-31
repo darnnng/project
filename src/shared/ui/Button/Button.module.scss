@@ -1,0 +1,44 @@
+@import './../../variables.scss';
+
+.addButton {
+  min-width: 200px;
+  min-height: 45px;
+  font-family: $fontFamily;
+  background-color: $backgroundDark;
+  color: $fontLight;
+  padding: 10px;
+  font-size: $fontMid;
+  cursor: pointer;
+  border: none;
+  border: 1px solid black;
+  &:hover {
+    background-color: $backgroundLight;
+    color: $fontDark;
+  }
+  &:disabled {
+    background-color: $hoverColor;
+    color: $light2;
+    cursor: initial;
+    border: none;
+  }
+}
+
+.small {
+  min-width: 150px;
+}
+
+.medium {
+  min-width: 200px;
+}
+
+.large {
+  min-width: 300px;
+}
+
+.square {
+  border-radius: 0px;
+}
+
+.round {
+  border-radius: 10px;
+}

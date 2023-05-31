@@ -6,6 +6,7 @@ import { currentUser } from '@entities/user/model/userSlice';
 import { useHandleError } from '@shared/model/useHandleError';
 import { useCartItem } from '@entities/cartItem/model/useCartItem';
 import { RoutePath } from '@shared/constants/routes';
+import { Button } from '@shared/ui/Button';
 import { addToCartDb, checkIfIsInCart } from '../api/cartApi';
 import { IAddBtnProps } from '../model/types';
 import styles from './AddToCartBtn.module.scss';
@@ -48,13 +49,11 @@ export const AddToCartBtn = memo(({ size }: IAddBtnProps) => {
   return (
     <div className={styles.addBtnContainer}>
       {added ? (
-        <button className={styles.disabledAddButton}>{t('Already in your cart')}</button>
+        <Button onClick={handleAddToCart} text={t('Already in your cart')} disabled={true} />
       ) : (
-        <button onClick={handleAddToCart} className={styles.addButton}>
-          {t('Add to cart')}
-        </button>
+        <Button onClick={handleAddToCart} text={t('Add to cart')} />
       )}
-      {errorMessage ? <p className={styles.errorText}>Please, choose size</p> : ' '}
+      {errorMessage ? <p className={styles.errorText}>{t('Please, choose size')}</p> : ' '}
     </div>
   );
 });
