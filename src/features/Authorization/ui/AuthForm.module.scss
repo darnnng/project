@@ -5,29 +5,10 @@ form {
   flex-direction: column;
   max-width: 500px;
 
-  input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    margin-bottom: 5px;
-  }
-
-  input:-webkit-autofill {
-    -webkit-background-clip: text;
-  }
-
   .formLabel {
     font-size: 12px;
     color: $hoverColor;
     font-family: $fontFamilyRoboto;
-  }
-
-  .formInput {
-    font-family: $fontFamily;
-  }
-  .formErrorInput {
-    font-family: $fontFamily;
-    border: 1px solid $error;
   }
 
   @media (max-width: $screenSmall) {

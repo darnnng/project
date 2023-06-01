@@ -41,14 +41,6 @@ form {
     font-family: $fontFamilyRoboto;
   }
 
-  .formInput {
-    font-family: $fontFamily;
-  }
-  .formErrorInput {
-    font-family: $fontFamily;
-    border: 1px solid $error;
-  }
-
   @media (max-width: $screenSmall) {
     max-width: 260px;
   }

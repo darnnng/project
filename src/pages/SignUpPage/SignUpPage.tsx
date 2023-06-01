@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { SubmitHandler } from 'react-hook-form';
 import { RoutePath } from '@shared/constants/routes';
 import { AuthForm } from '@features/Authorization';
 import styles from '@pages/LogInPage/LogInPage.module.scss';
@@ -17,7 +18,7 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const handleError = useHandleError();
 
-  const onSignUpSubmit = async (input: IFormInput) => {
+  const onSignUpSubmit: SubmitHandler<IFormInput> = async (input) => {
     const { email, password } = input;
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {

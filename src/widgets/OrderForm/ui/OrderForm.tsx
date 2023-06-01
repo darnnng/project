@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
 import { currentUser, setAddress } from '@entities/user/model/userSlice';
 import { useHandleError } from '@shared/model/useHandleError';
 import { Button } from '@shared/ui/Button';
+import { InputText } from '@src/shared/ui/Input';
 import { orderSchema } from '../lib/validationSchema';
 import { IOrderFormInput } from '../model/OrderForm.interface';
 import styles from './OrderForm.module.scss';
@@ -41,7 +42,7 @@ export const OrderForm = () => {
     setPrice(totalCost.toFixed(2));
   }, [userId, handleError, cartItems]);
 
-  const onSubmit = (input: IOrderFormInput) => {
+  const onSubmit: SubmitHandler<IOrderFormInput> = (input) => {
     dispatch(setAddress(input));
     navigate(`/${RoutePath.PAYMENT}`);
   };
@@ -52,12 +53,12 @@ export const OrderForm = () => {
         <p className={styles.orderTitle}>{t('Your order')}</p>
         <div className={styles.inputContainer}>
           <label htmlFor="city">{t('City')}</label>
-          <input
+          <InputText
             id="city"
-            className={!!errors.city?.message ? styles.formErrorInput : styles.formInput}
+            errors={!!errors.city?.message}
             placeholder={t('Enter city') as string}
-            type="text"
-            {...register('city')}
+            register={register}
+            registerName={'city'}
           />
           <span role="alert" className={styles.errorMessage}>
             {errors.city?.message as string}
@@ -65,12 +66,12 @@ export const OrderForm = () => {
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="street">{t('Street')}</label>
-          <input
+          <InputText
             id="street"
-            className={!!errors.street?.message ? styles.formErrorInput : styles.formInput}
+            errors={!!errors.city?.message}
             placeholder={t('Enter street') as string}
-            type="text"
-            {...register('street')}
+            register={register}
+            registerName={'street'}
           />
           <span role="alert" className={styles.errorMessage}>
             {errors.street?.message as string}
@@ -78,12 +79,13 @@ export const OrderForm = () => {
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="house">{t('House number')}</label>
-          <input
+
+          <InputText
             id="house"
-            className={!!errors.house?.message ? styles.formErrorInput : styles.formInput}
+            errors={!!errors.house?.message}
             placeholder={t('Enter house number') as string}
-            type="text"
-            {...register('house')}
+            register={register}
+            registerName={'house'}
           />
           <span role="alert" className={styles.errorMessage}>
             {errors.house?.message as string}

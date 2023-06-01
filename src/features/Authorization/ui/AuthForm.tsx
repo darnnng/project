@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@src/shared/ui/Button';
+import { InputText } from '@src/shared/ui/Input';
 import { IAuthFormProps, IFormInput } from '../model/types';
 import { authSchema } from '../lib/validationSchema';
 import styles from './AuthForm.module.scss';
@@ -24,12 +25,13 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.inputContainer}>
         <label htmlFor="email">{t('Email')}</label>
-        <input
+        <InputText
           id="email"
-          className={!!errors.email?.message ? styles.formErrorInput : styles.formInput}
+          errors={!!errors.email?.message}
           placeholder={t('Enter email') as string}
           type="email"
-          {...register('email')}
+          register={register}
+          registerName={'email'}
         />
         <span role="alert" data-testid="alert1" className={styles.errorMessage}>
           {errors.email?.message as string}
@@ -37,12 +39,13 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="password">{t('Password')}</label>
-        <input
+        <InputText
           id="password"
-          className={!!errors.password?.message ? styles.formErrorInput : styles.formInput}
+          errors={!!errors.email?.message}
           placeholder={t('Enter password') as string}
           type="password"
-          {...register('password')}
+          register={register}
+          registerName={'password'}
         />
         <span role="alert" data-testid="alert2" className={styles.errorMessage}>
           {errors.password?.message as string}
