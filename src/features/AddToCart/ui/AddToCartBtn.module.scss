@@ -3,28 +3,11 @@
 .addButton {
   min-width: 200px;
   min-height: 45px;
-  font-family: $fontFamily;
-  background-color: $backgroundDark;
-  color: $fontLight;
   padding: 10px;
   font-size: $fontMid;
-  border: none;
-  border: 1px solid black;
   &:hover {
-    background-color: $backgroundLight;
-    color: $fontDark;
+    border: 1px solid black;
   }
-}
-
-.disabledAddButton {
-  min-width: 200px;
-  min-height: 45px;
-  border: none;
-  font-family: $fontFamily;
-  background-color: $hoverColor;
-  color: $fontLight;
-  padding: 10px;
-  font-size: $fontMid;
 }
 
 .addBtnContainer {

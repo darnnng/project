@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AddFavButton } from '@features/AddFavourites';
 import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
 import { AddToCartBtn } from '@src/features/AddToCart/ui/AddToCartBtn';
+import { Button } from '@shared/ui/Button';
 import { IArticleElement } from '../model/ItemInfo.interface';
 import styles from './ItemInfo.module.scss';
 
@@ -55,9 +56,7 @@ export const ItemInfo = () => {
             {firebaseItem?.inStock ? (
               <AddToCartBtn size={size} />
             ) : (
-              <button className={styles.disabledAddButton} disabled>
-                {t('Out of stock')}
-              </button>
+              <Button text={t('Out of stock')} disabled={true} styleProps={styles.addButton} />
             )}
           </div>
           <AddFavButton />

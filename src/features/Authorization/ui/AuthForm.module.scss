@@ -16,22 +16,6 @@ form {
     -webkit-background-clip: text;
   }
 
-  button {
-    padding: 0.5rem;
-    background-color: $dark;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: $fontFamily;
-    margin: 20px 0px;
-
-    &:hover {
-      background-color: $hoverColor;
-    }
-  }
-
   .formLabel {
     font-size: 12px;
     color: $hoverColor;
@@ -60,4 +44,20 @@ form {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+}
+
+.formButton {
+  padding: 0.5rem;
+  background-color: $dark;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: $fontFamily;
+  margin: 20px 0px;
+
+  &:hover {
+    background-color: $hoverColor;
+  }
 }

@@ -1,16 +1,12 @@
 @import './../../variables.scss';
 
 .addButton {
-  min-width: 200px;
-  min-height: 45px;
-  font-family: $fontFamily;
-  background-color: $backgroundDark;
   color: $fontLight;
-  padding: 10px;
-  font-size: $fontMid;
+  background-color: $backgroundDark;
+  font-family: $fontFamily;
   cursor: pointer;
   border: none;
-  border: 1px solid black;
+
   &:hover {
     background-color: $backgroundLight;
     color: $fontDark;
@@ -24,7 +20,7 @@
 }
 
 .small {
-  min-width: 150px;
+  min-width: 100px;
 }
 
 .medium {
@@ -39,6 +35,6 @@
   border-radius: 0px;
 }
 
-.round {
-  border-radius: 10px;
+.rounded {
+  border-radius: 5px;
 }

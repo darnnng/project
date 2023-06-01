@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import styles from './Button.module.scss';
 import { IButtonProps } from './Button.interface';
@@ -9,11 +8,13 @@ export const Button = ({
   size = 'medium',
   text,
   disabled = false,
+  type = 'button',
+  styleProps,
 }: IButtonProps) => {
-  const mainCn = cn(styles.addButton, styles[size], styles[variant]);
-  console.log(disabled);
+  const mainCn = cn(styles.addButton, styles[size], styles[variant], styleProps);
+
   return (
-    <button className={mainCn} onClick={onClick} disabled={disabled}>
+    <button className={mainCn} onClick={onClick} disabled={disabled} type={type}>
       {text}
     </button>
   );

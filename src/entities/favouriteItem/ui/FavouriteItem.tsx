@@ -33,15 +33,6 @@ export const FavouriteItem = ({ item, handleDeleteFromFavs, userId }: IFavourite
         >
           {t('delete')}
         </div>
-        {/* {item.inStock === 'false' ? (
-          <button className={styles.disabledAddButton} disabled>
-            {t('Not in stock')}
-          </button>
-        ) : (
-          <button className={styles.addButton} onClick={handleAddToCart}>
-            {t('Add to cart')}
-          </button>
-        )} */}
       </div>
     </div>
   );

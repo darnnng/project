@@ -49,9 +49,14 @@ export const AddToCartBtn = memo(({ size }: IAddBtnProps) => {
   return (
     <div className={styles.addBtnContainer}>
       {added ? (
-        <Button onClick={handleAddToCart} text={t('Already in your cart')} disabled={true} />
+        <Button
+          onClick={handleAddToCart}
+          text={t('Already in your cart')}
+          disabled={true}
+          styleProps={styles.addButton}
+        />
       ) : (
-        <Button onClick={handleAddToCart} text={t('Add to cart')} />
+        <Button text={t('Add to cart')} styleProps={styles.addButton} />
       )}
       {errorMessage ? <p className={styles.errorText}>{t('Please, choose size')}</p> : ' '}
     </div>

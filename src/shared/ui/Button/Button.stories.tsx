@@ -14,6 +14,15 @@ export default {
         type: 'select',
       },
     },
+    variant: {
+      type: 'string',
+      description: 'Shape variant for button',
+      defaultValue: 'square',
+      options: ['rounded', 'square'],
+      control: {
+        type: 'radio',
+      },
+    },
     text: {
       type: 'string',
       name: 'label',
@@ -22,14 +31,14 @@ export default {
   },
 };
 
-interface TemplateProps {
+interface ITemplateProps {
   text: string;
   variant: string;
   size: string;
   disabled?: true;
 }
 
-const Template: StoryFn<TemplateProps> = (args) => <Button {...args} />;
+const Template: StoryFn<ITemplateProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -44,4 +53,11 @@ DisabledBtn.args = {
   variant: 'square',
   disabled: true,
   size: 'medium',
+};
+
+export const RoundedBtn = Template.bind({});
+RoundedBtn.args = {
+  text: 'Shop now',
+  variant: 'rounded',
+  size: 'small',
 };

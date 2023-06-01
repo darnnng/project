@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button } from '@src/shared/ui/Button';
 import { IAuthFormProps, IFormInput } from '../model/types';
 import { authSchema } from '../lib/validationSchema';
 import styles from './AuthForm.module.scss';
@@ -50,9 +51,12 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
       <p className={styles.formLabel}>
         {t('By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use')}
       </p>
-      <button data-testid="submitBtn" type="submit">
-        {buttonName}
-      </button>
+      <Button
+        data-testid="submitBtn"
+        type="submit"
+        styleProps={styles.formButton}
+        text={buttonName}
+      />
     </form>
   );
 };

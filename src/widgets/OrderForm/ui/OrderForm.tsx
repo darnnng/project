@@ -7,6 +7,7 @@ import { RoutePath } from '@shared/constants/routes';
 import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
 import { currentUser, setAddress } from '@entities/user/model/userSlice';
 import { useHandleError } from '@shared/model/useHandleError';
+import { Button } from '@shared/ui/Button';
 import { orderSchema } from '../lib/validationSchema';
 import { IOrderFormInput } from '../model/OrderForm.interface';
 import styles from './OrderForm.module.scss';
@@ -94,9 +95,12 @@ export const OrderForm = () => {
             Total: <b>{price}$</b>
           </p>
         </div>
-        <button className={styles.checkoutBtn} type="submit">
-          {t('Proceed to checkout')}
-        </button>
+        <Button
+          text={t('Proceed to checkout')}
+          type={'submit'}
+          styleProps={styles.checkoutBtn}
+          variant="rounded"
+        />
       </div>
     </form>
   );

@@ -4,4 +4,6 @@ export interface IButtonProps {
   size?: string;
   text: string;
   disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset' | undefined;
+  styleProps?: unknown;
 }

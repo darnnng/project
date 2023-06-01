@@ -68,26 +68,3 @@
     color: $hoverColor;
   }
 }
-
-.addButton {
-  font-family: $fontFamily;
-  background-color: $backgroundDark;
-  color: $fontLight;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: $fontMid;
-  border: none;
-  &:hover {
-    background-color: $hoverColor;
-  }
-}
-
-.disabledAddButton {
-  font-family: $fontFamily;
-  background-color: $hoverColor;
-  color: $fontLight;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: $fontMid;
-  border: none;
-}
