@@ -6,7 +6,7 @@ import styles from './Input.module.scss';
 
 export const InputText = <T extends IInputs>({
   register,
-  size = 'small',
+  size = 'medium',
   type = 'text',
   errors,
   placeholder,

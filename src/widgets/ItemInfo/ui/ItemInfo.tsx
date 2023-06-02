@@ -62,31 +62,32 @@ export const ItemInfo = () => {
           <AddFavButton />
         </div>
       </div>
+
       <div className={styles.downContainer}>
         <p className={styles.detailsTitle}>{t('details')}</p>
-        <p className={styles.downContainerItem}>
-          <span>{data?.product?.articlesList[0]?.description}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('year of production:')}
-          <span> {data?.product?.yearOfProduction || '-'}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('country of production:')}
-          <span>{data?.product?.countryOfProduction || '-'} </span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('article number:')}
-          <span> {data?.product?.code || '-'}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('materials: ')}
-          <span> {data?.product?.keyFibreTypes || '-'}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('in stock:')}
-          <span> {data?.product?.inStock ? 'available' : 'not available'}</span>
-        </p>
+        {data?.product && (
+          <>
+            {[
+              { label: data.product.articlesList[0]?.description },
+              { label: t('year of production:'), value: data.product.yearOfProduction || '-' },
+              {
+                label: t('country of production:'),
+                value: data.product.countryOfProduction || '-',
+              },
+              { label: t('article number:'), value: data.product.code || '-' },
+              { label: t('materials: '), value: data.product.keyFibreTypes || '-' },
+              {
+                label: t('in stock:'),
+                value: data.product.inStock ? t('available') : t('not available'),
+              },
+            ].map((item, index) => (
+              <p className={styles.downContainerItem} key={index}>
+                {item.label}
+                <span> {item.value}</span>
+              </p>
+            ))}
+          </>
+        )}
       </div>
     </>
   );
