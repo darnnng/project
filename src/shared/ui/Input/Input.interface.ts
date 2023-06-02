@@ -1,6 +1,6 @@
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import { IFormInput } from '@features/Authorization/model/types';
-import { IOrderFormInput } from './../../../widgets/OrderForm/model/OrderForm.interface';
+import { IOrderFormInput } from '@widgets/OrderForm/model/OrderForm.interface';
 
 export interface IInputTextProps<T extends FieldValues> {
   id: string;

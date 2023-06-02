@@ -1,14 +1,8 @@
-// @use './../../../shared/_mixins.scss';
+@import './../../../shared/_mixins.scss';
 @import './../../../shared/variables.scss';
 
 .addButton {
-  min-width: 200px;
-  min-height: 45px;
-  padding: 10px;
-  font-size: $fontMid;
-  &:hover {
-    border: 1px solid black;
-  }
+  @include add-button;
 }
 
 .addBtnContainer {

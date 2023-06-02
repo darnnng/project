@@ -1,7 +1,5 @@
-@import './../../shared/variables.scss';
-.itemPageContainer {
-  margin: 5px 30px;
-  display: flex;
-  flex-direction: column;
-  font-family: $fontFamily;
+@import './../../shared/mixins';
+
+.pageContainer {
+  @include page-container(5px 30px);
 }

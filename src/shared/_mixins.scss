@@ -1,5 +1,4 @@
 @import './variables.scss';
-@import '../node_modules/bootstrap/scss/bootstrap';
 
 @mixin add-button {
   min-width: 200px;
@@ -18,7 +17,7 @@
   margin: $margin;
 }
 
-@mixin button-container($margin) {
+@mixin button-container {
   display: flex;
   align-items: flex-end;
   column-gap: 20px;
