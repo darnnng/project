@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import { Path } from 'react-hook-form';
 import { IInputTextProps, IInputs } from './Input.interface';
 import styles from './Input.module.scss';
 
@@ -20,7 +21,7 @@ export const InputText = <T extends IInputs>({
       className={inputCn}
       type={type}
       placeholder={placeholder}
-      {...register(registerName)}
+      {...register!(registerName as Path<T>)}
     />
   );
 };

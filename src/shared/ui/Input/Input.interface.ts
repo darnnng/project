@@ -8,8 +8,8 @@ export interface IInputTextProps<T extends FieldValues> {
   size?: string;
   placeholder: string;
   type?: string;
-  register: UseFormRegister<T>;
-  registerName: Path<T>;
+  register?: UseFormRegister<T>;
+  registerName?: Path<T>;
 }
 
 export type IInputs = IFormInput | IOrderFormInput;
