@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
-import { options } from '@src/shared/api/apiOptions';
 import { useHandleError } from '@src/shared/model/useHandleError';
+import { handleQuery } from '@shared/model/queryFunc';
 import { ICategory } from './CategoryMenu.interface';
 
 export function useCategoriesList() {
@@ -10,7 +10,7 @@ export function useCategoriesList() {
 
   const { data: catData, isLoading: categoriesLoading } = useQuery({
     queryKey: 'categoriesData',
-    queryFn: () => fetch(url, options).then((res) => res.json()),
+    queryFn: () => handleQuery(url),
     onError: (error) => handleError(error as Error),
   });
 

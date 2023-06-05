@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { useMemo } from 'react';
 import { useHandleError } from '@src/shared/model/useHandleError';
-import { options } from '@src/shared/api/apiOptions';
+import { handleQuery } from '@src/shared/model/queryFunc';
 import { ICatalogItemResults, IListItem } from './CatalogList.interface';
 
 export function useCatalogList(url: string, page: number, filter: string) {
@@ -9,10 +9,8 @@ export function useCatalogList(url: string, page: number, filter: string) {
 
   const { isLoading, data } = useQuery({
     queryKey: ['catalogData', [url, page, filter]],
-    queryFn: () => fetch(url, options).then((res) => res.json()),
-    onError: (error) => {
-      handleError(error as Error);
-    },
+    queryFn: () => handleQuery(url),
+    onError: (error) => handleError(error as Error),
   });
 
   const itemsList: IListItem[] = useMemo(() => {
@@ -21,7 +19,7 @@ export function useCatalogList(url: string, page: number, filter: string) {
         return {
           id: elem.defaultArticle.code,
           name: elem.defaultArticle.name,
-          image: elem.allArticleBaseImages ? elem.allArticleBaseImages[0] : elem.images[0].baseUrl, //TO-DO USE ANOTHER PROPERTY ('CAUSE IMAGES REPEAT)
+          image: elem.allArticleBaseImages ? elem.allArticleBaseImages[0] : elem.images[0].baseUrl,
           attribute: elem.sellingAttributes ? elem.sellingAttributes[0] : ' ',
           price: elem.price.formattedValue,
           isFavourite: false,

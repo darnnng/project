@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@src/shared/model/reduxHooks';
 import { selectedTheme } from '@src/features/ThemeChange/model/themeSlice';

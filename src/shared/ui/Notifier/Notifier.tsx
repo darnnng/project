@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { notifications } from '@src/shared/model/notifierSlice';
+import { notifications } from '@src/shared/ui/Notifier/notifierSlice';
 import { useAppSelector } from '@src/shared/model/reduxHooks';
 import styles from './Notifier.module.scss';
 

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useHandleError } from '@shared/model/useHandleError';
-import { options } from '@shared/api/apiOptions';
+import { handleQuery } from '@src/shared/model/queryFunc';
 import { ICountry, ILocation } from './types';
 
 export function useCountries() {
@@ -10,14 +10,14 @@ export function useCountries() {
 
   const { isLoading, data } = useQuery({
     queryKey: ['countries', [url]],
-    queryFn: () => fetch(url, options).then((res) => res.json()),
+    queryFn: () => handleQuery(url),
     onError: (error) => handleError(error as Error),
   });
 
   const countries = useMemo(
     () =>
       data
-        ?.map((element: ILocation) => element.countries)
+        .map((element: ILocation) => element.countries)
         .flatMap((countryArray: ICountry[]) =>
           countryArray.map((country: ICountry) => country.name)
         ),

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { options } from '@shared/api/apiOptions';
 import { useHandleError } from '@shared/model/useHandleError';
+import { handleQuery } from '@shared/model/queryFunc';
 import { ICardItemResults } from './ImageCards.interface';
 
 export const useImageCards = () => {
@@ -10,7 +10,7 @@ export const useImageCards = () => {
 
   const { data, isLoading } = useQuery({
     queryKey: 'cardsData',
-    queryFn: () => fetch(url, options).then((res) => res.json()),
+    queryFn: () => handleQuery(url),
     onError: (error) => handleError(error as Error),
   });
 

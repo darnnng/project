@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { createAlert } from './notifierSlice';
+import { createAlert } from '../ui/Notifier/notifierSlice';
 import { useAppDispatch } from './reduxHooks';
 
 export function useHandleError() {
