@@ -8,7 +8,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { setPluginsPkg } from './config/plugins.js';
 import { setResolvers } from './config/resolvers.js';
 import { buildDevServer } from './config/buildDevServer.js';
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
@@ -53,10 +52,6 @@ const webpackConfig = (env) => {
       new CompressionPlugin({
         algorithm: 'gzip',
       }),
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].css',
-      }),
     ],
     optimization: {
       minimize: true,
@@ -64,8 +59,8 @@ const webpackConfig = (env) => {
         new ESBuildMinifyPlugin({
           target: 'es2015',
         }),
-        new CssMinimizerPlugin({
-          test: /\.css$/i,
+        new MiniCssExtractPlugin({
+          chunkFilename: 'css/[name].[contenthash:8].css',
         }),
       ],
     },

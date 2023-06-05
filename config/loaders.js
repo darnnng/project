@@ -25,6 +25,7 @@ export const miniSCSS = () => {
           importLoaders: 2,
         },
       },
+
       'sass-loader',
     ],
   };

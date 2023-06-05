@@ -4,7 +4,7 @@ import ESLintPlugin from 'eslint-webpack-plugin';
 import pkg from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-const { EnvironmentPlugin, ProvidePlugin, DefinePlugin } = pkg;
+const { EnvironmentPlugin, ProvidePlugin } = pkg;
 
 export const setPluginsPkg = () => {
   return [
@@ -29,8 +29,5 @@ export const setPluginsPkg = () => {
     new CssMinimizerPlugin({
       test: /\.css$/i,
     }),
-    // new DefinePlugin({
-    //   'process.env.SELECTED_LANGUAGE': JSON.stringify('en'),
-    // }),
   ];
 };
