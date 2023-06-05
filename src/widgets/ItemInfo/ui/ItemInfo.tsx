@@ -5,15 +5,16 @@ import { AddFavButton } from '@features/AddFavourites';
 import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
 import { AddToCartBtn } from '@src/features/AddToCart/ui/AddToCartBtn';
 import { Button } from '@shared/ui/Button';
+import { Urls } from '@shared/constants/urls';
 import { IArticleElement } from '../model/ItemInfo.interface';
 import styles from './ItemInfo.module.scss';
-
+//TO-DO ITEM INFO BOTTOM PART
 export const ItemInfo = () => {
   const { t } = useTranslation();
   const { id, category } = useParams();
   const [size, setSize] = useState('');
   const navigate = useNavigate();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
+  const url = `${Urls.ITEMINFO}${id}`;
   const { articles, galleryImages, data, sizes, firebaseItem } = useSingleItem(url, id!);
 
   const handleChangeArticle = (articleId: string) => {

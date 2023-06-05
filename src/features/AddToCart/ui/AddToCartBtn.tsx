@@ -7,6 +7,7 @@ import { useHandleError } from '@shared/model/useHandleError';
 import { useCartItem } from '@entities/cartItem/model/useCartItem';
 import { RoutePath } from '@shared/constants/routes';
 import { Button } from '@shared/ui/Button';
+import { Urls } from '@shared/constants/urls';
 import { addToCartDb, checkIfIsInCart } from '../api/cartApi';
 import { IAddBtnProps } from '../model/types';
 import styles from './AddToCartBtn.module.scss';
@@ -18,7 +19,7 @@ export const AddToCartBtn = memo(({ size }: IAddBtnProps) => {
   const handleError = useHandleError();
   const [errorMessage, setErrorMessage] = useState(false);
   const { id } = useParams();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
+  const url = `${Urls.ITEMINFO}${id}`;
   const navigate = useNavigate();
   const { cartItem } = useCartItem(url, id!, size);
 
