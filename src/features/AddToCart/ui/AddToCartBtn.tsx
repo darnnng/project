@@ -38,7 +38,7 @@ export const AddToCartBtn = memo(({ size }: IAddBtnProps) => {
       navigate(`/${RoutePath.LOGIN}/`);
       return;
     }
-    if (size == '') {
+    if (!size) {
       setErrorMessage(true);
       return;
     }
