@@ -1,6 +1,7 @@
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import { IFormInput } from '@features/Authorization/model/types';
 import { IOrderFormInput } from '@widgets/OrderForm/model/OrderForm.interface';
+import { IPaymentInput } from '@src/widgets/PaymentForm/model/PaymentForm.interface';
 
 export interface IInputTextProps<T extends FieldValues> {
   id: string;
@@ -12,4 +13,4 @@ export interface IInputTextProps<T extends FieldValues> {
   registerName?: Path<T>;
 }
 
-export type IInputs = IFormInput | IOrderFormInput;
+export type IInputs = IFormInput | IOrderFormInput | IPaymentInput;

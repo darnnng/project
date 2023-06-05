@@ -1,7 +1,8 @@
 import React from 'react';
 import { CartBreadcrumbs } from '@features/CartBreadcrumbs';
-import { useAppSelector } from '@src/shared/model/reduxHooks';
-import { currentUser } from '@src/entities/user/model/userSlice';
+import { useAppSelector } from '@shared/model/reduxHooks';
+import { currentUser } from '@entities/user/model/userSlice';
+import { PaymentForm } from '@widgets/PaymentForm';
 import styles from './CartPayment.module.scss';
 
 const CartPaymentPage = () => {
@@ -12,6 +13,7 @@ const CartPaymentPage = () => {
       <div>{address.house}</div>
       <div>{address.city}</div>
       <div>{address.street}</div>
+      <PaymentForm />
     </div>
   );
 };
