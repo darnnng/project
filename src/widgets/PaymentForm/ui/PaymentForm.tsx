@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import InputMask from 'react-input-mask';
+import { InputHTMLAttributes } from 'react';
 import { InputText } from '@shared/ui/Input';
 import { Button } from '@shared/ui/Button';
 import { IPaymentInput } from '../model/PaymentForm.interface';
@@ -14,7 +17,7 @@ export const PaymentForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IPaymentInput>({
-    mode: 'onSubmit',
+    mode: 'onChange',
     resolver: yupResolver(paymentSchema),
   });
 
@@ -26,7 +29,6 @@ export const PaymentForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.formContainer}>
-        <p className={styles.orderTitle}>{t('Your order')}</p>
         <div className={styles.inputContainer}>
           <label htmlFor="cardNumber">{t('Card number')}</label>
           <InputText
@@ -68,13 +70,24 @@ export const PaymentForm = () => {
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="cardExpire">{t('Expire date')}</label>
-          <InputText
+          <InputMask
+            mask="99/99"
             id="cardExpire"
             errors={!!errors.cardExpire?.message}
-            placeholder={'__/__' as string}
-            register={register}
-            registerName={'cardExpire'}
-          />
+            placeholder="__/__"
+            {...register('cardExpire', { required: 'Expiration date is required' })}
+          >
+            {(inputProps) => (
+              <InputText
+                id="cardExpire"
+                errors={!!errors.cardExpire?.message}
+                placeholder="__/__"
+                register={register}
+                registerName="cardExpire"
+                {...inputProps}
+              />
+            )}
+          </InputMask>
           <span role="alert" className={styles.errorMessage}>
             {errors.cardExpire?.message as string}
           </span>
@@ -82,7 +95,7 @@ export const PaymentForm = () => {
         <div className={styles.divider} />
 
         <Button
-          text={t('Proceed to checkout')}
+          text={t('Checkout')}
           type={'submit'}
           styleProps={styles.checkoutBtn}
           variant="rounded"

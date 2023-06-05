@@ -14,7 +14,7 @@ export const CartBreadcrumbs = () => {
   };
 
   const handleOrderPage = () => {
-    navigate(`/${RoutePath.PAYMENT}`);
+    navigate(`/${RoutePath.CART}`);
   };
 
   return (
