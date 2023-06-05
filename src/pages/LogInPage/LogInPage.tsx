@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { SubmitHandler } from 'react-hook-form';
 import { RoutePath } from '@src/shared/constants/routes';
 import { AuthForm } from '@src/features/Authorization';
 import { setUser } from '@src/entities/user/model/userSlice';
@@ -17,7 +18,7 @@ const LogInPage = () => {
   const navigate = useNavigate();
   const onError = useHandleError();
 
-  const onLoginSubmit = (input: IFormInput) => {
+  const onLoginSubmit: SubmitHandler<IFormInput> = (input) => {
     const { email, password } = input;
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
@@ -33,12 +34,12 @@ const LogInPage = () => {
   };
 
   return (
-    <div className={styles.login}>
+    <div data-testid="login-page" className={styles.login}>
       <h3 className={styles.loginTitle}>{t('WELCOME BACK! LOG IN FOR MORE OPPORTUNITIES')}</h3>
       <AuthForm onSubmit={onLoginSubmit} buttonName={t('Sign in')} />
       <p className={styles.link}>
         {t('Not a member?')}
-        <Link to={`/${RoutePath.SIGNUP}`} className={styles.linkSignUp}>
+        <Link data-testid="signup-link" to={`/${RoutePath.SIGNUP}`} className={styles.linkSignUp}>
           {t('Join us')}
         </Link>
       </p>

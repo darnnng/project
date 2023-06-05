@@ -1,4 +1,5 @@
 @import './../../../shared/variables.scss';
+@import './../../../shared/mixins';
 
 .favImage {
   width: 100px;
@@ -44,50 +45,9 @@
 }
 
 .buttonContainer {
-  display: flex;
-  align-items: flex-end;
-  column-gap: 20px;
+  @include button-container;
 }
 
 .materialSymbolsOutlined {
-  font-family: 'Material Symbols Outlined';
-  color: $fontDark;
-  text-decoration: none;
-  font-weight: normal;
-  font-style: normal;
-  font-size: $fontLarge;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  cursor: pointer;
-  &:hover {
-    color: $hoverColor;
-  }
-}
-
-.addButton {
-  font-family: $fontFamily;
-  background-color: $backgroundDark;
-  color: $fontLight;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: $fontMid;
-  border: none;
-  &:hover {
-    background-color: $hoverColor;
-  }
-}
-
-.disabledAddButton {
-  font-family: $fontFamily;
-  background-color: $hoverColor;
-  color: $fontLight;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: $fontMid;
-  border: none;
+  @include materialSymbols;
 }

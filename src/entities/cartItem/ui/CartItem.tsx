@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@src/shared/model/reduxHooks';
 import { selectedTheme } from '@src/features/ThemeChange/model/themeSlice';
@@ -10,6 +9,7 @@ export const CartItem = ({ item, handleDeleteFromCart, userId }: ICartItemProps)
   const handleSeeItem = () => {
     navigate(`/${item.id}`);
   };
+
   const { themeLight } = useAppSelector(selectedTheme);
   return (
     <div key={item.id} className={`${styles.cartItem}  ${themeLight ? '' : styles.darkCartItem}`}>

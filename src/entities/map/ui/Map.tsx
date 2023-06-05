@@ -34,3 +34,5 @@ export const CitiesMap = () => {
     </div>
   );
 };
+
+export default CitiesMap;

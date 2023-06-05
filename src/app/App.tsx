@@ -1,18 +1,8 @@
 import * as React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from '@src/shared/lib/queryClientOptions';
 import { AppRouter } from './routes';
 import './App.module.scss';
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
-      retry: false,
-    },
-  },
-});
 
 export const App = () => {
   return (

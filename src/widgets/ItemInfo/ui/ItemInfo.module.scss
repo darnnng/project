@@ -1,3 +1,4 @@
+@import './../../../shared/_mixins.scss';
 @import './../../../shared/variables.scss';
 
 .upContainer {
@@ -7,10 +8,15 @@
   justify-content: center;
   column-gap: 100px;
   margin-bottom: 50px;
+  font-family: $fontFamily;
   @media (max-width: $screenMid) {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.addButton {
+  @include add-button;
 }
 
 .sliderBlock {
@@ -73,6 +79,7 @@
 
 .downContainer {
   display: flex;
+  font-family: $fontFamily;
   justify-content: center;
   align-items: center;
   font-weight: 600;
@@ -100,30 +107,6 @@
 }
 
 .downContainerItem {
-  font-size: $fontMid;
-}
-
-.addButton {
-  min-width: 200px;
-  min-height: 45px;
-  font-family: $fontFamily;
-  background-color: $backgroundDark;
-  color: $fontLight;
-  padding: 10px;
-  font-size: $fontMid;
-  &:hover {
-    background-color: $backgroundLight;
-    color: $fontDark;
-  }
-}
-
-.disabledAddButton {
-  min-width: 200px;
-  min-height: 45px;
-  font-family: $fontFamily;
-  background-color: $hoverColor;
-  color: $fontLight;
-  padding: 10px;
   font-size: $fontMid;
 }
 

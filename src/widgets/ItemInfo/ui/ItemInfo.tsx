@@ -4,15 +4,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AddFavButton } from '@features/AddFavourites';
 import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
 import { AddToCartBtn } from '@src/features/AddToCart/ui/AddToCartBtn';
+import { Button } from '@shared/ui/Button';
+import { Urls } from '@shared/constants/urls';
 import { IArticleElement } from '../model/ItemInfo.interface';
 import styles from './ItemInfo.module.scss';
-
+//TO-DO ITEM INFO BOTTOM PART
 export const ItemInfo = () => {
   const { t } = useTranslation();
   const { id, category } = useParams();
   const [size, setSize] = useState('');
   const navigate = useNavigate();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
+  const url = `${Urls.ITEMINFO}${id}`;
   const { articles, galleryImages, data, sizes, firebaseItem } = useSingleItem(url, id!);
 
   const handleChangeArticle = (articleId: string) => {
@@ -55,39 +57,38 @@ export const ItemInfo = () => {
             {firebaseItem?.inStock ? (
               <AddToCartBtn size={size} />
             ) : (
-              <button className={styles.disabledAddButton} disabled>
-                {t('Out of stock')}
-              </button>
+              <Button text={t('Out of stock')} disabled={true} styleProps={styles.addButton} />
             )}
           </div>
           <AddFavButton />
         </div>
       </div>
+
       <div className={styles.downContainer}>
         <p className={styles.detailsTitle}>{t('details')}</p>
-        <p className={styles.downContainerItem}>
-          <span>{data?.product?.articlesList[0]?.description}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('year of production:')}
-          <span> {data?.product?.yearOfProduction || '-'}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('country of production:')}
-          <span>{data?.product?.countryOfProduction || '-'} </span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('article number:')}
-          <span> {data?.product?.code || '-'}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('materials: ')}
-          <span> {data?.product?.keyFibreTypes || '-'}</span>
-        </p>
-        <p className={styles.downContainerItem}>
-          {t('in stock:')}
-          <span> {data?.product?.inStock ? 'available' : 'not available'}</span>
-        </p>
+        {data?.product && (
+          <>
+            {[
+              { label: data.product.articlesList[0]?.description },
+              { label: t('year of production:'), value: data.product.yearOfProduction || '-' },
+              {
+                label: t('country of production:'),
+                value: data.product.countryOfProduction || '-',
+              },
+              { label: t('article number:'), value: data.product.code || '-' },
+              { label: t('materials: '), value: data.product.keyFibreTypes || '-' },
+              {
+                label: t('in stock:'),
+                value: data.product.inStock ? t('available') : t('not available'),
+              },
+            ].map((item, index) => (
+              <p className={styles.downContainerItem} key={index}>
+                {item.label}
+                <span> {item.value}</span>
+              </p>
+            ))}
+          </>
+        )}
       </div>
     </>
   );

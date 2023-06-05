@@ -18,6 +18,7 @@
   "Highest price": "По убыванию цены",
   "House number": "Номер дома",
   "Join us": "Присоединяйтесь",
+  "Looks like there are no items yet...": "Пока ещё нет товаров...",
   "Looks like there no items yet...": "Пока ещё нет товаров...",
   "Lowest price": "По возрастанию цены",
   "Main page": "Главная страница",
@@ -48,9 +49,11 @@
   "Your order": "Заказ",
   "article number:": "артикль:",
   "country of production:": "страна производства:",
+  "delete": "удалить",
   "details": "детали",
   "in stock:": "наличие:",
   "materials: ": "материалы:",
+  "on the map you can see only countries in which our stores are located": "на карте вы видите лишь страны в которых есть наши магазины",
   "variants available:": "доступные варианты:",
   "year of production:": "год производства:"
 }

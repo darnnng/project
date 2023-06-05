@@ -8,6 +8,7 @@ import { selectedPage, setPage } from '@src/features/Pagination/model/pagination
 import { selectedFilter, setFilter } from '@src/features/Sorting/model/filterSlice';
 import { CatalogList } from '@src/widgets/CatalogList';
 import { useCatalogList } from '@src/widgets/CatalogList/model/useCatalogList';
+import { Urls } from '@shared/constants/urls';
 import { CategoryMenu } from '../../widgets/CategoryMenu';
 import { SortingSelect } from '../../features/Sorting';
 import styles from './CatalogPage.module.scss';
@@ -17,7 +18,7 @@ const CatalogPage = () => {
   const prevCategoryRef = useRef<string | undefined>(category);
   const { page } = useAppSelector(selectedPage);
   const { filter } = useAppSelector(selectedFilter);
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=${page}&pagesize=28&categories=${category}&sortBy=${filter}`;
+  const url = `${Urls.CATALOG}${page}&pagesize=28&categories=${category}&sortBy=${filter}`;
   const { isLoading, totalNumberOfItems, pageCount } = useCatalogList(url, page, filter);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ const CatalogPage = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className={styles.catalogPageContainer}>
+        <div data-testid="catalog-page" className={styles.catalogPageContainer}>
           <CategoryMenu />
           <div className={styles.filters}>
             <SortingSelect onFilterChange={onFilterChange} filter={filter} />

@@ -1,18 +1,10 @@
 import path, { join } from 'path';
 import { fileURLToPath } from 'url';
-import { merge } from 'webpack-merge';
-import { config } from './webpack.config.js';
-
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
-export default merge(config, {
-  mode: 'development',
-  devtool: 'eval-source-map',
-  optimization: {
-    minimize: false,
-  },
-  devServer: {
+export const buildDevServer = () => {
+  return {
     port: process.env.PORT,
     static: join(dirname, 'public'),
     hot: true,
@@ -25,8 +17,5 @@ export default merge(config, {
         warnings: false,
       },
     },
-  },
-  output: {
-    publicPath: '/',
-  },
-});
+  };
+};

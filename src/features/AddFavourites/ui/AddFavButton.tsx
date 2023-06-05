@@ -6,6 +6,7 @@ import { currentUser } from '@entities/user/model/userSlice';
 import { RoutePath } from '@shared/constants/routes';
 import { useHandleError } from '@shared/model/useHandleError';
 import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
+import { Urls } from '@shared/constants/urls';
 import { addToFavouritesDb, checkIsFavourite, deleteFromFavouritesDb } from '../api/favouritesApi';
 import styles from './AddFavButton.module.scss';
 
@@ -15,7 +16,8 @@ export const AddFavButton = () => {
   const handleError = useHandleError();
   const { t } = useTranslation();
   const { id } = useParams();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
+  const url = `${Urls.ITEMINFO}${id}`;
+
   const navigate = useNavigate();
   const { firebaseItem } = useSingleItem(url, id!);
 

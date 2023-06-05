@@ -1,5 +1,5 @@
+@import './../../shared/mixins';
+
 .pageContainer {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 40px;
+  @include page-container(20px 40px);
 }

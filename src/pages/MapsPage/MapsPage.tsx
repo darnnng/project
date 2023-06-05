@@ -1,11 +1,11 @@
-import React from 'react';
-import { CitiesMap } from '@src/entities/map';
+import React, { lazy } from 'react';
+const CitiesMap = lazy(() => import('@entities/map'));
 
 const MapsPage = () => {
   return (
-    <div>
+    <>
       <CitiesMap />
-    </div>
+    </>
   );
 };
 

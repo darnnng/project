@@ -1,23 +1,8 @@
 @import './../../shared/variables.scss';
+@import './../../shared/mixins';
 
 .materialSymbolsOutlined {
-  font-family: 'Material Symbols Outlined';
-  color: $fontDark;
-  text-decoration: none;
-  font-weight: normal;
-  font-style: normal;
-  font-size: $fontLarge;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  cursor: pointer;
-  &:hover {
-    color: $hoverColor;
-  }
+  @include materialSymbols;
 }
 
 .darkIcons {

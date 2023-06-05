@@ -18,6 +18,7 @@
   "Highest price": "Highest price",
   "House number": "House number",
   "Join us": "Join us",
+  "Looks like there are no items yet...": "Looks like there are no items yet...",
   "Looks like there no items yet...": "Looks like there no items yet...",
   "Lowest price": "Lowest price",
   "Main page": "Main page",
@@ -48,9 +49,11 @@
   "Your order": "Your order",
   "article number:": "article number:",
   "country of production:": "country of production:",
+  "delete": "delete",
   "details": "details",
   "in stock:": "in stock:",
   "materials: ": "materials:",
+  "on the map you can see only countries in which our stores are located": "on the map you can see only countries in which our stores are located",
   "variants available:": "variants available:",
   "year of production:": "year of production:"
 }

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useHandleError } from '@shared/model/useHandleError';
-import { options } from '@shared/api/apiOptions';
+import { handleQuery } from '@shared/model/queryFunc';
 import { IArticle } from './types';
 
 export function useCartItem(url: string, id: string, size: string) {
@@ -9,7 +9,7 @@ export function useCartItem(url: string, id: string, size: string) {
 
   const { isLoading, data } = useQuery({
     queryKey: ['cartItemData', [url]],
-    queryFn: () => fetch(url, options).then((res) => res.json()),
+    queryFn: () => handleQuery(url),
     onError: (error) => handleError(error as Error),
   });
 

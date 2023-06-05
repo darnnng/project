@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useHandleError } from '@shared/model/useHandleError';
-import { options } from '@shared/api/apiOptions';
+import { handleQuery } from '@shared/model/queryFunc';
 import { IArticle, IGalleryImage, IVariantsList } from './types';
 
 export function useSingleItem(url: string, id: string) {
@@ -9,7 +9,7 @@ export function useSingleItem(url: string, id: string) {
 
   const { isLoading, data } = useQuery({
     queryKey: ['singleItemData', [url]],
-    queryFn: () => fetch(url, options).then((res) => res.json()),
+    queryFn: () => handleQuery(url),
     onError: (error) => handleError(error as Error),
   });
 

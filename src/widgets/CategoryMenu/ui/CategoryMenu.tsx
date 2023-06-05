@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@src/shared/constants/routes';
 import { useCategoriesList } from '../model/useCategories';

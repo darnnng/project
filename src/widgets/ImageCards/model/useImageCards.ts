@@ -1,16 +1,17 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { options } from '@shared/api/apiOptions';
+import { Urls } from '@shared/constants/urls';
 import { useHandleError } from '@shared/model/useHandleError';
+import { handleQuery } from '@shared/model/queryFunc';
 import { ICardItemResults } from './ImageCards.interface';
 
 export const useImageCards = () => {
   const handleError = useHandleError();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=3&categories=ladies_all`;
+  const url = Urls.IMAGECARDS;
 
   const { data, isLoading } = useQuery({
     queryKey: 'cardsData',
-    queryFn: () => fetch(url, options).then((res) => res.json()),
+    queryFn: () => handleQuery(url),
     onError: (error) => handleError(error as Error),
   });
 

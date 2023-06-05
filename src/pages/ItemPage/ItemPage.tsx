@@ -4,11 +4,13 @@ import { Spinner } from '@shared/ui/Spinner';
 import { ItemInfo } from '@widgets/ItemInfo';
 import { useSingleItem } from '@entities/singleItem/model/useSingleItem';
 import { CategoryMenu } from '@widgets/CategoryMenu';
+import { Urls } from '@src/shared/constants/urls';
 import styles from './ItemPage.module.scss';
 
 const ItemPage = () => {
   const { id } = useParams();
-  const url = `https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail?lang=en&country=us&productcode=${id}`;
+  const url = `${Urls.ITEMINFO}${id}`;
+
   const { isLoading } = useSingleItem(url, id!);
   return (
     <>
