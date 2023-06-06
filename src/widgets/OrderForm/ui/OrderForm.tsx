@@ -19,7 +19,7 @@ export const OrderForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const handleError = useHandleError();
-  const { userId, cartItems } = useAppSelector(currentUser);
+  const { userId, cartItems, address } = useAppSelector(currentUser);
 
   const {
     register,
@@ -27,7 +27,11 @@ export const OrderForm = () => {
     formState: { errors },
   } = useForm<IOrderFormInput>({
     mode: 'onSubmit',
-    defaultValues: { city: '', street: '', house: '' },
+    defaultValues: {
+      city: address.city || '',
+      street: address.street || '',
+      house: address.house || '',
+    },
     resolver: yupResolver(orderSchema),
   });
 

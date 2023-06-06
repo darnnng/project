@@ -2,20 +2,20 @@ import { useCallback } from 'react';
 import { createAlert } from '../ui/Notifier/notifierSlice';
 import { useAppDispatch } from './reduxHooks';
 
-export function useHandleError() {
+export function useHandleSuccess() {
   const dispatch = useAppDispatch();
 
-  const handleError = useCallback(
-    (error: Error) => {
+  const handleSuccess = useCallback(
+    (message: string) => {
       dispatch(
         createAlert({
-          message: error.message,
-          type: 'error',
+          message: message,
+          type: 'success',
         })
       );
     },
     [dispatch]
   );
 
-  return handleError;
+  return handleSuccess;
 }

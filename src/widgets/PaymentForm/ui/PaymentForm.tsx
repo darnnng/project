@@ -3,10 +3,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { InputText } from '@shared/ui/Input';
 import { Button } from '@shared/ui/Button';
 import { useAppSelector } from '@shared/model/reduxHooks';
 import { currentUser } from '@entities/user/model/userSlice';
+import { RoutePath } from '@shared/constants/routes';
+import { useHandleSuccess } from '@src/shared/model/useHandleSuccess';
 import { IPaymentInput } from '../model/PaymentForm.interface';
 import { paymentSchema } from '../lib/paymentSchema';
 import { getCardTypeFromNumber } from '../lib/handleCardType';
@@ -40,6 +43,8 @@ export const PaymentForm = () => {
 
   const { userId, cartItems } = useAppSelector(currentUser);
   const [cardType, setCardType] = useState('');
+  const handleSuccess = useHandleSuccess();
+  const navigate = useNavigate();
 
   const handleCardNumberChange = (event: any) => {
     const cardNumber = event.target.value;
@@ -48,9 +53,10 @@ export const PaymentForm = () => {
   };
 
   const onSubmit: SubmitHandler<IPaymentInput> = (input) => {
-    console.log('input', input);
-    console.log('cartItems', cartItems);
+    console.log('Card data', input);
     createOrderDb(userId!, cartItems);
+    handleSuccess('Order has been placed  successfully!');
+    navigate(`/${RoutePath.CATALOG}`);
   };
 
   return (

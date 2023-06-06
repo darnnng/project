@@ -2,7 +2,6 @@
 
 .wrapper {
   position: fixed;
-  background-color: $error;
   color: $fontLight;
   font-family: $fontFamily;
   top: -60px;
@@ -26,4 +25,16 @@
       top: -60px;
     }
   }
+}
+
+.error {
+  background-color: $error;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: $success;
+  border-radius: 5px;
+  padding: 0.5rem;
 }
