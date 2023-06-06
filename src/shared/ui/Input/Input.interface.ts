@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import { IFormInput } from '@features/Authorization/model/types';
 import { IOrderFormInput } from '@widgets/OrderForm/model/OrderForm.interface';
@@ -11,6 +12,7 @@ export interface IInputTextProps<T extends FieldValues> {
   type?: string;
   register?: UseFormRegister<T>;
   registerName?: Path<T>;
+  onChange?: (event: any) => void;
 }
 
 export type IInputs = IFormInput | IOrderFormInput | IPaymentInput;

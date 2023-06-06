@@ -23,6 +23,33 @@
   column-gap: 20px;
 }
 
+@mixin form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  max-width: 450px;
+  padding: 20px;
+  border: 1px solid $hoverColor;
+  border-radius: 5px;
+  margin-top: 20px;
+  height: 100%;
+}
+
+@mixin input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+@mixin checkout-btn {
+  padding: 0.5rem;
+  width: 100%;
+  &:hover {
+    background-color: $hoverColor;
+  }
+}
+
 @mixin materialSymbols {
   font-family: 'Material Symbols Outlined';
   color: $fontDark;

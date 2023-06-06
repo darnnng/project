@@ -1,40 +1,8 @@
 @import './../../../shared/variables.scss';
+@import './../../../shared/mixins';
 
 form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: auto;
-  max-width: 450px;
-  // background-color: $light1;
-  padding: 20px;
-  border: 1px solid $hoverColor;
-  border-radius: 5px;
-  margin-top: 20px;
-  height: 100%;
-
-  input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    margin-bottom: 5px;
-  }
-
-  button {
-    padding: 0.5rem;
-    background-color: $dark;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: $fontFamily;
-    margin: 20px 0px;
-
-    &:hover {
-      background-color: $hoverColor;
-    }
-  }
+  @include form-container;
 
   .formLabel {
     font-size: 12px;
@@ -53,14 +21,19 @@ form {
 }
 
 .inputContainer {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+  @include input-container;
+  position: relative;
 }
 
 .checkoutBtn {
-  width: 100%;
-  &:hover {
-    background-color: $hoverColor;
-  }
+  @include checkout-btn;
+}
+
+.cardType {
+  color: rgb(22, 161, 199);
+  font-weight: bold;
+  position: absolute;
+  top: 62%;
+  right: 10px;
+  transform: translateY(-50%);
 }

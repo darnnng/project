@@ -1,9 +1,11 @@
 import { object, string } from 'yup';
+import { getCardTypeFromNumber } from './handleCardType';
 
 export const paymentSchema = object({
-  cardNumber: string()
-    .required()
-    .test('len', 'Must be exactly 16 characters', (val) => val!.length === 16),
+  cardNumber: string().test('cardNumber', 'Invalid card number', (value) => {
+    const cardType = getCardTypeFromNumber(value!);
+    return cardType === 'Visa' || cardType === 'Mastercard' || cardType === 'American Express';
+  }),
   cvc: string()
     .required('CVC is required')
     .matches(/^\d{3,4}$/, 'Invalid CVC'),

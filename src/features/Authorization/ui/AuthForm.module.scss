@@ -1,4 +1,5 @@
 @import './../../../shared/variables.scss';
+@import './../../../shared/mixins';
 
 form {
   display: flex;
@@ -22,9 +23,7 @@ form {
 }
 
 .inputContainer {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+  @include input-container;
 }
 
 .formButton {
