@@ -21,11 +21,12 @@ import styles from './PaymentForm.module.scss';
 //TO-DO линтеры?
 //TO-DO разобрать перевод по страницам
 //TO-DO разобрать конфиг webpack с i18n
-//item page верстку подфиксить
 
 //TO-DO форму сделать с валидацией
 
 //доделать переводы в приципе
+
+//верстка форм проверить
 
 export const PaymentForm = () => {
   const { t } = useTranslation();

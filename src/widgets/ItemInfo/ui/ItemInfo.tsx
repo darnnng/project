@@ -8,7 +8,7 @@ import { Button } from '@shared/ui/Button';
 import { Urls } from '@shared/constants/urls';
 import { IArticleElement } from '../model/ItemInfo.interface';
 import styles from './ItemInfo.module.scss';
-//TO-DO ITEM INFO BOTTOM PART
+
 export const ItemInfo = () => {
   const { t } = useTranslation();
   const { id, category } = useParams();
