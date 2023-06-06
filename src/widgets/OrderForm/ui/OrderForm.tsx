@@ -9,6 +9,7 @@ import { currentUser, setAddress } from '@entities/user/model/userSlice';
 import { useHandleError } from '@shared/model/useHandleError';
 import { Button } from '@shared/ui/Button';
 import { InputText } from '@src/shared/ui/Input';
+import { ValidationMessage } from '@src/shared/ui/ValidationMessage/ValidationMessage';
 import { orderSchema } from '../lib/validationSchema';
 import { IOrderFormInput } from '../model/OrderForm.interface';
 import styles from './OrderForm.module.scss';
@@ -64,9 +65,7 @@ export const OrderForm = () => {
             register={register}
             registerName={'city'}
           />
-          <span role="alert" className={styles.errorMessage}>
-            {errors.city?.message as string}
-          </span>
+          <ValidationMessage message={t(errors.city?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="street">{t('Street')}</label>
@@ -77,9 +76,7 @@ export const OrderForm = () => {
             register={register}
             registerName={'street'}
           />
-          <span role="alert" className={styles.errorMessage}>
-            {errors.street?.message as string}
-          </span>
+          <ValidationMessage message={t(errors.street?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="house">{t('House number')}</label>
@@ -91,9 +88,7 @@ export const OrderForm = () => {
             register={register}
             registerName={'house'}
           />
-          <span role="alert" className={styles.errorMessage}>
-            {errors.house?.message as string}
-          </span>
+          <ValidationMessage message={t(errors.house?.message as string)} />
         </div>
         <div className={styles.divider} />
         <div className={styles.divTotal}>

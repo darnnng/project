@@ -10,6 +10,7 @@ import { useAppSelector } from '@shared/model/reduxHooks';
 import { currentUser } from '@entities/user/model/userSlice';
 import { RoutePath } from '@shared/constants/routes';
 import { useHandleSuccess } from '@src/shared/model/useHandleSuccess';
+import { ValidationMessage } from '@src/shared/ui/ValidationMessage/ValidationMessage';
 import { IPaymentInput } from '../model/PaymentForm.interface';
 import { paymentSchema } from '../lib/paymentSchema';
 import { getCardTypeFromNumber } from '../lib/handleCardType';
@@ -21,12 +22,9 @@ import styles from './PaymentForm.module.scss';
 //TO-DO линтеры?
 //TO-DO разобрать перевод по страницам
 //TO-DO разобрать конфиг webpack с i18n
-
-//TO-DO форму сделать с валидацией
-
+//TO-DO FIX AUTH FORM
+//TO-DO форму починить и маску добавить попробовать
 //доделать переводы в приципе
-
-//верстка форм проверить
 
 export const PaymentForm = () => {
   const { t } = useTranslation();
@@ -72,10 +70,7 @@ export const PaymentForm = () => {
             maxlength={16}
           />
           {cardType && <p className={styles.cardType}>{cardType}</p>}
-
-          <span role="alert" className={styles.errorMessage}>
-            {errors.cardNumber?.message as string}
-          </span>
+          <ValidationMessage message={t(errors.cardNumber?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="CVC">{t('CVC')}</label>
@@ -87,9 +82,7 @@ export const PaymentForm = () => {
             registerName={'cvc'}
             maxlength={4}
           />
-          <span role="alert" className={styles.errorMessage}>
-            {errors.cvc?.message as string}
-          </span>
+          <ValidationMessage message={t(errors.cvc?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="cardName">{t('Card name')}</label>
@@ -100,9 +93,7 @@ export const PaymentForm = () => {
             register={register}
             registerName={'cardName'}
           />
-          <span role="alert" className={styles.errorMessage}>
-            {errors.cardName?.message as string}
-          </span>
+          <ValidationMessage message={t(errors.cardName?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
           <label htmlFor="cardExpire">{t('Expire date')}</label>
@@ -114,9 +105,7 @@ export const PaymentForm = () => {
             registerName="cardExpire"
             maxlength={4}
           />
-          <span role="alert" className={styles.errorMessage}>
-            {errors.cardExpire?.message as string}
-          </span>
+          <ValidationMessage message={t(errors.cardExpire?.message as string)} />
         </div>
         <div className={styles.divider} />
 

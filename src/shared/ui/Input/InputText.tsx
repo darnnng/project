@@ -1,4 +1,3 @@
-import React from 'react';
 import cn from 'classnames';
 import { Path } from 'react-hook-form';
 import { IInputTextProps, IInputs } from './Input.interface';

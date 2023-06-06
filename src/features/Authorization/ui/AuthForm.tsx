@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@src/shared/ui/Button';
 import { InputText } from '@src/shared/ui/Input';
+import { ValidationMessage } from '@src/shared/ui/ValidationMessage';
 import { IAuthFormProps, IFormInput } from '../model/types';
 import { authSchema } from '../lib/validationSchema';
 import styles from './AuthForm.module.scss';
@@ -33,9 +34,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
           register={register}
           registerName={'email'}
         />
-        <span role="alert" data-testid="alert1" className={styles.errorMessage}>
-          {errors.email?.message as string}
-        </span>
+        <ValidationMessage data-testid="alert1" message={t(errors.email?.message as string)} />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="password">{t('Password')}</label>
@@ -47,9 +46,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
           register={register}
           registerName={'password'}
         />
-        <span role="alert" data-testid="alert2" className={styles.errorMessage}>
-          {errors.password?.message as string}
-        </span>
+        <ValidationMessage data-testid="alert2" message={t(errors.password?.message as string)} />
       </div>
       <p className={styles.formLabel}>
         {t('By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use')}
