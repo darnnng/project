@@ -45,6 +45,7 @@
 @mixin checkout-btn {
   padding: 0.5rem;
   width: 100%;
+  font-size: $fontSmall;
   &:hover {
     background-color: $hoverColor;
   }

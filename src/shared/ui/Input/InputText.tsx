@@ -13,6 +13,8 @@ export const InputText = <T extends IInputs>({
   id,
   registerName,
   onChange,
+  maxlength,
+  minlength,
 }: IInputTextProps<T>) => {
   const style = errors ? styles.formErrorInput : styles.formInput;
   const inputCn = cn(style, styles[size]);
@@ -24,6 +26,8 @@ export const InputText = <T extends IInputs>({
       placeholder={placeholder}
       {...register!(registerName as Path<T>)}
       onChange={onChange}
+      maxLength={maxlength}
+      minLength={minlength}
     />
   );
 };

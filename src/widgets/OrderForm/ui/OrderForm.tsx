@@ -98,6 +98,7 @@ export const OrderForm = () => {
           </p>
         </div>
         <Button
+          disabled={+price === 0 && true}
           text={t('Proceed to checkout')}
           type={'submit'}
           styleProps={styles.checkoutBtn}

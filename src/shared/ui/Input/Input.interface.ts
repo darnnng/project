@@ -13,6 +13,8 @@ export interface IInputTextProps<T extends FieldValues> {
   register?: UseFormRegister<T>;
   registerName?: Path<T>;
   onChange?: (event: any) => void;
+  maxlength?: number;
+  minlength?: number;
 }
 
 export type IInputs = IFormInput | IOrderFormInput | IPaymentInput;

@@ -2,12 +2,15 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { InputText } from '@shared/ui/Input';
 import { Button } from '@shared/ui/Button';
+import { useAppSelector } from '@shared/model/reduxHooks';
+import { currentUser } from '@entities/user/model/userSlice';
 import { IPaymentInput } from '../model/PaymentForm.interface';
 import { paymentSchema } from '../lib/paymentSchema';
 import { getCardTypeFromNumber } from '../lib/handleCardType';
+import { createOrderDb } from '../api/paymentApi';
 import styles from './PaymentForm.module.scss';
 
 //TO-DO CHROMATIC STORYBOOK
@@ -18,7 +21,8 @@ import styles from './PaymentForm.module.scss';
 //item page верстку подфиксить
 
 //TO-DO форму сделать с валидацией
-//сделать api для firebase чтоб заказ создавался
+
+// перенаправление куда-то после того как заказ создавлся
 //убрать лишние dependency
 
 //доделать переводы в приципе
@@ -34,6 +38,7 @@ export const PaymentForm = () => {
     resolver: yupResolver(paymentSchema),
   });
 
+  const { userId, cartItems } = useAppSelector(currentUser);
   const [cardType, setCardType] = useState('');
 
   const handleCardNumberChange = (event: any) => {
@@ -43,7 +48,9 @@ export const PaymentForm = () => {
   };
 
   const onSubmit: SubmitHandler<IPaymentInput> = (input) => {
-    console.log(input);
+    console.log('input', input);
+    console.log('cartItems', cartItems);
+    createOrderDb(userId!, cartItems);
   };
 
   return (
@@ -58,6 +65,7 @@ export const PaymentForm = () => {
             register={register}
             registerName={'cardNumber'}
             onChange={handleCardNumberChange}
+            maxlength={16}
           />
           {cardType && <p className={styles.cardType}>{cardType}</p>}
 
@@ -73,6 +81,7 @@ export const PaymentForm = () => {
             placeholder={t('Enter CVC') as string}
             register={register}
             registerName={'cvc'}
+            maxlength={4}
           />
           <span role="alert" className={styles.errorMessage}>
             {errors.cvc?.message as string}
@@ -99,6 +108,7 @@ export const PaymentForm = () => {
             placeholder="__/__"
             register={register}
             registerName="cardExpire"
+            maxlength={4}
           />
           <span role="alert" className={styles.errorMessage}>
             {errors.cardExpire?.message as string}
