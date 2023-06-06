@@ -25,9 +25,6 @@ import styles from './PaymentForm.module.scss';
 
 //TO-DO форму сделать с валидацией
 
-// перенаправление куда-то после того как заказ создавлся
-//убрать лишние dependency
-
 //доделать переводы в приципе
 
 export const PaymentForm = () => {
