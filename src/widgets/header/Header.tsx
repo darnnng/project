@@ -28,7 +28,7 @@ export const Header = () => {
         <ul className={styles.spanContainer}>
           <li className={`${styles.spanElement}  ${themeLight ? '' : styles.darkSpan}`}>
             <Link to={`/${RoutePath.MAPS}`} className={`${themeLight ? '' : styles.darkLink}`}>
-              {t('Our stores')}
+              {t('ourstores')}
             </Link>
           </li>
           <span> | </span>
@@ -39,7 +39,7 @@ export const Header = () => {
                   to={`/${RoutePath.SIGNUP}`}
                   className={`${themeLight ? '' : styles.darkLink}`}
                 >
-                  {t('Join us')}
+                  {t('joinus')}
                 </Link>
               </li>
               <span> | </span>
@@ -60,7 +60,7 @@ export const Header = () => {
               home
             </span>
             <p className={`${styles.mainPageLink}  ${themeLight ? '' : styles.darkIcons}`}>
-              {t('Main page')}
+              {t('mainpage')}
             </p>
           </Link>
         </div>

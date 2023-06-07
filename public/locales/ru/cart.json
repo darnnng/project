@@ -1,0 +1,19 @@
+{
+  "orderdetails": "Детали заказа",
+  "payment": "Оплата",
+  "noitems": "Пока ещё нет товаров...",
+  "favs": "Избранное",
+  "proceedCheckout": "Перейти к оплате",
+  "yourOrder": "Your order",
+  "street": "Улица",
+  "streetRequired": "Улица обязательна",
+  "houseRequired": "Дом обязателен",
+  "houseNum": "Номер дома",
+  "onlyLetters": "Только буквы",
+  "onlyNumbers": "Только цифры",
+  "enterCity": "Введите город",
+  "enterHouseNum": "Введите номер дома",
+  "enterStreet": "Введите улицу",
+  "city": "Город",
+  "cityRequired": "Город обязателен"
+}

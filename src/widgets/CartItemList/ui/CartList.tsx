@@ -53,7 +53,7 @@ export const CartList = () => {
           />
         ))
       ) : (
-        <p className={styles.noItemsText}>{t('Looks like there are no items yet...')}</p>
+        <p className={styles.noItemsText}>{t('cart:noitems')}</p>
       )}
     </div>
   );

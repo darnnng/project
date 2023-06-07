@@ -11,8 +11,10 @@ import { buildDevServer } from './config/buildDevServer.js';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
-const webpackConfig = (env) => {
-  const isProduction = env === 'production';
+const webpackConfig = (_, env) => {
+  console.log(env);
+  const isProduction = env.mode === 'production';
+  console.log(isProduction, 11);
 
   const config = {
     entry: {
@@ -35,14 +37,14 @@ const webpackConfig = (env) => {
 
   const development = {
     mode: 'development',
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     optimization: {
       minimize: false,
     },
     devServer: buildDevServer(),
-    output: {
-      publicPath: '/',
-    },
+    // output: {
+    //   publicPath: '/',
+    // },
   };
 
   const production = {

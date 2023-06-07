@@ -24,11 +24,11 @@ export const CartBreadcrumbs = () => {
           onClick={handleOrderPage}
           className={`${styles.crumb} ${isSelected(`/${RoutePath.CART}`) ? styles.selected : ''}`}
         >
-          {t('Order details')}
+          {t('cart:orderdetails')}
         </li>
         <li>❯</li>
         <li className={` ${isSelected(`/${RoutePath.PAYMENT}`) ? styles.selected : ''}`}>
-          {t('Payment')}
+          {t('cart:payment')}
         </li>
       </ul>
     </nav>

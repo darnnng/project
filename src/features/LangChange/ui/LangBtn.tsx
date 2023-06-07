@@ -16,7 +16,7 @@ export const LangBtn = () => {
 
   return (
     <li className={styles.spanElement}>
-      <a className={`${themeLight ? '' : styles.darkLink}`}>{t('Switch language')}</a>
+      <a className={`${themeLight ? '' : styles.darkLink}`}>{t('switchlang')}</a>
       <ul>
         {languages.map((language) => (
           <li key={language.code}>

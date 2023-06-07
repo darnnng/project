@@ -1,0 +1,20 @@
+{
+  "AddCart": "Add to cart",
+  "AddFavourites: ": "Add to your favourites:",
+  "alreadyCart": "Already in your cart",
+  "notStock": "Not in stock",
+  "removeFavs: ": "Remove from favourites:",
+  "selectSize": "Select size",
+  "articleNumber: ": "article number:",
+  "available": "available",
+  "countryProduction: ": "country of production:",
+  "delete": "delete",
+  "details": "details",
+  "inStock: ": "in stock:",
+  "materials: ": "materials:",
+  "notAvailable": "not available",
+  "variantsAvailable: ": "variants available:",
+  "yearProduction: ": "year of production:",
+  "outStock": "Out of stock",
+  "chooseSize": "Please, choose size"
+}

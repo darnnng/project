@@ -10,22 +10,22 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footerUp}>
         <div className={styles.aboutSection}>
-          <p className={styles.footerBigTitle}>{t('ABOUT US')}</p>
+          <p className={styles.footerBigTitle}>{t('about')}</p>
           <div className={styles.footerLinks}>
             <p>
               <Link className={styles.footerLinkText} to={`/${RoutePath.MAPS}`}>
-                {t('Our stores')}
+                {t('ourstores')}
               </Link>
             </p>
             <p>
               <Link className={styles.footerLinkText} to={`/${RoutePath.CATALOG}`}>
-                {t('Catalog')}
+                {t('catalog')}
               </Link>
             </p>
           </div>
         </div>
         <div className={styles.socialMedia}>
-          <p className={styles.footerBigTitle}>{t('CONTACTS')}</p>
+          <p className={styles.footerBigTitle}>{t('contacts')}</p>
           <div className={styles.footerLinksSocial}>
             <Link to={`https://www.facebook.com/`}>
               <span className={styles.materialSymbolsOutlined}>groups</span>

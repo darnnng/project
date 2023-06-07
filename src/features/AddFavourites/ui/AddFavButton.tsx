@@ -14,7 +14,7 @@ export const AddFavButton = () => {
   const { userId } = useAppSelector(currentUser);
   const [liked, setLiked] = useState(false);
   const handleError = useHandleError();
-  const { t } = useTranslation();
+  const { t } = useTranslation('itemPage');
   const { id } = useParams();
   const url = `${Urls.ITEMINFO}${id}`;
 
@@ -46,9 +46,7 @@ export const AddFavButton = () => {
   };
   return (
     <div className={styles.favouritesContainer}>
-      <p className={styles.favouritesTitle}>
-        {liked ? t('Remove from favourites:') : t('Add to your favourites:')}
-      </p>
+      <p className={styles.favouritesTitle}>{liked ? t('removeFavs: ') : t('AddFavourites: ')}</p>
       <div onClick={handleSetLike} className={styles.materialIcons}>
         {liked ? 'favorite' : 'favorite_border'}
       </div>

@@ -9,7 +9,7 @@ import { useImageCards } from '../model/useImageCards';
 import styles from './ImageCards.module.scss';
 
 export const ImageCards = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('home');
   const navigate = useNavigate();
   const { itemsList, isLoading } = useImageCards();
 
@@ -26,7 +26,7 @@ export const ImageCards = () => {
           <div key={element.id} className={styles.card}>
             <div className={styles.imageName}>{element.name}</div>
             <Button
-              text={t('Shop now')}
+              text={t('shopNow')}
               size="small"
               styleProps={styles.shopButton}
               onClick={() => moveToItemPage(element.article)}

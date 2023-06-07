@@ -1,0 +1,19 @@
+{
+  "CVC": "CVC",
+  "CVC is required": "CVC is required",
+  "Card name": "Card name",
+  "Card number": "Card number",
+  "Checkout": "Checkout",
+  "Enter CVC": "Enter CVC",
+  "Enter card name": "Enter card name",
+  "Enter card number": "Enter card number",
+  "Expiration date must be bigger than current": "Expiration date must be bigger than current",
+  "Expire date": "Expire date",
+  "Expiring date is required": "Expiring date is required",
+  "Invalid CVC": "Invalid CVC",
+  "Invalid card number": "Invalid card number",
+  "Invalid cardholder name": "Invalid cardholder name",
+  "Invalid expiration date": "Invalid expiration date",
+  "Name is required": "Name is required",
+  "Number is required": "Number is required"
+}

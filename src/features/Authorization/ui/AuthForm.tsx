@@ -20,7 +20,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
     resolver: yupResolver(authSchema),
   });
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -29,7 +29,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
         <InputText
           id="email"
           errors={!!errors.email?.message}
-          placeholder={t('Enter email') as string}
+          placeholder={t('enterEmail') as string}
           type="email"
           register={register}
           registerName={'email'}
@@ -37,20 +37,18 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
         <ValidationMessage data-testid="alert1" message={t(errors.email?.message as string)} />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password">{t('Password')}</label>
+        <label htmlFor="password">{t('password')}</label>
         <InputText
           id="password"
           errors={!!errors.email?.message}
-          placeholder={t('Enter password') as string}
+          placeholder={t('enterPassword') as string}
           type="password"
           register={register}
           registerName={'password'}
         />
         <ValidationMessage data-testid="alert2" message={t(errors.password?.message as string)} />
       </div>
-      <p className={styles.formLabel}>
-        {t('By authorizing, you agree to Threads & Co. Privacy Policy and Terms of use')}
-      </p>
+      <p className={styles.formLabel}>{t('termsuse')}</p>
       <Button
         data-testid="submitBtn"
         type="submit"

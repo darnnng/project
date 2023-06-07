@@ -54,7 +54,7 @@ export const FavouriteList = () => {
           />
         ))
       ) : (
-        <p className={styles.noItemsText}>{t('Looks like there no items yet...')}</p>
+        <p className={styles.noItemsText}>{t('cart:noitems')}</p>
       )}
     </div>
   );

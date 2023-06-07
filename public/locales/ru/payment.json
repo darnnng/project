@@ -1,0 +1,19 @@
+{
+  "CVC": "CVC",
+  "CVC is required": "CVC обязателен",
+  "Card name": "Имя владельца",
+  "Card number": "Номер карты",
+  "Checkout": "Заказать",
+  "Enter CVC": "Введите CVC",
+  "Enter card name": "Введите имя владельца",
+  "Enter card number": "Введите номер карты",
+  "Expiration date must be bigger than current": "Дата окончания должна быть больше текущей",
+  "Expire date": "Дата окончания действия",
+  "Expiring date is required": "Дата окончания обязательна",
+  "Invalid CVC": "Некорректный CVC",
+  "Invalid card number": "Некорректный номер карты",
+  "Invalid cardholder name": "Некорректное имя владельца",
+  "Invalid expiration date": "Некорректная дата",
+  "Name is required": "Имя обязательно",
+  "Number is required": "Номер обязателен"
+}
