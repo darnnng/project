@@ -3,7 +3,7 @@
   "payment": "Payment",
   "noitems": "Looks like there are no items yet...",
   "favs": "Your favourites",
-  "yourOrder": "Your order",
+  "yourOrder": "Delivary address",
   "proceedCheckout": "Proceed to checkout",
   "street": "Stret",
   "streetRequired": "Street is required",
@@ -15,5 +15,6 @@
   "enterHouseNum": "Enter house number",
   "enterStreet": "Enter street",
   "city": "City",
-  "cityRequired": "City is required"
+  "cityRequired": "City is required",
+  "total": "Total:"
 }

@@ -18,9 +18,9 @@ export function useCountries() {
   const countries = useMemo(
     () =>
       data
-        .map((element: ILocation) => element.countries)
+        ?.map((element: ILocation) => element.countries)
         .flatMap((countryArray: ICountry[]) =>
-          countryArray.map((country: ICountry) => country.name)
+          countryArray?.map((country: ICountry) => country.name)
         ),
     [data]
   );

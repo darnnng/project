@@ -12,9 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
 const webpackConfig = (_, env) => {
-  console.log(env);
   const isProduction = env.mode === 'production';
-  console.log(isProduction, 11);
 
   const config = {
     entry: {

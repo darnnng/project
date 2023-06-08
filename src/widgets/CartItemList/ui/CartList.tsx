@@ -10,7 +10,7 @@ import { Spinner } from '@shared/ui/Spinner';
 import styles from './CartList.module.scss';
 
 export const CartList = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('cart');
   const { userId, cartItems } = useAppSelector(currentUser);
   const handleError = useHandleError();
   const dispatch = useAppDispatch();
@@ -53,7 +53,7 @@ export const CartList = () => {
           />
         ))
       ) : (
-        <p className={styles.noItemsText}>{t('cart:noitems')}</p>
+        <p className={styles.noItemsText}>{t('noitems')}</p>
       )}
     </div>
   );

@@ -5,7 +5,7 @@ import { RoutePath } from '@src/shared/constants/routes';
 import styles from './CartBreadcrumbs.module.scss';
 
 export const CartBreadcrumbs = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('cart');
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -24,11 +24,11 @@ export const CartBreadcrumbs = () => {
           onClick={handleOrderPage}
           className={`${styles.crumb} ${isSelected(`/${RoutePath.CART}`) ? styles.selected : ''}`}
         >
-          {t('cart:orderdetails')}
+          {t('orderdetails')}
         </li>
         <li>❯</li>
         <li className={` ${isSelected(`/${RoutePath.PAYMENT}`) ? styles.selected : ''}`}>
-          {t('cart:payment')}
+          {t('payment')}
         </li>
       </ul>
     </nav>

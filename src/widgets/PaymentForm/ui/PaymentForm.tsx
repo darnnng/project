@@ -20,14 +20,13 @@ import styles from './PaymentForm.module.scss';
 //TO-DO CHROMATIC STORYBOOK
 //TO-DO ACTIONS НА github
 //TO-DO линтеры?
-//TO-DO разобрать перевод по страницам
-//TO-DO разобрать конфиг webpack с i18n
+
 //TO-DO FIX AUTH FORM
-//TO-DO форму починить и маску добавить попробовать
-//доделать переводы в приципе
+//TO-DO fix form and add mask
+//TO-DO убрать any
 
 export const PaymentForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('payment');
   const {
     register,
     handleSubmit,
@@ -59,11 +58,11 @@ export const PaymentForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.formContainer}>
         <div className={styles.inputContainer}>
-          <label htmlFor="cardNumber">{t('Card number')}</label>
+          <label htmlFor="cardNumber">{t('cardNumber')}</label>
           <InputText
             id="cardNumber"
             errors={!!errors.cardNumber?.message}
-            placeholder={t('Enter card number') as string}
+            placeholder={t('enterCardNumber') as string}
             register={register}
             registerName={'cardNumber'}
             onChange={handleCardNumberChange}
@@ -77,7 +76,7 @@ export const PaymentForm = () => {
           <InputText
             id="CVC"
             errors={!!errors.cvc?.message}
-            placeholder={t('Enter CVC') as string}
+            placeholder={t('enterCVC') as string}
             register={register}
             registerName={'cvc'}
             maxlength={4}
@@ -85,18 +84,18 @@ export const PaymentForm = () => {
           <ValidationMessage message={t(errors.cvc?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="cardName">{t('Card name')}</label>
+          <label htmlFor="cardName">{t('cardName')}</label>
           <InputText
             id="cardName"
             errors={!!errors.cardName?.message}
-            placeholder={t('Enter card name') as string}
+            placeholder={t('enterCardName') as string}
             register={register}
             registerName={'cardName'}
           />
           <ValidationMessage message={t(errors.cardName?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="cardExpire">{t('Expire date')}</label>
+          <label htmlFor="cardExpire">{t('expireDate')}</label>
           <InputText
             id="cardExpire"
             errors={!!errors.cardExpire?.message}
@@ -110,7 +109,7 @@ export const PaymentForm = () => {
         <div className={styles.divider} />
 
         <Button
-          text={t('Checkout')}
+          text={t('checkout')}
           type={'submit'}
           styleProps={styles.checkoutBtn}
           variant="rounded"

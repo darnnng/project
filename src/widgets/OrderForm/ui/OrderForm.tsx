@@ -15,7 +15,7 @@ import { IOrderFormInput } from '../model/OrderForm.interface';
 import styles from './OrderForm.module.scss';
 
 export const OrderForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('cart');
   const [price, setPrice] = useState('0');
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -55,36 +55,37 @@ export const OrderForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.formContainer}>
-        <p className={styles.orderTitle}>{t('Your order')}</p>
+        <p className={styles.orderTitle}>{t('yourOrder')}</p>
+
         <div className={styles.inputContainer}>
-          <label htmlFor="city">{t('City')}</label>
+          <label htmlFor="city">{t('city')}</label>
           <InputText
             id="city"
             errors={!!errors.city?.message}
-            placeholder={t('Enter city') as string}
+            placeholder={t('enterCity') as string}
             register={register}
             registerName={'city'}
           />
           <ValidationMessage message={t(errors.city?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="street">{t('Street')}</label>
+          <label htmlFor="street">{t('street')}</label>
           <InputText
             id="street"
             errors={!!errors.city?.message}
-            placeholder={t('Enter street') as string}
+            placeholder={t('enterStreet') as string}
             register={register}
             registerName={'street'}
           />
           <ValidationMessage message={t(errors.street?.message as string)} />
         </div>
         <div className={styles.inputContainer}>
-          <label htmlFor="house">{t('House number')}</label>
+          <label htmlFor="house">{t('houseNum')}</label>
 
           <InputText
             id="house"
             errors={!!errors.house?.message}
-            placeholder={t('Enter house number') as string}
+            placeholder={t('enterHouseNum') as string}
             register={register}
             registerName={'house'}
           />
@@ -93,12 +94,12 @@ export const OrderForm = () => {
         <div className={styles.divider} />
         <div className={styles.divTotal}>
           <p className={styles.totalTitle}>
-            Total: <b>{price}$</b>
+            {t('total')} <b>{price}$</b>
           </p>
         </div>
         <Button
           disabled={+price === 0 && true}
-          text={t('Proceed to checkout')}
+          text={t('proceedCheckout')}
           type={'submit'}
           styleProps={styles.checkoutBtn}
           variant="rounded"

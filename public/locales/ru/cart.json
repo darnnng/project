@@ -4,7 +4,7 @@
   "noitems": "Пока ещё нет товаров...",
   "favs": "Избранное",
   "proceedCheckout": "Перейти к оплате",
-  "yourOrder": "Your order",
+  "yourOrder": "Адрес доставки",
   "street": "Улица",
   "streetRequired": "Улица обязательна",
   "houseRequired": "Дом обязателен",
@@ -15,5 +15,6 @@
   "enterHouseNum": "Введите номер дома",
   "enterStreet": "Введите улицу",
   "city": "Город",
-  "cityRequired": "Город обязателен"
+  "cityRequired": "Город обязателен",
+  "total": "Общая сумма:"
 }
