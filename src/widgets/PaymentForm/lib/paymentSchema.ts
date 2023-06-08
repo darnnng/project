@@ -1,5 +1,4 @@
 import { object, string } from 'yup';
-import i18n from '@shared/lib/i18n/i18n';
 import { getCardTypeFromNumber } from './handleCardType';
 
 export const paymentSchema = object({

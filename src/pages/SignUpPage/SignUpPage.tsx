@@ -30,7 +30,7 @@ const SignUpPage = () => {
         );
         navigate(`/${RoutePath.CATALOG}`);
       })
-      .catch((err) => handleError(err.message));
+      .catch((err) => handleError(err));
   };
 
   return (

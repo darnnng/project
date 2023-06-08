@@ -7,9 +7,10 @@ export function useHandleError() {
 
   const handleError = useCallback(
     (error: Error) => {
+      console.log('error', error);
       dispatch(
         createAlert({
-          message: error.message,
+          message: (error as unknown) as string,
           type: 'error',
         })
       );
