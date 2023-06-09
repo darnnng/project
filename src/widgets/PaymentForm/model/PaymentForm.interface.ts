@@ -4,3 +4,15 @@ export interface IPaymentInput {
   cardName: number;
   cardExpire: Date;
 }
+
+export interface ICartItem {
+  id: string;
+  name: string;
+  picture: string;
+  price: string;
+  size: string;
+}
+
+export interface ICartItems {
+  [id: string]: ICartItem;
+}

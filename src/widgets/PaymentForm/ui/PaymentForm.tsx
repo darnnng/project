@@ -1,16 +1,16 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { InputText } from '@shared/ui/Input';
 import { Button } from '@shared/ui/Button';
 import { useAppSelector } from '@shared/model/reduxHooks';
 import { currentUser } from '@entities/user/model/userSlice';
 import { RoutePath } from '@shared/constants/routes';
-import { useHandleSuccess } from '@src/shared/model/useHandleSuccess';
-import { ValidationMessage } from '@src/shared/ui/ValidationMessage/ValidationMessage';
+import { useHandleSuccess } from '@shared/model/useHandleSuccess';
+import { ValidationMessage } from '@shared/ui/ValidationMessage/ValidationMessage';
+import { Messages } from '@shared/constants/messages';
 import { IPaymentInput } from '../model/PaymentForm.interface';
 import { paymentSchema } from '../lib/paymentSchema';
 import { getCardTypeFromNumber } from '../lib/handleCardType';
@@ -23,7 +23,6 @@ import styles from './PaymentForm.module.scss';
 
 //TO-DO FIX AUTH FORM
 //TO-DO fix form and add mask
-//TO-DO убрать any
 
 export const PaymentForm = () => {
   const { t } = useTranslation('payment');
@@ -41,16 +40,18 @@ export const PaymentForm = () => {
   const handleSuccess = useHandleSuccess();
   const navigate = useNavigate();
 
-  const handleCardNumberChange = (event: any) => {
+  const handleCardNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
     const cardNumber = event.target.value;
     const type = getCardTypeFromNumber(cardNumber);
     setCardType(type);
   };
 
+  console.log(cartItems);
+
   const onSubmit: SubmitHandler<IPaymentInput> = (input) => {
     console.log('Card data', input);
     createOrderDb(userId!, cartItems);
-    handleSuccess('Order has been placed  successfully!');
+    handleSuccess(Messages.SUCCESS);
     navigate(`/${RoutePath.CATALOG}`);
   };
 
@@ -62,7 +63,7 @@ export const PaymentForm = () => {
           <InputText
             id="cardNumber"
             errors={!!errors.cardNumber?.message}
-            placeholder={t('enterCardNumber') as string}
+            placeholder={t('enterCardNumber')}
             register={register}
             registerName={'cardNumber'}
             onChange={handleCardNumberChange}
@@ -76,7 +77,7 @@ export const PaymentForm = () => {
           <InputText
             id="CVC"
             errors={!!errors.cvc?.message}
-            placeholder={t('enterCVC') as string}
+            placeholder={t('enterCVC')}
             register={register}
             registerName={'cvc'}
             maxlength={4}
@@ -88,7 +89,7 @@ export const PaymentForm = () => {
           <InputText
             id="cardName"
             errors={!!errors.cardName?.message}
-            placeholder={t('enterCardName') as string}
+            placeholder={t('enterCardName')}
             register={register}
             registerName={'cardName'}
           />
