@@ -26,7 +26,7 @@ export default {
     text: {
       type: 'string',
       name: 'label',
-      defaultValue: 'Add to cart',
+      defaultValue: 'CART',
     },
   },
 };
