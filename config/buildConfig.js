@@ -1,13 +1,12 @@
 import path, { resolve } from 'path';
 import { fileURLToPath } from 'url';
-import CompressionPlugin from 'compression-webpack-plugin';
 import { ESBuildMinifyPlugin } from 'esbuild-loader';
 import { merge } from 'webpack-merge';
-import { configureImagesLoader, configureTsLoader, miniSCSS } from './config/loaders.js';
+import { configureImagesLoader, configureTsLoader, miniSCSS } from './loaders.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { setPluginsPkg } from './config/plugins.js';
-import { setResolvers } from './config/resolvers.js';
-import { buildDevServer } from './config/buildDevServer.js';
+import { setPluginsPkg } from './plugins.js';
+import { setResolvers } from './resolvers.js';
+import { buildDevServer } from './buildDevServer.js';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
@@ -16,7 +15,7 @@ const webpackConfig = (_, env) => {
 
   const config = {
     entry: {
-      app: path.resolve(dirname, './src/app/index.tsx'),
+      app: path.resolve(dirname, '../src/app/index.tsx'),
     },
     plugins: setPluginsPkg(),
     module: {
@@ -37,22 +36,13 @@ const webpackConfig = (_, env) => {
     mode: 'development',
     devtool: 'inline-source-map',
     optimization: {
-      minimize: false,
+      minimize: true,
     },
     devServer: buildDevServer(),
-    // output: {
-    //   publicPath: '/',
-    // },
   };
 
   const production = {
     mode: 'production',
-    devtool: 'source-map',
-    plugins: [
-      new CompressionPlugin({
-        algorithm: 'gzip',
-      }),
-    ],
     optimization: {
       minimize: true,
       minimizer: [
@@ -60,6 +50,7 @@ const webpackConfig = (_, env) => {
           target: 'es2015',
         }),
         new MiniCssExtractPlugin({
+          filename: 'css/[name].[contenthash:8].css',
           chunkFilename: 'css/[name].[contenthash:8].css',
         }),
       ],
@@ -68,7 +59,7 @@ const webpackConfig = (_, env) => {
       filename: '[name].[contenthash:8].js',
       chunkFilename: '[name].[contenthash:8].js',
       assetModuleFilename: '[hash][ext]',
-      path: resolve(dirname, './build'),
+      path: resolve(dirname, './../build'),
       publicPath: '/',
       clean: true,
     },

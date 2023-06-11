@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "webpack --mode production --config ./webpack.config.js",
-    "start": "webpack serve --open",
+    "build": "webpack --mode production --config ./config/buildConfig.js",
+    "start": "webpack serve --open  --mode development --config ./config/buildConfig.js",
     "test": "jest",
     "sb": "storybook dev -p 6006 -s public",
     "build-storybook": "storybook build -s public",
