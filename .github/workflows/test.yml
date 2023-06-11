@@ -26,3 +26,6 @@ jobs:
 
       - name: Run Jest tests
         run: npm test
+
+      - name: Run Chromatic tests
+        run: npm run chromatic
