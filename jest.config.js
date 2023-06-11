@@ -17,7 +17,7 @@ export default {
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
   testMatch: ['**/src/**/**/tests/**/*.ts?(x)', '**/src/**/?(*.)+(spec|test).ts?(x)'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './setupTests.ts'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   moduleNameMapper: {
     '^@src/(.*)$': path.resolve(dirname, 'src/$1'),
     '^@widgets/(.*)$': path.resolve(dirname, 'src/widgets/$1'),

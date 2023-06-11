@@ -49,12 +49,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
         <ValidationMessage data-testid="alert2" message={t(errors.password?.message as string)} />
       </div>
       <p className={styles.formLabel}>{t('termsuse')}</p>
-      <Button
-        data-testid="submitBtn"
-        type="submit"
-        styleProps={styles.formButton}
-        text={buttonName}
-      />
+      <Button type="submit" styleProps={styles.formButton} text={buttonName} />
     </form>
   );
 };

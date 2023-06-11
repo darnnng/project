@@ -1,6 +1,7 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { customRender } from '@shared/lib/utils.tests';
+import { Button } from '@src/shared/ui/Button';
 import { AuthForm } from '../ui/AuthForm';
 
 describe('Auth form tests', () => {
@@ -11,6 +12,7 @@ describe('Auth form tests', () => {
     mockOnSubmit = jest.fn();
     mockButtonName = 'Sign in';
     customRender(<AuthForm onSubmit={mockOnSubmit} buttonName={mockButtonName} />);
+    customRender(<Button type="submit" text={mockButtonName} />);
   });
 
   test('button submit handler', async () => {

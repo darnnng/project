@@ -14,7 +14,13 @@ export const Button = ({
   const mainCn = cn(styles.addButton, styles[size], styles[variant], styleProps);
 
   return (
-    <button className={mainCn} onClick={onClick} disabled={disabled} type={type}>
+    <button
+      data-testid="submitBtn"
+      className={mainCn}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
+    >
       {text}
     </button>
   );
