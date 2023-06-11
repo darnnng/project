@@ -22,7 +22,7 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --force
 
       - name: Run Jest tests
         run: npm test
