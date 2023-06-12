@@ -2,8 +2,8 @@ import path, { resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { ESBuildMinifyPlugin } from 'esbuild-loader';
 import { merge } from 'webpack-merge';
-import { configureImagesLoader, configureTsLoader, miniSCSS } from './loaders.js';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { configureImagesLoader, configureTsLoader, miniSCSS } from './loaders.js';
 import { setPluginsPkg } from './plugins.js';
 import { setResolvers } from './resolvers.js';
 import { buildDevServer } from './buildDevServer.js';
@@ -35,9 +35,9 @@ const webpackConfig = (_, env) => {
   const development = {
     mode: 'development',
     devtool: 'inline-source-map',
-    optimization: {
-      minimize: true,
-    },
+    // optimization: {
+    //   minimize: true,
+    // },
     devServer: buildDevServer(),
   };
 
