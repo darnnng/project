@@ -34,11 +34,12 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
           register={register}
           registerName={'email'}
         />
-        <ValidationMessage data-testid="alert1" message={t(errors.email?.message as string)} />
+        <ValidationMessage message={t(errors.email?.message as string)} />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="password">{t('password')}</label>
         <InputText
+          testid={'password-input'}
           id="password"
           errors={!!errors.email?.message}
           placeholder={t('enterPassword') as string}
@@ -46,7 +47,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
           register={register}
           registerName={'password'}
         />
-        <ValidationMessage data-testid="alert2" message={t(errors.password?.message as string)} />
+        <ValidationMessage testid={'alert1'} message={errors.password?.message as string} />
       </div>
       <p className={styles.formLabel}>{t('termsuse')}</p>
       <Button type="submit" styleProps={styles.formButton} text={buttonName} />

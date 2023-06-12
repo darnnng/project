@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { RoutePath } from '@shared/constants/routes';
 import styles from './Footer.module.scss';
+import { linkData, linkDataSocial } from './model/links';
 
 export const Footer = () => {
   const { t } = useTranslation();
@@ -12,27 +11,23 @@ export const Footer = () => {
         <div className={styles.aboutSection}>
           <p className={styles.footerBigTitle}>{t('about')}</p>
           <div className={styles.footerLinks}>
-            <p>
-              <Link className={styles.footerLinkText} to={`/${RoutePath.MAPS}`}>
-                {t('ourstores')}
-              </Link>
-            </p>
-            <p>
-              <Link className={styles.footerLinkText} to={`/${RoutePath.CATALOG}`}>
-                {t('catalog')}
-              </Link>
-            </p>
+            {linkData.map((link, index) => (
+              <p key={index}>
+                <Link className={styles.footerLinkText} to={`/${link.path}`}>
+                  {t(link.text)}
+                </Link>
+              </p>
+            ))}
           </div>
         </div>
         <div className={styles.socialMedia}>
           <p className={styles.footerBigTitle}>{t('contacts')}</p>
           <div className={styles.footerLinksSocial}>
-            <Link to={`https://www.facebook.com/`}>
-              <span className={styles.materialSymbolsOutlined}>groups</span>
-            </Link>
-            <Link to={`https://www.google.com/gmail/about/`}>
-              <span className={styles.materialSymbolsOutlined}>mail</span>
-            </Link>
+            {linkDataSocial.map((link, index) => (
+              <Link key={index} to={link.url}>
+                <span className={styles.materialSymbolsOutlined}>{link.text}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

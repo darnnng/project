@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useHandleError } from '@shared/model/useHandleError';
 import { handleQuery } from '@shared/model/queryFunc';
-import { IArticle } from './types';
+import { IArticle } from '@src/shared/model/interfaces/interfaces';
 
 export function useCartItem(url: string, id: string, size: string) {
   const handleError = useHandleError();

@@ -8,6 +8,7 @@ export const InputText = <T extends IInputs>({
   size = 'medium',
   type = 'text',
   errors,
+  testid,
   placeholder,
   id,
   registerName,
@@ -21,6 +22,7 @@ export const InputText = <T extends IInputs>({
     <input
       id={id}
       className={inputCn}
+      data-testid={testid}
       type={type}
       placeholder={placeholder}
       {...register!(registerName as Path<T>)}

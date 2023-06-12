@@ -4,9 +4,6 @@ const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
 export default {
-  // collectCoverage: true,
-  // collectCoverageFrom: ['src/**/*.{js,jsx}'],
-  // coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],

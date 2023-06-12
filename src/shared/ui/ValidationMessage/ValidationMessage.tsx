@@ -2,11 +2,12 @@ import styles from './ValidationMessage.module.scss';
 
 export interface IValidationMessageProps {
   message: string;
+  testid?: string;
 }
 
-export const ValidationMessage = ({ message }: IValidationMessageProps) => {
+export const ValidationMessage = ({ message, testid }: IValidationMessageProps) => {
   return (
-    <span role="alert" className={styles.errorMessage}>
+    <span data-testid={testid} role="alert" className={styles.errorMessage}>
       {message}
     </span>
   );

@@ -2,7 +2,8 @@ import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useHandleError } from '@shared/model/useHandleError';
 import { handleQuery } from '@shared/model/queryFunc';
-import { IArticle, IGalleryImage, IVariantsList } from './types';
+import { IArticle, IVariantsList } from '@shared/model/interfaces/interfaces';
+import { IGalleryImage } from './types';
 
 export function useSingleItem(url: string, id: string) {
   const handleError = useHandleError();
