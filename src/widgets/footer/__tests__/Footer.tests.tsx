@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import { customRender } from '@shared/lib/utils.tests';
-import { Footer } from '../Footer';
+import { Footer } from '../ui/Footer';
 
 describe('Footer test', () => {
   test('renders elements', async () => {

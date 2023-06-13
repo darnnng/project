@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { RoutePath } from '@src/shared/constants/routes';
-import { useAppSelector } from '@src/shared/model/reduxHooks';
+import { RoutePath } from '@shared/constants/routes';
+import { useAppSelector } from '@shared/model/reduxHooks';
 import { selectedLanguage } from '@features/LangChange/model/languageSlice';
 import { selectedTheme } from '@features/ThemeChange/model/themeSlice';
 import { useAuth } from '@entities/user/model/useAuth';
 import { ThemeChangeBtn } from '@features/ThemeChange';
 import { LangBtn } from '@features/LangChange/ui/LangBtn';
 import { Logout } from '@features/Logout';
+import { routeLinks } from '../model/routeLinks';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -66,20 +67,19 @@ export const Header = () => {
         </div>
         <h3 className={styles.mainTitle}>Threads & Co.</h3>
         <div className={styles.iconsRight}>
-          <Link to={`/${RoutePath.CART}`} className={styles.linkSignUp}>
-            <span
-              className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
-            >
-              shopping_cart
-            </span>
-          </Link>
-          <Link to={`/${RoutePath.LIKES}`} className={styles.linkSignUp}>
-            <span
-              className={`${styles.materialSymbolsOutlined}  ${themeLight ? '' : styles.darkIcons}`}
-            >
-              favorite
-            </span>
-          </Link>
+          {routeLinks.map((item, index) => (
+            <React.Fragment key={index}>
+              <Link to={item.path} className={styles.linkSignUp}>
+                <span
+                  className={`${styles.materialSymbolsOutlined} ${
+                    themeLight ? '' : styles.darkIcons
+                  }`}
+                >
+                  {item.icon}
+                </span>
+              </Link>
+            </React.Fragment>
+          ))}
           {isAuth && <Logout />}
         </div>
       </div>

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage/session';
-import { languageChangeReducer } from '../features/LangChange/model/languageSlice';
-import { themeChangeReducer } from '../features/ThemeChange/model/themeSlice';
-import { userReducer } from '../entities/user/model/userSlice';
-import { notifierReducer } from '../shared/ui/Notifier/notifierSlice';
-import { pagesChangeReducer } from '../features/Pagination/model/paginationSlice';
-import { filterChangeReducer } from '../features/Sorting/model/filterSlice';
+import { languageChangeReducer } from '@features/LangChange/model/languageSlice';
+import { themeChangeReducer } from '@features/ThemeChange/model/themeSlice';
+import { userReducer } from '@entities/user/model/userSlice';
+import { notifierReducer } from '@shared/ui/Notifier/notifierSlice';
+import { pagesChangeReducer } from '@features/Pagination/model/paginationSlice';
+import { filterChangeReducer } from '@features/Sorting/model/filterSlice';
 
 const persistConfig = {
   key: 'root',

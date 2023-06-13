@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
+import { linkData, linkDataSocial } from '../model/links';
 import styles from './Footer.module.scss';
-import { linkData, linkDataSocial } from './model/links';
 
 export const Footer = () => {
   const { t } = useTranslation('translation');

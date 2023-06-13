@@ -10,6 +10,12 @@ form {
     font-size: 12px;
     color: $hoverColor;
     font-family: $fontFamilyRoboto;
+    min-width: 450px;
+    display: flex;
+    justify-content: center;
+    @media (max-width: $screenSmall) {
+      min-width: 260px;
+    }
   }
 
   @media (max-width: $screenSmall) {

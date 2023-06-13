@@ -1,5 +1,5 @@
-@import './../../shared/mixins';
-@import './../../shared/variables.scss';
+@import './../../../shared/mixins';
+@import './../../../shared/variables.scss';
 
 .footer {
   background-color: $dark;
@@ -25,6 +25,7 @@
 
 .footerBigTitle {
   font-size: $fontMid;
+  min-width: 78px;
 }
 
 .footerLinkText {
