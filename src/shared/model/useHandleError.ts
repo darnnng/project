@@ -1,16 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback } from 'react';
 import { createAlert } from '../ui/Notifier/notifierSlice';
 import { useAppDispatch } from './reduxHooks';
 
 export function useHandleError() {
   const dispatch = useAppDispatch();
-
   const handleError = useCallback(
-    (error: Error) => {
-      console.log('error', error);
+    (error: any) => {
       dispatch(
         createAlert({
-          message: (error as unknown) as string,
+          message: (error.code as string) || '',
           type: 'error',
         })
       );

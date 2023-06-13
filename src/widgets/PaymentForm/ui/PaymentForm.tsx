@@ -18,11 +18,9 @@ import { createOrderDb } from '../api/paymentApi';
 import styles from './PaymentForm.module.scss';
 
 //TO-DO CHROMATIC STORYBOOK
-//TO-DO ACTIONS НА github
-//TO-DO линтеры?
 
-//TO-DO FIX AUTH FORM
-//TO-DO fix form and add mask
+//TO-DO линтеры?
+//TO-DO ПОМЕНЯТЬ СМЕНУ ТЕМЫ
 
 export const PaymentForm = () => {
   const { t } = useTranslation('payment');
@@ -45,8 +43,6 @@ export const PaymentForm = () => {
     const type = getCardTypeFromNumber(cardNumber);
     setCardType(type);
   };
-
-  console.log(cartItems);
 
   const onSubmit: SubmitHandler<IPaymentInput> = (input) => {
     console.log('Card data', input);

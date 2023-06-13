@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
 import { Spinner } from '@shared/ui/Spinner';
 import { useAppSelector } from '@shared/model/reduxHooks';
 import { selectedTheme } from '@features/ThemeChange/model/themeSlice';
