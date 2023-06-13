@@ -13,7 +13,7 @@ export default {
     '\\.(css|scss)$': 'jest-transform-css',
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
-  testMatch: ['**/src/**/**/tests/**/*.ts?(x)', '**/src/**/?(*.)+(spec|test).ts?(x)'],
+  testMatch: ['**/src/**/**/__tests__/**/*.ts?(x)', '**/src/**/?(*.)+(spec|test).ts?(x)'],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   moduleNameMapper: {
     '^@src/(.*)$': path.resolve(dirname, 'src/$1'),

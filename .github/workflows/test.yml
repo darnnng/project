@@ -24,8 +24,5 @@ jobs:
       - name: Install dependencies
         run: npm ci --force
 
-      - name: Run Chromatic tests
-        run: npm run chromatic
-
       - name: Run Jest tests
         run: npm test

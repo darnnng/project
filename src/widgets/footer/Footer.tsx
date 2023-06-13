@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from './Footer.module.scss';
 import { linkData, linkDataSocial } from './model/links';
 
 export const Footer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('translation');
   return (
     <footer className={styles.footer}>
       <div className={styles.footerUp}>
         <div className={styles.aboutSection}>
-          <p className={styles.footerBigTitle}>{t('about')}</p>
+          <p className={styles.footerBigTitle}>
+            <Trans>{t('about')}</Trans>
+          </p>
           <div className={styles.footerLinks}>
             {linkData.map((link, index) => (
               <p key={index}>
