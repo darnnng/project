@@ -1,0 +1,5 @@
+@import './../../shared/mixins';
+
+.pageContainer {
+  @include page-container(20px 40px);
+}

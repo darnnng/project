@@ -1,0 +1,37 @@
+@import './../../../shared/variables.scss';
+
+.styledSelect {
+  width: 100%;
+  min-width: 120px;
+  font-size: 16px;
+  padding: 10px;
+  font-family: $fontFamily;
+  background-color: transparent;
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  option {
+    font-size: 16px;
+    background-color: $light1;
+    color: $fontDark;
+  }
+}
+
+.selectFilter {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  @media (max-width: $screenXs) {
+    row-gap: 20px;
+  }
+}
+
+.sortTitle {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+@import './../../../shared/_mixins.scss';
+@import './../../../shared/variables.scss';
+
+.pageContainer {
+  @include page-container(40px);
+}
+
+.pageSmallTitle {
+  color: $hoverColor;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,40 @@
+@import './../../variables.scss';
+
+.wrapper {
+  position: fixed;
+  color: $fontLight;
+  font-family: $fontFamily;
+  top: -60px;
+  right: 60px;
+  animation: enter-leave 3s ease-in-out;
+  border-radius: 5px;
+  padding: 15px;
+  width: 300px;
+
+  @keyframes enter-leave {
+    0% {
+      top: -60px;
+    }
+    7.5% {
+      top: 16px;
+    }
+    92.5% {
+      top: 16px;
+    }
+    100% {
+      top: -60px;
+    }
+  }
+}
+
+.error {
+  background-color: $error;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: $success;
+  border-radius: 5px;
+  padding: 0.5rem;
+}

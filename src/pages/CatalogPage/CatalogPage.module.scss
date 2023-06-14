@@ -1,0 +1,56 @@
+@import './../../shared/variables.scss';
+
+.catalogPageContainer {
+  margin: 5px 20px;
+}
+
+.imageCard {
+  width: 300px;
+  height: 350px;
+}
+
+.itemsContainer {
+  display: flex;
+  justify-content: center;
+  column-gap: 40px;
+  row-gap: 50px;
+  flex-wrap: wrap;
+  font-family: $fontFamily;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 50px;
+  font-size: $fontMid;
+  font-family: $fontFamily;
+  align-items: center;
+  @media (max-width: $screenMid) {
+    row-gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.textNoItems {
+  font-family: $fontFamily;
+  font-size: $fontLarge;
+  display: flex;
+  justify-content: center;
+}
+
+.totalNumber {
+  min-width: 140px;
+  @media (max-width: $screenXs) {
+    width: 200px;
+  }
+}
+
+.pagesDiv {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  @media (max-width: $screenSmall) {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,17 @@
+@import './../../shared/_mixins.scss';
+@import './../../shared/variables.scss';
+
+.pageContainer {
+  @include page-container(40px);
+}
+
+.orderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 1450px) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}

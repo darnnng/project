@@ -1,0 +1,49 @@
+@import './../../../shared/variables.scss';
+@import './../../../shared/mixins';
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+
+  .formLabel {
+    font-size: 12px;
+    color: $hoverColor;
+    font-family: $fontFamilyRoboto;
+    min-width: 450px;
+    display: flex;
+    justify-content: center;
+    @media (max-width: $screenSmall) {
+      min-width: 260px;
+    }
+  }
+
+  @media (max-width: $screenSmall) {
+    max-width: 260px;
+  }
+}
+
+.errorMessage {
+  color: $error;
+  font-size: 14px;
+}
+
+.inputContainer {
+  @include input-container;
+}
+
+.formButton {
+  padding: 0.5rem;
+  background-color: $dark;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: $fontFamily;
+  margin: 20px 0px;
+
+  &:hover {
+    background-color: $hoverColor;
+  }
+}

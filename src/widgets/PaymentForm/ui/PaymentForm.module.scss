@@ -1,0 +1,39 @@
+@import './../../../shared/variables.scss';
+@import './../../../shared/mixins';
+
+form {
+  @include form-container;
+
+  .formLabel {
+    font-size: 12px;
+    color: $hoverColor;
+    font-family: $fontFamilyRoboto;
+  }
+
+  @media (max-width: $screenSmall) {
+    max-width: 260px;
+  }
+}
+
+.errorMessage {
+  color: $error;
+  font-size: 14px;
+}
+
+.inputContainer {
+  @include input-container;
+  position: relative;
+}
+
+.checkoutBtn {
+  @include checkout-btn;
+}
+
+.cardType {
+  color: rgb(22, 161, 199);
+  font-weight: bold;
+  position: absolute;
+  top: 62%;
+  right: 10px;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,46 @@
+@import './../../../shared/mixins';
+@import './../../../shared/variables.scss';
+
+form {
+  @include form-container;
+  background-color: $light1;
+
+  .formLabel {
+    font-size: 12px;
+    color: $hoverColor;
+    font-family: $fontFamilyRoboto;
+  }
+
+  @media (max-width: $screenSmall) {
+    max-width: 260px;
+  }
+}
+
+.errorMessage {
+  color: $error;
+  font-size: 14px;
+}
+
+.inputContainer {
+  @include input-container;
+}
+
+.orderTitle {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  background-color: $hoverColor;
+  height: 2px;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.totalTitle {
+  font-size: $fontMid;
+}
+
+.checkoutBtn {
+  @include checkout-btn;
+}

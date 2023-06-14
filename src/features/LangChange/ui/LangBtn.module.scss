@@ -1,0 +1,59 @@
+@import './../../../shared/variables.scss';
+
+.spanElement {
+  cursor: pointer;
+  color: $fontDark;
+  padding: 0px 10px;
+  &:hover {
+    color: $hoverColor;
+  }
+}
+
+nav {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    li {
+      display: inline-block;
+    }
+    ul {
+      display: none;
+      position: absolute;
+      top: 50px;
+      li {
+        float: none;
+        display: list-item;
+        position: relative;
+      }
+    }
+  }
+  a {
+    display: block;
+    line-height: 50px;
+    text-decoration: none;
+    &:hover {
+      color: $hoverColor;
+    }
+  }
+  @media (max-width: $screenXs) {
+    flex-direction: column;
+    height: 100px;
+  }
+}
+
+nav ul li:hover > ul {
+  display: inherit;
+  background-color: $light2;
+  width: 50px;
+}
+
+nav ul li:hover > ul .darkLang {
+  background-color: $backgroundDark;
+  color: $fontLight;
+}
+
+.darkLink {
+  color: $fontLight;
+}

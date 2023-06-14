@@ -1,0 +1,15 @@
+@import './../../../shared/_mixins.scss';
+@import './../../../shared/variables.scss';
+
+.addButton {
+  @include add-button;
+}
+
+.addBtnContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.errorText {
+  color: $error;
+}
