@@ -4,6 +4,17 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
+export const jsonLoader = () => {
+  return {
+    test: /\.json$/,
+    include: [_resolve(dirname, '../public/locales/en'), _resolve(dirname, '../public/locales/ru')],
+    loader: 'file-loader',
+    options: {
+      name: 'translations/[name].[contenthash].[ext]',
+    },
+  };
+};
+
 export const configureTsLoader = () => {
   return {
     test: /\.tsx?$/,

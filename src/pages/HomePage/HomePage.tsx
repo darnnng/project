@@ -11,7 +11,7 @@ const HomePage = () => {
   const { t } = useTranslation('home');
   const { categoriesLoading } = useCategoriesList();
   const { isLoading } = useImageCards();
-  console.log(process.env.DATABASEID);
+
   return (
     <>
       {categoriesLoading && isLoading ? (

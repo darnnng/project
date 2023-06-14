@@ -1,4 +1,3 @@
-//import { Preview } from '@storybook/react';
 import './../src/shared/variables.scss';
 
 const preview = {

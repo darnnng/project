@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import { ESBuildMinifyPlugin } from 'esbuild-loader';
 import { merge } from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { configureImagesLoader, configureTsLoader, miniSCSS } from './loaders.js';
+import { configureImagesLoader, configureTsLoader, miniSCSS, jsonLoader } from './loaders.js';
 import { setPluginsPkg } from './plugins.js';
 import { setResolvers } from './resolvers.js';
 import { buildDevServer } from './buildDevServer.js';
@@ -19,7 +19,7 @@ const webpackConfig = (_, env) => {
     },
     plugins: setPluginsPkg(),
     module: {
-      rules: [configureTsLoader(), configureImagesLoader(), miniSCSS()],
+      rules: [configureTsLoader(), configureImagesLoader(), miniSCSS(), jsonLoader()],
     },
     resolve: setResolvers(),
     optimization: {
@@ -35,9 +35,6 @@ const webpackConfig = (_, env) => {
   const development = {
     mode: 'development',
     devtool: 'inline-source-map',
-    // optimization: {
-    //   minimize: true,
-    // },
     devServer: buildDevServer(),
   };
 
@@ -59,7 +56,7 @@ const webpackConfig = (_, env) => {
       filename: '[name].[contenthash:8].js',
       chunkFilename: '[name].[contenthash:8].js',
       assetModuleFilename: '[hash][ext]',
-      path: resolve(dirname, './../build'),
+      path: resolve(dirname, '../build'),
       publicPath: '/',
       clean: true,
     },
