@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { notifications } from '@src/shared/ui/Notifier/notifierSlice';
-import { useAppSelector } from '@src/shared/model/reduxHooks';
+import { useEffect, useState } from 'react';
+import { notifications } from '@shared/ui/Notifier/notifierSlice';
+import { useAppSelector } from '@shared/model/reduxHooks';
 import styles from './Notifier.module.scss';
 
 export const Notifier = () => {
   const { alerts } = useAppSelector(notifications);
-  const [alert, setAlert] = useState({ message: '' });
+  const [alert, setAlert] = useState({ message: '', type: '' });
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,9 @@ export const Notifier = () => {
 
   return show ? (
     <div className={styles.wrapper}>
-      <div>{alert.message || ''}</div>
+      <div className={alert.type === 'error' ? styles.error : styles.success}>
+        {alert.message || ''}
+      </div>
     </div>
   ) : null;
 };

@@ -5,12 +5,12 @@ import { useAppDispatch, useAppSelector } from '@shared/model/reduxHooks';
 import { CartItem } from '@entities/cartItem/ui/CartItem';
 import { deleteFromCartDb, getItemsFromCart } from '@src/features/AddToCart/api/cartApi';
 import { useHandleError } from '@shared/model/useHandleError';
-import { ICartItem } from '@entities/cartItem/model/types';
 import { Spinner } from '@shared/ui/Spinner';
+import { ICartItem } from '@src/shared/model/interfaces/interfaces';
 import styles from './CartList.module.scss';
 
 export const CartList = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('cart');
   const { userId, cartItems } = useAppSelector(currentUser);
   const handleError = useHandleError();
   const dispatch = useAppDispatch();
@@ -53,7 +53,7 @@ export const CartList = () => {
           />
         ))
       ) : (
-        <p className={styles.noItemsText}>{t('Looks like there are no items yet...')}</p>
+        <p className={styles.noItemsText}>{t('noitems')}</p>
       )}
     </div>
   );

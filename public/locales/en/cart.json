@@ -1,0 +1,20 @@
+{
+  "orderdetails": "Order details",
+  "payment": "Payment",
+  "noitems": "Looks like there are no items yet...",
+  "favs": "Your favourites",
+  "yourOrder": "Delivery address",
+  "proceedCheckout": "Proceed to checkout",
+  "street": "Stret",
+  "streetRequired": "Street is required",
+  "houseRequired": "House is required",
+  "houseNum": "House number",
+  "onlyLetters": "Only letters",
+  "onlyNumbers": "Only numbers",
+  "enterCity": "Enter city",
+  "enterHouseNum": "Enter house number",
+  "enterStreet": "Enter street",
+  "city": "City",
+  "cityRequired": "City is required",
+  "total": "Total:"
+}

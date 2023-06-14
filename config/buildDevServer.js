@@ -6,7 +6,7 @@ const dirname = path.dirname(__filename);
 export const buildDevServer = () => {
   return {
     port: process.env.PORT,
-    static: join(dirname, 'public'),
+    static: join(dirname, '../public'),
     hot: true,
     open: true,
     liveReload: true,

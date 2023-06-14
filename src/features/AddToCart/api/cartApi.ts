@@ -1,6 +1,6 @@
 import { get, ref, remove, set } from 'firebase/database';
 import { db } from '@shared/api/firebase';
-import { ICartItem } from '@entities/cartItem/model/types';
+import { ICartItem } from '@src/shared/model/interfaces/interfaces';
 
 export const addToCartDb = async (userId: string, item: Partial<ICartItem>) => {
   const cartObj = ref(db, `users/${userId}/cart/${item.id}`);

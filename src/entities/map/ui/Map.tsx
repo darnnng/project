@@ -15,10 +15,8 @@ export const CitiesMap = () => {
       ) : (
         <>
           <div>
-            <h1 className={styles.pageTitle}>{t('Our stores')}</h1>
-            <p className={styles.pageSmallTitle}>
-              {t('on the map you can see only countries in which our stores are located')}
-            </p>
+            <h1 className={styles.pageTitle}>{t('ourstores')}</h1>
+            <p className={styles.pageSmallTitle}>{t('map')}</p>
           </div>
           <YMaps>
             <div style={{ width: '100%', height: '400px' }}>

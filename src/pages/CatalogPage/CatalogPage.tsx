@@ -21,7 +21,7 @@ const CatalogPage = () => {
   const url = `${Urls.CATALOG}${page}&pagesize=28&categories=${category}&sortBy=${filter}`;
   const { isLoading, totalNumberOfItems, pageCount } = useCatalogList(url, page, filter);
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
+  const { t } = useTranslation('catalog');
 
   useEffect(() => {
     if (prevCategoryRef.current !== category) {
@@ -55,7 +55,7 @@ const CatalogPage = () => {
                 {t('Page')} <b>{page + 1}</b>
               </p>
               <p className={styles.totalNumber}>
-                {t('Total number of items:')} {totalNumberOfItems}
+                {t('total')} {totalNumberOfItems}
               </p>
             </div>
           </div>

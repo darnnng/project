@@ -42,8 +42,8 @@ const Template: StoryFn<ITemplateProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Add to cart',
-  variant: 'square',
+  text: 'ADD TO CART',
+  variant: 'round',
   size: 'medium',
 };
 

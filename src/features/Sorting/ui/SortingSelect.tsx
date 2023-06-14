@@ -5,17 +5,17 @@ import { ISortingSelectProps } from '../model/types';
 import styles from './SortingSelect.module.scss';
 
 export const SortingSelect = ({ filter, onFilterChange }: ISortingSelectProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('catalog');
   const handleFilterChange = (event: ChangeEvent<HTMLSelectElement>) => {
     onFilterChange(event.target.value);
   };
   return (
     <div className={styles.selectFilter}>
-      <p className={styles.sortTitle}>{t('Sort by:')}</p>
+      <p className={styles.sortTitle}>{t('sort')}</p>
       <select defaultValue={filter} className={styles.styledSelect} onChange={handleFilterChange}>
-        <option value={SortingOptions.STOCK}>{t('Recommended')}</option>
-        <option value={SortingOptions.DESCPRICE}>{t('Highest price')}</option>
-        <option value={SortingOptions.ASCPRICE}>{t('Lowest price')}</option>
+        <option value={SortingOptions.STOCK}>{t('recommended')}</option>
+        <option value={SortingOptions.DESCPRICE}>{t('highest')}</option>
+        <option value={SortingOptions.ASCPRICE}>{t('lowest')}</option>
       </select>
     </div>
   );

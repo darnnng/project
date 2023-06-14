@@ -4,9 +4,6 @@ const __filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(__filename);
 
 export default {
-  // collectCoverage: true,
-  // collectCoverageFrom: ['src/**/*.{js,jsx}'],
-  // coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
@@ -16,8 +13,8 @@ export default {
     '\\.(css|scss)$': 'jest-transform-css',
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
-  testMatch: ['**/src/**/**/tests/**/*.ts?(x)', '**/src/**/?(*.)+(spec|test).ts?(x)'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './setupTests.ts'],
+  testMatch: ['**/src/**/**/__tests__/**/*.ts?(x)', '**/src/**/?(*.)+(spec|test).ts?(x)'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   moduleNameMapper: {
     '^@src/(.*)$': path.resolve(dirname, 'src/$1'),
     '^@widgets/(.*)$': path.resolve(dirname, 'src/widgets/$1'),

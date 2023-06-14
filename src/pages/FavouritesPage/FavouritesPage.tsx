@@ -5,13 +5,13 @@ import { FavouriteList } from '@src/widgets/FavouriteList';
 import styles from './FavouritesPage.module.scss';
 
 const FavouritesPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('cart');
 
   return (
     <>
       <CategoryMenu />
       <div className={styles.pageContainer}>
-        <p className={styles.pageTitle}>{t('Your favourites')}</p>
+        <p className={styles.pageTitle}>{t('favs')}</p>
         <FavouriteList />
       </div>
     </>

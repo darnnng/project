@@ -8,9 +8,9 @@ import { Button } from '@shared/ui/Button';
 import { Urls } from '@shared/constants/urls';
 import { IArticleElement } from '../model/ItemInfo.interface';
 import styles from './ItemInfo.module.scss';
-//TO-DO ITEM INFO BOTTOM PART
+
 export const ItemInfo = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('itemPage');
   const { id, category } = useParams();
   const [size, setSize] = useState('');
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ export const ItemInfo = () => {
         <div className={styles.mainInfoBlock}>
           <div className={styles.mainInfoBlockName}>{data?.product?.name}</div>
           <div className={styles.mainInfoBlockPrice}>{data?.product?.whitePrice?.price} $</div>
-          <div className={styles.mainInfoBlockItem}> {t('variants available:')} </div>
+          <div className={styles.mainInfoBlockItem}> {t('variantsAvailable: ')} </div>
           <div className={styles.articlesOptions}>
             {articles?.map((elem: IArticleElement) => (
               <img
@@ -48,7 +48,7 @@ export const ItemInfo = () => {
             onChange={(event) => handleChangeSize(event.target.value)}
             className={styles.styledSelect}
           >
-            <option hidden>{t('Select size')}</option>
+            <option hidden>{t('selectSize')}</option>
             {sizes?.map((size: string) => (
               <option key={size}>{size}</option>
             ))}
@@ -57,7 +57,7 @@ export const ItemInfo = () => {
             {firebaseItem?.inStock ? (
               <AddToCartBtn size={size} />
             ) : (
-              <Button text={t('Out of stock')} disabled={true} styleProps={styles.addButton} />
+              <Button text={t('outStock')} disabled={true} styleProps={styles.addButton} />
             )}
           </div>
           <AddFavButton />
@@ -70,16 +70,16 @@ export const ItemInfo = () => {
           <>
             {[
               { label: data.product.articlesList[0]?.description },
-              { label: t('year of production:'), value: data.product.yearOfProduction || '-' },
+              { label: t('yearProduction: '), value: data.product.yearOfProduction || '-' },
               {
-                label: t('country of production:'),
+                label: t('countryProduction: '),
                 value: data.product.countryOfProduction || '-',
               },
-              { label: t('article number:'), value: data.product.code || '-' },
+              { label: t('articleNumber: '), value: data.product.code || '-' },
               { label: t('materials: '), value: data.product.keyFibreTypes || '-' },
               {
-                label: t('in stock:'),
-                value: data.product.inStock ? t('available') : t('not available'),
+                label: t('inStock: '),
+                value: data.product.inStock ? t('available') : t('notAvailable'),
               },
             ].map((item, index) => (
               <p className={styles.downContainerItem} key={index}>

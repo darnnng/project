@@ -1,11 +1,9 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { IFavouriteItemsProps } from '../model/FavouriteItem.interface';
 import styles from './FavouriteItem.module.scss';
 
 export const FavouriteItem = ({ item, handleDeleteFromFavs, userId }: IFavouriteItemsProps) => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleSeeItem = () => {
     navigate(`/${item.id}`);
@@ -31,7 +29,7 @@ export const FavouriteItem = ({ item, handleDeleteFromFavs, userId }: IFavourite
           className={styles.materialSymbolsOutlined}
           onClick={() => handleDeleteFromFavs(userId!, item)}
         >
-          {t('delete')}
+          delete
         </div>
       </div>
     </div>

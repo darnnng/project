@@ -13,7 +13,7 @@ import { IAddBtnProps } from '../model/types';
 import styles from './AddToCartBtn.module.scss';
 
 export const AddToCartBtn = memo(({ size }: IAddBtnProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('itemPage');
   const { userId } = useAppSelector(currentUser);
   const [added, setAdded] = useState(false);
   const handleError = useHandleError();
@@ -50,16 +50,11 @@ export const AddToCartBtn = memo(({ size }: IAddBtnProps) => {
   return (
     <div className={styles.addBtnContainer}>
       {added ? (
-        <Button
-          onClick={handleAddToCart}
-          text={t('Already in your cart')}
-          disabled={true}
-          styleProps={styles.addButton}
-        />
+        <Button text={t('alreadyCart')} disabled={true} styleProps={styles.addButton} />
       ) : (
-        <Button text={t('Add to cart')} styleProps={styles.addButton} />
+        <Button text={t('AddCart')} styleProps={styles.addButton} onClick={handleAddToCart} />
       )}
-      {errorMessage ? <p className={styles.errorText}>{t('Please, choose size')}</p> : ' '}
+      {errorMessage ? <p className={styles.errorText}>{t('chooseSize')}</p> : ' '}
     </div>
   );
 });

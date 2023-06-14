@@ -1,0 +1,20 @@
+{
+  "AddCart": "Добавить в корзину",
+  "AddFavourites: ": "Добавить в избранное:",
+  "alreadyCart": "Уже в корзине",
+  "notStock": "Нет в наличии",
+  "removeFavs: ": "Удалить из избранного:",
+  "selectSize": "Выбрать размер",
+  "articleNumber: ": "номер артикля:",
+  "available": "доступен",
+  "countryProduction: ": "cтрана производства:",
+  "delete": "удалить",
+  "details": "детали",
+  "inStock: ": "в наличии:",
+  "materials: ": "материалы:",
+  "notAvailable": "недоступно",
+  "variantsAvailable: ": "доступные варианты:",
+  "yearProduction: ": "год производства:",
+  "outStock": "Нет в наличии",
+  "chooseSize": "Выберите размер"
+}

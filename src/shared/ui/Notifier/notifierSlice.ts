@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface IAlert {
   message: string;
+  type: 'error' | 'success';
 }
 
 interface INotifierState {

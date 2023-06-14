@@ -16,7 +16,7 @@ export const ThemeChangeBtn = () => {
       className={` ${styles.spanElement} ${themeLight ? '' : styles.darkSpan}`}
       onClick={handleChangeTheme}
     >
-      {t('Switch theme')}
+      {t('switchtheme')}
     </li>
   );
 };

@@ -13,7 +13,7 @@ import { IFormInput } from '@features/Authorization/model/types';
 import { useHandleError } from '@src/shared/model/useHandleError';
 
 const SignUpPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleError = useHandleError();
@@ -30,17 +30,17 @@ const SignUpPage = () => {
         );
         navigate(`/${RoutePath.CATALOG}`);
       })
-      .catch((err) => handleError(err.message));
+      .catch((err) => handleError(err));
   };
 
   return (
     <div className={styles.login}>
-      <h3 className={styles.loginTitle}>{t('WELCOME! SIGN UP FOR MORE OPPORTUNITIES')}</h3>
-      <AuthForm onSubmit={onSignUpSubmit} buttonName={t('Sign up')} />
+      <h3 className={styles.loginTitle}>{t('welcome')}</h3>
+      <AuthForm onSubmit={onSignUpSubmit} buttonName={t('signup')} />
       <p className={styles.link}>
-        {t('Already have an account?')}
+        {t('alreadyAccount')}
         <Link data-testid="login-link" to={`/${RoutePath.LOGIN}`} className={styles.linkSignUp}>
-          {t('Follow link')}
+          {t('followLink')}
         </Link>
       </p>
     </div>

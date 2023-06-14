@@ -1,0 +1,142 @@
+@import './../../../shared/variables.scss';
+@import './../../../shared/mixins';
+
+.bigHeader {
+  align-items: center;
+  background-color: $light1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: $dark;
+  height: 70px;
+  padding: 0px 30px;
+  @media (max-width: $screenMid) {
+    flex-direction: column;
+    height: 120px;
+    padding: 30px 0px;
+  }
+}
+
+header {
+  font-family: $fontFamily;
+  a {
+    text-decoration: none;
+    color: $fontDark;
+    text-align: center;
+  }
+}
+
+.darkLink {
+  color: $fontLight;
+}
+
+.smallHeader {
+  min-height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0;
+  color: $dark;
+  background-color: $light2;
+}
+
+.darkHeader {
+  background-color: $backgroundDark;
+  color: $fontLight;
+}
+
+.spanContainer {
+  padding: 0px 20px;
+}
+.spanElement {
+  cursor: pointer;
+  color: $fontDark;
+  padding: 0px 10px;
+  &:hover {
+    color: $hoverColor;
+  }
+}
+
+.darkSpan {
+  color: $fontLight;
+}
+
+.mainTitle {
+  font-size: $fontLarge;
+}
+
+.iconsRight {
+  display: flex;
+  column-gap: 10px;
+}
+
+.iconsLeft {
+  display: flex;
+  column-gap: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+  &:hover {
+    color: $hoverColor;
+  }
+}
+
+.mainPageLink {
+  margin-bottom: 5px;
+  min-width: 125px;
+}
+
+.materialSymbolsOutlined {
+  @include materialSymbols;
+}
+
+.darkIcons {
+  color: $fontLight;
+}
+
+nav {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    li {
+      display: inline-block;
+    }
+    ul {
+      display: none;
+      position: absolute;
+      top: 50px;
+      li {
+        float: none;
+        display: list-item;
+        position: relative;
+      }
+    }
+  }
+  a {
+    display: block;
+    line-height: 50px;
+    text-decoration: none;
+    &:hover {
+      color: $hoverColor;
+    }
+  }
+  @media (max-width: $screenXs) {
+    flex-direction: column;
+    height: 100px;
+  }
+}
+
+nav ul li:hover > ul {
+  display: inherit;
+  background-color: $light2;
+  width: 50px;
+}
+
+nav ul li:hover > ul .darkLang {
+  background-color: $backgroundDark;
+  color: $fontLight;
+}

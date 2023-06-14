@@ -1,11 +1,4 @@
-export interface ICartItem {
-  id: string;
-  picture: string;
-  name: string;
-  price: string;
-  inStock: string;
-  size: string;
-}
+import { ICartItem } from '@shared/model/interfaces/interfaces';
 
 export interface IUserState {
   email: string | null;

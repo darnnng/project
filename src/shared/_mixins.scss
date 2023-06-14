@@ -6,7 +6,7 @@
   padding: 10px;
   font-size: $fontMid;
   &:hover {
-    border: 1px solid black;
+    background-color: $hoverColor;
   }
 }
 
@@ -21,6 +21,34 @@
   display: flex;
   align-items: flex-end;
   column-gap: 20px;
+}
+
+@mixin form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  max-width: 450px;
+  padding: 20px;
+  border: 1px solid $hoverColor;
+  border-radius: 5px;
+  margin-top: 20px;
+  height: 100%;
+}
+
+@mixin input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+@mixin checkout-btn {
+  padding: 0.5rem;
+  width: 100%;
+  font-size: $fontSmall;
+  &:hover {
+    background-color: $hoverColor;
+  }
 }
 
 @mixin materialSymbols {

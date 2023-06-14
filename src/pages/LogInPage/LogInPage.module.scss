@@ -13,6 +13,7 @@
 .loginTitle {
   font-size: $fontLarge;
   margin-bottom: 25px;
+  text-align: center;
   flex-wrap: wrap;
   @media (max-width: $screenMid) {
     font-size: $fontMid;

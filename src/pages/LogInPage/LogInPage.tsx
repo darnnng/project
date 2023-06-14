@@ -13,7 +13,7 @@ import { useHandleError } from '@src/shared/model/useHandleError';
 import styles from './LogInPage.module.scss';
 
 const LogInPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onError = useHandleError();
@@ -35,12 +35,12 @@ const LogInPage = () => {
 
   return (
     <div data-testid="login-page" className={styles.login}>
-      <h3 className={styles.loginTitle}>{t('WELCOME BACK! LOG IN FOR MORE OPPORTUNITIES')}</h3>
-      <AuthForm onSubmit={onLoginSubmit} buttonName={t('Sign in')} />
+      <h3 className={styles.loginTitle}>{t('welcomeback')}</h3>
+      <AuthForm onSubmit={onLoginSubmit} buttonName={t('signin')} />
       <p className={styles.link}>
-        {t('Not a member?')}
+        {t('notMember')}
         <Link data-testid="signup-link" to={`/${RoutePath.SIGNUP}`} className={styles.linkSignUp}>
-          {t('Join us')}
+          {t('joinus')}
         </Link>
       </p>
     </div>
