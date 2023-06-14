@@ -1,5 +1,5 @@
 import { ref, push, set, serverTimestamp } from 'firebase/database';
-import { db } from '@src/shared/api/firebase';
+import { db } from '@shared/api/firebase';
 import { ICartItems } from '../model/PaymentForm.interface';
 
 export const cleanCartDb = async (userId: string) => {

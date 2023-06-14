@@ -38,8 +38,8 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.21.5",
     "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.5",
     "@storybook/addon-docs": "^7.0.18",
@@ -67,6 +67,7 @@
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
     "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
     "esbuild-loader": "^2.20.0",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.8.0",
