@@ -1,6 +1,5 @@
 # project
 
-deploy: https://clothes-shop2101.netlify.app/catalog
 api that was used for project: https://rapidapi.com/apidojo/api/hm-hennes-mauritz
 
 ### current technologies:<br>
