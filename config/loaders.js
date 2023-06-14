@@ -6,14 +6,9 @@ const dirname = path.dirname(__filename);
 
 export const jsonLoader = () => {
   return {
-    type: 'javascript/auto',
     test: /\.json$/,
-    include: [_resolve(dirname, '../public/locales/en'), _resolve(dirname, '../public/locales/ru')],
     loader: 'file-loader',
-    options: {
-      name: '[name].[ext]',
-      outputPath: './assets',
-    },
+    type: 'javascript/auto',
   };
 };
 

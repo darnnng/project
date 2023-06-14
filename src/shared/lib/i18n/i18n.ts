@@ -12,7 +12,7 @@ i18n
     backend: {
       backendOptions: [
         {
-          loadPath: '**/locales/{{lng}}/{{ns}}.json',
+          loadPath: './locales/{{lng}}/{{ns}}.json',
         },
       ],
     },
