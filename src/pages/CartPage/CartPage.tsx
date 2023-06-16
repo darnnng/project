@@ -3,6 +3,7 @@ import { CartList } from '@widgets/CartItemList';
 import { OrderForm } from '@widgets/OrderForm';
 import { useAppSelector } from '@src/shared/model/reduxHooks';
 import { currentUser } from '@src/entities/user/model/userSlice';
+import { withPrivateRoute } from '@src/app/hocs/withPrivateRoute';
 import styles from './CartPage.module.scss';
 
 const CartPage = () => {
@@ -19,4 +20,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default withPrivateRoute(CartPage);

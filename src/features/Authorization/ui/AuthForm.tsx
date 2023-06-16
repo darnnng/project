@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,7 +9,7 @@ import { IAuthFormProps, IFormInput } from '../model/types';
 import { authSchema } from '../lib/validationSchema';
 import styles from './AuthForm.module.scss';
 
-export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
+export const AuthForm: FC<IAuthFormProps> = memo(({ onSubmit, buttonName }) => {
   const {
     register,
     handleSubmit,
@@ -23,7 +23,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
   const { t } = useTranslation('auth');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className={styles.authForm} onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.inputContainer}>
         <label htmlFor="email">{t('Email')}</label>
         <InputText
@@ -53,4 +53,4 @@ export const AuthForm: FC<IAuthFormProps> = ({ onSubmit, buttonName }) => {
       <Button type="submit" styleProps={styles.formButton} text={buttonName} />
     </form>
   );
-};
+});

@@ -52,7 +52,7 @@ export const PaymentForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className={styles.payForm} onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.formContainer}>
         <div className={styles.inputContainer}>
           <label htmlFor="cardNumber">{t('cardNumber')}</label>

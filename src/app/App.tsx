@@ -1,12 +1,13 @@
 import { QueryClientProvider } from 'react-query';
+import { RouterProvider } from 'react-router-dom';
 import { queryClient } from '@src/shared/lib/queryClientOptions';
-import { AppRouter } from './routes';
 import './App.module.scss';
+import { router } from './routes/AppRouterNew';
 
 export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <AppRouter />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 };

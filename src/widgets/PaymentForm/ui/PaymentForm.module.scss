@@ -1,7 +1,7 @@
 @import './../../../shared/variables.scss';
 @import './../../../shared/mixins';
 
-form {
+.payForm {
   @include form-container;
 
   .formLabel {

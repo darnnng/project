@@ -1,7 +1,7 @@
 @import './../../../shared/mixins';
 @import './../../../shared/variables.scss';
 
-form {
+.orderForm {
   @include form-container;
   background-color: $light1;
 

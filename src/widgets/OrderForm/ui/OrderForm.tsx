@@ -53,7 +53,7 @@ export const OrderForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className={styles.orderForm} onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.formContainer}>
         <p className={styles.orderTitle}>{t('yourOrder')}</p>
 

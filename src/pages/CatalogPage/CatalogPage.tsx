@@ -9,12 +9,13 @@ import { selectedFilter, setFilter } from '@src/features/Sorting/model/filterSli
 import { CatalogList } from '@src/widgets/CatalogList';
 import { useCatalogList } from '@src/widgets/CatalogList/model/useCatalogList';
 import { Urls } from '@shared/constants/urls';
-import { CategoryMenu } from '../../widgets/CategoryMenu';
-import { SortingSelect } from '../../features/Sorting';
+import { CategoryMenu } from '@widgets/CategoryMenu';
+import { SortingSelect } from '@features/Sorting';
 import styles from './CatalogPage.module.scss';
 
 const CatalogPage = () => {
   const { category } = useParams();
+
   const prevCategoryRef = useRef<string | undefined>(category);
   const { page } = useAppSelector(selectedPage);
   const { filter } = useAppSelector(selectedFilter);

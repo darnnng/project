@@ -10,6 +10,7 @@ import { auth } from '@src/shared/api/firebase';
 import { useAppDispatch } from '@src/shared/model/reduxHooks';
 import { IFormInput } from '@src/features/Authorization/model/types';
 import { useHandleError } from '@src/shared/model/useHandleError';
+import { withPublicRoute } from '@src/app/hocs/withPublicRoute';
 import styles from './LogInPage.module.scss';
 
 const LogInPage = () => {
@@ -47,4 +48,4 @@ const LogInPage = () => {
   );
 };
 
-export default LogInPage;
+export default withPublicRoute(LogInPage);

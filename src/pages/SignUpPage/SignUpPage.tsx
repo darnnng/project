@@ -11,6 +11,7 @@ import { setUser } from '@entities/user/model/userSlice';
 import { useAppDispatch } from '@shared/model/reduxHooks';
 import { IFormInput } from '@features/Authorization/model/types';
 import { useHandleError } from '@src/shared/model/useHandleError';
+import { withPublicRoute } from '@src/app/hocs/withPublicRoute';
 
 const SignUpPage = () => {
   const { t } = useTranslation('auth');
@@ -47,4 +48,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default withPublicRoute(SignUpPage);
