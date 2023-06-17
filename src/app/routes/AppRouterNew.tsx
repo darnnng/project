@@ -1,12 +1,13 @@
 import React, { lazy } from 'react';
-import { Outlet, createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from '@src/app/layout';
 import { RoutePath } from '@shared/constants/routes';
+import HomePage from '@src/pages/HomePage';
 
 const LogInPage = lazy(() => import('@pages/LogInPage'));
 const SignUpPage = lazy(() => import('@pages/SignUpPage'));
 const CatalogPage = lazy(() => import('@pages/CatalogPage'));
-const HomePage = lazy(() => import('@pages/HomePage'));
+
 const CartPage = lazy(() => import('@pages/CartPage'));
 const FavouritesPage = lazy(() => import('@pages/FavouritesPage'));
 const ItemPage = lazy(() => import('@pages/ItemPage'));
@@ -20,12 +21,11 @@ export const router = createBrowserRouter([
     path: RoutePath.HOME,
     element: (
       <>
-        {' '}
-        {/* <Outlet /> */}
         <Layout />
       </>
     ),
     children: [
+      { path: RoutePath.HOME, element: <HomePage /> },
       {
         path: RoutePath.LOGIN,
         element: <LogInPage />,
@@ -59,25 +59,21 @@ export const router = createBrowserRouter([
         path: RoutePath.ERROR,
         element: <ErrorPage />,
       },
+
       {
         path: RoutePath.CATALOG,
-        element: (
-          <>
-            {/* <Outlet /> */}
-            <HomePage />
-          </>
-        ),
-        children: [
-          {
-            path: `/${RoutePath.CATALOG}/:category/:id`,
-            element: <ItemPage />,
-          },
-          {
-            path: `/${RoutePath.CATALOG}/:category`,
-            element: <CatalogPage />,
-          },
-        ],
+        element: <HomePage />,
       },
+
+      {
+        path: `/${RoutePath.CATALOG}/:category/:id`,
+        element: <ItemPage />,
+      },
+      {
+        path: `/${RoutePath.CATALOG}/:category`,
+        element: <CatalogPage />,
+      },
+
       {
         path: '/:id',
         element: <ItemPage />,
@@ -85,7 +81,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '/',
+    path: '*',
     element: <HomePage />,
   },
 ]);
